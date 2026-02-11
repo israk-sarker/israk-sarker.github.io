@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcolo di π col metodo dei Trapezi</title>
+</head>
+
+<body>
+    <canvas id="canvas" width="800" height="400" style="border: solid;"></canvas>
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+
+        const r = 400;
+        const divs = 1000;
+        const xInterval = r / divs;
+
+        function getY(r, x) {
+            return Math.sqrt(Math.pow(r, 2) - Math.pow(x, 2));
+        }
+
+        // Funzione per disegnare il cerchio e i trapezi
+        function drawSimulation() {
+
+            let areaTotale = 0;
+
+            for (let i = 0; i < divs; i++) {
+                let x1 = i * xInterval;
+                let x2 = (i + 1) * xInterval;
+                let y1 = getY(r, x1);
+                let y2 = getY(r, x2);
+
+                let areaTrapezio = ((y1 + y2) * xInterval) / 2;
+                areaTotale += areaTrapezio;
+                ctx.beginPath();
+
+                ctx.moveTo(x1, 0);
+                ctx.lineTo(x1, y1);
+                ctx.lineTo(x2, y2);
+                ctx.lineTo(x2, 0);
+                ctx.closePath();
+
+                ctx.strokeStyle = "red";
+                ctx.stroke();
+                ctx.fillStyle = "rgba(255, 0, 0, 0)";
+                ctx.fill();
+            }
+
+            let piApprossimato = (areaTotale * 4) / Math.pow(r, 2);
+            ctx.fillStyle = "black";
+            ctx.fillText("Pi approssimato: " + piApprossimato.toFixed(30), 500, 40);
+        }
+
+        drawSimulation();
+    </script>
+</body>
+
+</html>
