@@ -10,7 +10,7 @@
     cursor: pointer;
     z-index: 1;
     padding: 10px 20px;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     white-space: nowrap;
@@ -41,7 +41,7 @@
     transform: translate(10px, 10px);
     width: 35px;
     height: 35px;
-    background: #ffffff15;
+    background: #0bc0e015;
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     border-radius: 50px;
@@ -63,4 +63,54 @@
 .button:active::after {
     transition: 0s;
     transform: translate(0, 5%);
+}
+
+ul {
+    list-style-type: square;
+    list-style-position: outside;
+    list-style-image: none;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+    color: #fff;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+}
+
+section {
+    background-color: #111;
+    padding: 25px;
+    margin: 30px auto;
+    width: 80%;
+    max-width: 700px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px #0bc0e015;
+}
+
+p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    background-color: #1a1a1a;
+    margin: 10px 0;
+    padding: 12px 16px;
+    border-left: 4px solid #0bc0e015;
+    border-radius: 6px;
+    transition: 0.3s ease;
+}
+
+li:hover {
+    background-color: #0bc0e015;
+    transform: translateX(5px);
 }
