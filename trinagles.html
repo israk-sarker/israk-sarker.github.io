@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Turtle Triangle - Koch Snowflake</title>
+</head>
+
+<body>
+    <h3>Frattale di Von Koch (Recursion Depth: 4)</h3>
+    <canvas id="triangles" width="1200" height="900" style="border: solid; background-color: #f0f0f0;"></canvas>
+
+    <script>
+        const canvas = document.querySelector("#triangles");
+        const ctx = canvas.getContext("2d");
+        ctx.strokeStyle = "black";
+        ctx.lineWidth = 1;
+
+        const Turtle = {
+            posX: 350,
+            posY: 250,
+            angle: 0, // in radianti
+            L: 500, // Lato iniziale
+
+            drawLine(x, y) {
+                ctx.beginPath();
+                ctx.moveTo(this.posX, this.posY);
+                ctx.lineTo(x, y);
+                ctx.stroke();
+                this.posX = x;
+                this.posY = y;
+            },
+
+            forward(len) {
+                const newX = this.posX + len * Math.cos(this.angle);
+                const newY = this.posY + len * Math.sin(this.angle);
+                this.drawLine(newX, newY);
+            },
+
+            turn(deg) {
+
+                this.angle += deg * Math.PI / 180;
+            },
+
+
+            recTriangles(len, n) {
+                if (n === 0) {
+                    // Caso base: disegna una linea dritta
+                    this.forward(len);
+                } else {
+                    // Passo ricorsivo: disegna 4 segmenti più piccoli
+                    const side = len / 3;
+
+                    this.recTriangles(side, n - 1);
+
+                    this.turn(-60); // Gira a sinistra (punta verso l'esterno)
+                    this.recTriangles(side, n - 1);
+
+                    this.turn(120); // Gira a destra
+                    this.recTriangles(side, n - 1);
+
+                    this.turn(-60); // Gira a sinistra
+                    this.recTriangles(side, n - 1);
+                }
+            },
+
+            drawEquilateralTriangle(recursionDepth) {
+
+                for (let i = 0; i < 3; i++) {
+
+                    this.recTriangles(this.L, recursionDepth);
+                    this.turn(120);
+                }
+            }
+        };
+
+
+        Turtle.drawEquilateralTriangle(10);
+    </script>
+</body>
+
+</html>
