@@ -14,7 +14,7 @@
         const ctx = canvas.getContext('2d');
 
         const r = 400;
-        const divs = 1000;
+        const divs = 10000;
         const xInterval = r / divs;
 
         function getY(r, x) {
@@ -50,7 +50,7 @@
 
             let piApprossimato = (areaTotale * 4) / Math.pow(r, 2);
             ctx.fillStyle = "black";
-            ctx.fillText("Pi approssimato: " + piApprossimato.toFixed(30), 500, 40);
+            ctx.fillText("Pi approssimato: " + piApprossimato.toFixed(5), 500, 40);
         }
 
         drawSimulation();
