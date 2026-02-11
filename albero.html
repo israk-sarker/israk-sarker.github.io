@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Frattale TREE</title>
+</head>
+
+<body>
+    <h3>Frattale TREE</h3>
+    <canvas id="triangles" width="1200" height="900" style="border: solid; background-color: #f0f0f0;"></canvas>
+
+    <script>
+        const canvas = document.querySelector("#triangles");
+        const ctx = canvas.getContext("2d");
+        ctx.strokeStyle = "black";
+        ctx.lineWidth = 1;
+
+        const Turtle = {
+            posX: 600,
+            posY: 800,
+            angle: -90 * Math.PI / 180, // puntare verso l'alto
+            len: 2,
+
+            drawLine(x, y) {
+                ctx.beginPath();
+                ctx.moveTo(this.posX, this.posY);
+                ctx.lineTo(x, y);
+                ctx.stroke();
+                this.posX = x;
+                this.posY = y;
+            },
+
+            forward(len) {
+                const newX = this.posX + len * Math.cos(this.angle);
+                const newY = this.posY + len * Math.sin(this.angle);
+                this.drawLine(newX, newY);
+            },
+
+            turn(deg) {
+                this.angle += deg * Math.PI / 180;
+            },
+
+            // Funzione ricorsiva dell'albero
+            tree(reps, len) {
+                if (reps === 0) return;
+
+                // disegna il ramo
+                this.forward(len);
+
+                // salva stato DOPO aver avanzato
+                const x = this.posX;
+                const y = this.posY;
+                const a = this.angle;
+
+                // ramo sinistro
+                this.turn(-25);
+                this.tree(reps - 1, len * 0.70);
+
+                // ripristina
+                this.posX = x;
+                this.posY = y;
+                this.angle = a;
+
+                // ramo destro
+                this.turn(25);
+                this.tree(reps - 1, len * 0.70);
+
+                // ripristina finale
+                this.posX = x;
+                this.posY = y;
+                this.angle = a;
+            }
+
+        };
+
+        // Disegna l'albero
+        Turtle.tree(11, 200);
+    </script>
+</body>
+
+</html>
