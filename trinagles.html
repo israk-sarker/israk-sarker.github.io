@@ -3,12 +3,20 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Turtle Triangle - Koch Snowflake</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <h3>Frattale di Von Koch (Recursion Depth: 4)</h3>
-    <canvas id="triangles" width="1200" height="900" style="border: solid; background-color: #f0f0f0;"></canvas>
+    <main>
+        <section style="max-width: 1300px;">
+            <h3>Frattale di Von Koch (Recursion Depth: 4)</h3>
+            <canvas id="triangles" width="1200" height="900" style="background-color: #f0f0f0;"></canvas>
+            <br><br>
+            <a href="index.html" class="button">Back to Home</a>
+        </section>
+    </main>
 
     <script>
         const canvas = document.querySelector("#triangles");
@@ -38,10 +46,8 @@
             },
 
             turn(deg) {
-
                 this.angle += deg * Math.PI / 180;
             },
-
 
             recTriangles(len, n) {
                 if (n === 0) {
@@ -65,15 +71,12 @@
             },
 
             drawEquilateralTriangle(recursionDepth) {
-
                 for (let i = 0; i < 3; i++) {
-
                     this.recTriangles(this.L, recursionDepth);
                     this.turn(120);
                 }
             }
         };
-
 
         Turtle.drawEquilateralTriangle(10);
     </script>

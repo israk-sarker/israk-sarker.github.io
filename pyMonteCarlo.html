@@ -4,56 +4,125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calcolo di π col metodo dei Trapezi</title>
+    <title>Calcolo di π - Metodi Numerici</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <canvas id="canvas" width="800" height="400" style="border: solid;"></canvas>
-    <script>
-        const canvas = document.getElementById('canvas');
-        const ctx = canvas.getContext('2d');
+    <main>
+        <section style="max-width: 900px;">
+            <h3>Calcolo di π col metodo dei Trapezi</h3>
+            <canvas id="canvasTrapezi" width="800" height="400" style="background-color: #f0f0f0;"></canvas>
+            <p id="risultatoTrapezi" style="color: #0bc0e0;">Calcolo in corso...</p>
+        </section>
 
-        const r = 400;
+        <section style="max-width: 900px;">
+            <h3>Calcolo di π col metodo Monte Carlo</h3>
+            <canvas id="canvasMonteCarlo" width="400" height="400" style="background-color: #f0f0f0; border: 1px solid #ccc;"></canvas>
+            <p id="risultatoMonteCarlo" style="color: #0bc0e0;">Calcolo in corso...</p>
+        </section>
+
+        <section style="max-width: 200px;">
+            <a href="index.html" class="button">Back to Home</a>
+        </section>
+    </main>
+
+    <script>
+        // --- LOGICA METODO DEI TRAPEZI ---
+        const cTrapezi = document.getElementById('canvasTrapezi');
+        const ctxT = cTrapezi.getContext('2d');
+        const rT = 400; // Raggio visualizzazione
         const divs = 10000;
-        const xInterval = r / divs;
+        const xInterval = rT / divs;
 
         function getY(r, x) {
             return Math.sqrt(Math.pow(r, 2) - Math.pow(x, 2));
         }
 
-        // Funzione per disegnare il cerchio e i trapezi
-        function drawSimulation() {
-
+        function drawTrapezi() {
             let areaTotale = 0;
-
             for (let i = 0; i < divs; i++) {
                 let x1 = i * xInterval;
                 let x2 = (i + 1) * xInterval;
-                let y1 = getY(r, x1);
-                let y2 = getY(r, x2);
+                let y1 = getY(rT, x1);
+                let y2 = getY(rT, x2);
 
-                let areaTrapezio = ((y1 + y2) * xInterval) / 2;
-                areaTotale += areaTrapezio;
-                ctx.beginPath();
-
-                ctx.moveTo(x1, 0);
-                ctx.lineTo(x1, y1);
-                ctx.lineTo(x2, y2);
-                ctx.lineTo(x2, 0);
-                ctx.closePath();
-
-                ctx.strokeStyle = "red";
-                ctx.stroke();
-                ctx.fillStyle = "rgba(255, 0, 0, 0)";
-                ctx.fill();
+                areaTotale += ((y1 + y2) * xInterval) / 2;
+                
+                ctxT.beginPath();
+                ctxT.moveTo(x1, 0);
+                ctxT.lineTo(x1, y1);
+                ctxT.lineTo(x2, y2);
+                ctxT.lineTo(x2, 0);
+                ctxT.strokeStyle = "red";
+                ctxT.lineWidth = 0.5;
+                ctxT.stroke();
             }
-
-            let piApprossimato = (areaTotale * 4) / Math.pow(r, 2);
-            ctx.fillStyle = "black";
-            ctx.fillText("Pi approssimato: " + piApprossimato.toFixed(5), 500, 40);
+            // Calcolo Pi: Area del quarto di cerchio è (π*r^2)/4. 
+            // Qui areaTotale approssima l'integrale, quindi Pi ≈ (4 * areaTotale) / r^2
+            let piApprossimato = (areaTotale * 4) / Math.pow(rT, 2);
+            document.getElementById('risultatoTrapezi').innerText = "Pi greco approssimato (Trapezi): " + piApprossimato.toFixed(6);
         }
 
-        drawSimulation();
+        // --- LOGICA METODO MONTE CARLO ---
+        // Basato sulla strategia: π ≈ 4 * (M / N)
+        const cMonte = document.getElementById('canvasMonteCarlo');
+        const ctxM = cMonte.getContext('2d');
+        const size = 400; // Dimensione lato quadrato nel canvas
+        const center = size / 2;
+        const rM = size / 2; // Raggio = 1 (scalato a 200px)
+        const nPunti = 15000;
+
+        function drawMonteCarlo() {
+            // Disegna lo sfondo giallo per il quadrato
+            ctxM.fillStyle = "#ffff00";
+            ctxM.fillRect(0, 0, size, size);
+
+            // Disegna il cerchio azzurro
+            ctxM.beginPath();
+            ctxM.arc(center, center, rM, 0, Math.PI * 2);
+            ctxM.fillStyle = "#87ceeb";
+            ctxM.fill();
+            ctxM.strokeStyle = "#333";
+            ctxM.stroke();
+
+            // Disegna gli assi cartesiani (x, y) centrati in O
+            ctxM.beginPath();
+            ctxM.moveTo(0, center); ctxM.lineTo(size, center); // Asse X
+            ctxM.moveTo(center, 0); ctxM.lineTo(center, size); // Asse Y
+            ctxM.strokeStyle = "rgba(0,0,0,0.5)";
+            ctxM.lineWidth = 1;
+            ctxM.stroke();
+
+            let puntiNelCerchio = 0;
+
+            for (let i = 0; i < nPunti; i++) {
+                // Genera coordinate random tra -1 e 1 (scalate al canvas)
+                let randX = (Math.random() * 2 - 1); // Valore tra -1 e 1
+                let randY = (Math.random() * 2 - 1); // Valore tra -1 e 1
+
+                // Verifica: x^2 + y^2 <= 1
+                if (Math.pow(randX, 2) + Math.pow(randY, 2) <= 1) {
+                    puntiNelCerchio++;
+                    ctxM.fillStyle = "#0000ff"; // Punto nel cerchio (Blu)
+                } else {
+                    ctxM.fillStyle = "#ff0000"; // Punto fuori dal cerchio (Rosso)
+                }
+                
+                // Converte le coordinate matematiche (-1, 1) in coordinate canvas (0, 400)
+                let drawX = center + (randX * rM);
+                let drawY = center - (randY * rM);
+                ctxM.fillRect(drawX, drawY, 1.5, 1.5);
+            }
+
+            // Formula: π ≈ 4 * (M / N)
+            let piMonteCarlo = (puntiNelCerchio / nPunti) * 4;
+            document.getElementById('risultatoMonteCarlo').innerText = "Pi greco approssimato (Monte Carlo): " + piMonteCarlo.toFixed(6);
+        }
+
+        // Esecuzione delle simulazioni
+        drawTrapezi();
+        drawMonteCarlo();
     </script>
 </body>
 

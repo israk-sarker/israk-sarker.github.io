@@ -3,12 +3,20 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Frattale TREE</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <h3>Frattale TREE</h3>
-    <canvas id="triangles" width="1200" height="900" style="border: solid; background-color: #f0f0f0;"></canvas>
+    <main>
+        <section style="max-width: 1300px;">
+            <h3>Frattale TREE</h3>
+            <canvas id="triangles" width="1200" height="900" style="background-color: #f0f0f0;"></canvas>
+            <br><br>
+            <a href="index.html" class="button">Back to Home</a>
+        </section>
+    </main>
 
     <script>
         const canvas = document.querySelector("#triangles");
@@ -71,7 +79,6 @@
                 this.posY = y;
                 this.angle = a;
             }
-
         };
 
         // Disegna l'albero
