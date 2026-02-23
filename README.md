@@ -96,19 +96,6 @@ The area under the curve is approximated using trapezoids, demonstrating numeric
 - JavaScript
 - Canvas API
 - Mathematical algorithms and simulations
-
----
-
-## Project Structure
-
-/
-├── index.html          # Main portfolio page
-├── style.css           # Website styling
-├── albero.html         # Recursive tree project
-├── trinagles.html      # Recursive triangles project
-├── pyMonteCarlo.html   # Pi approximation simulations
-└── assets/             # Images or additional resources
-
 ---
 
 ## Learning Goals
