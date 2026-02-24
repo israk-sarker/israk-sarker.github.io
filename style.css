@@ -146,7 +146,9 @@ canvas {
   .button { width: 100%; }
 }
 
-/* CANVAS RESPONSIVE */
+/* =========================
+   CANVAS RESPONSIVE
+========================= */
 #graphCanvas {
     width: min(90vw, 900px);
     height: min(65vh, 600px);
