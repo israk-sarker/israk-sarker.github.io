@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grafico Funzione</title>
+    <link rel="stylesheet" href="../style.css">
+    </head>
+<body>
+    <main>
+        <section>
+            <div class="controls">
+                <label for="functionInput"><strong>y =</strong></label>
+                <input type="text" id="functionInput" value="x - 2" placeholder="Es: x^2">
+                <button id="btnDraw" class="button">Disegna</button>
+                <button id="btnZoomIn" class="button">Zoom In (+)</button>
+                <button id="btnZoomOut" class="button">Zoom Out (-)</button>
+                <a href="../index.html" class="button">Back to Home</a>
+            </div>
+        </section>
+
+        <section>
+            <h3>Function Drawer</h3>
+            <canvas id="graphCanvas" width="800" height="600" style="border: 1px solid #ccc;"></canvas>
+        </section>
+
+        <script src="main.js"></script>
+    </main>
+</body>
+</html>

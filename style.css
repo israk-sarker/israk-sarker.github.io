@@ -1,132 +1,164 @@
-/* General Base Styles */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
-    margin: 0;
-    padding: 0;
-    background-color: #000;
-    color: #fff;
-    font-family: 'Segoe UI', Roboto, sans-serif;
+  font-family: 'Inter', sans-serif;
+  background: #0d0d0d;
+  color: #e0e0e0;
+  font-size: 15px;
+  line-height: 1.6;
 }
 
-/* Layout Containers */
+/* ── SECTION ── */
 section {
-    background-color: #111;
-    padding: 25px;
-    margin: 30px auto;
-    width: 80%;
-    max-width: 700px;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px #0bc0e015;
-    text-align: center;
+  width: 100%;
+  padding: 48px 24px;
+  border-bottom: 1px solid #1e1e1e;
 }
 
-/* Typography & Lists */
-p {
-    font-size: 18px;
-    line-height: 1.6;
-    margin-bottom: 15px;
+.container {
+  max-width: 860px;
+  margin: 0 auto;
 }
 
-ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
+/* ── TEXT ── */
+h1 { font-size: 2rem;   font-weight: 600; color: #fff; margin-bottom: 8px; }
+h2 { font-size: 1.4rem; font-weight: 600; color: #fff; margin-bottom: 8px; }
+h3 { font-size: 1.1rem; font-weight: 500; color: #ccc; margin-bottom: 6px; }
+
+p  { color: #888; margin-bottom: 12px; }
+
+a  { color: #7c6aff; text-decoration: none; }
+a:hover { opacity: 0.8; }
+
+/* ── LIST ── */
+ul { list-style: none; }
 
 li {
-    background-color: #1a1a1a;
-    margin: 10px 0;
-    padding: 12px 16px;
-    border-left: 4px solid #0bc0e015;
-    border-radius: 6px;
-    transition: 0.3s ease;
-    text-align: left;
+  padding: 12px 16px;
+  margin-bottom: 8px;
+  background: #161616;
+  border: 1px solid #222;
+  border-radius: 8px;
+  color: #aaa;
+  transition: 0.2s;
 }
 
 li:hover {
-    background-color: #0bc0e015;
-    transform: translateX(5px);
+  background: #1e1e1e;
+  color: #e0e0e0;
+  border-color: #7c6aff55;
+  transform: translateX(4px);
 }
 
-/* Buttons */
+/* ── CONTROLS ── */
+.controls {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.controls label {
+  font-size: 14px;
+  color: #7c6aff;
+  font-weight: 500;
+}
+
+/* ── INPUT ── */
+input, textarea, select, #functionInput {
+  padding: 10px 14px;
+  font-family: inherit;
+  font-size: 14px;
+  color: #e0e0e0;
+  background: #161616;
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+  outline: none;
+  transition: 0.2s;
+}
+
+input:focus, textarea:focus, #functionInput:focus {
+  border-color: #7c6aff;
+  background: #1a1a1a;
+}
+
+input::placeholder, #functionInput::placeholder {
+  color: #444;
+}
+
+/* ── BUTTON CONTAINER ── */
 .button-container {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    flex-wrap: wrap;
-    margin-top: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
 }
 
+/* ── BUTTON ── */
 .button {
-    all: unset;
-    width: 140px;
-    height: 30px;
-    font-size: 16px;
-    background: transparent;
-    border: none;
-    position: relative;
-    color: #f0f0f0;
-    cursor: pointer;
-    z-index: 1;
-    padding: 10px 20px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    white-space: nowrap;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 22px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  color: #e0e0e0;
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+  text-decoration: none;
+  user-select: none;
 }
 
-.button::after,
-.button::before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    z-index: -99999;
-    transition: all .4s;
+.button:hover {
+  background: #222;
+  border-color: #7c6aff;
+  color: #fff;
 }
 
-.button::before {
-    transform: translate(0%, 0%);
-    width: 100%;
-    height: 100%;
-    background: #28282d;
-    border-radius: 10px;
+.button:active {
+  transform: scale(0.97);
 }
 
-.button::after {
-    transform: translate(10px, 10px);
-    width: 35px;
-    height: 35px;
-    background: #0bc0e015;
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border-radius: 50px;
-}
-
-.button:hover::before {
-    transform: translate(5%, 20%);
-    width: 110%;
-    height: 110%;
-}
-
-.button:hover::after {
-    border-radius: 10px;
-    transform: translate(0, 0);
-    width: 100%;
-    height: 100%;
-}
-
-.button:active::after {
-    transition: 0s;
-    transform: translate(0, 5%);
-}
-
-/* Canvas Adjustments */
+/* ── CANVAS ── */
 canvas {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  border: 1px solid #1e1e1e;
+  background: #111;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 600px) {
+  section { padding: 32px 16px; }
+  .controls { flex-direction: column; align-items: stretch; }
+  .button { width: 100%; }
+}
+
+/* =========================
+   CANVAS RESPONSIVE
+========================= */
+#graphCanvas {
+    width: min(90vw, 900px);
+    height: min(65vh, 600px);
+
+    display: flex;
+    margin: 0 auto;
+
+    background-color: #0b0b0b;
+    border: 1px solid #333;
+    border-radius: 10px;
+
+    box-shadow: 0 8px 25px rgba(0,0,0,0.6);
 }
