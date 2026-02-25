@@ -28,7 +28,7 @@
     </main>
 
     <script>
-        // --- LOGICA METODO DEI TRAPEZI ---
+        //METODO DEI TRAPEZI
         const cTrapezi = document.getElementById('canvasTrapezi');
         const ctxT = cTrapezi.getContext('2d');
         const rT = 400; // Raggio visualizzazione
@@ -59,13 +59,13 @@
                 ctxT.stroke();
             }
             // Calcolo Pi: Area del quarto di cerchio è (π*r^2)/4. 
-            // Qui areaTotale approssima l'integrale, quindi Pi ≈ (4 * areaTotale) / r^2
+            // areaTotale approssima Pi ≈ (4 * areaTotale) / r^2
             let piApprossimato = (areaTotale * 4) / Math.pow(rT, 2);
             document.getElementById('risultatoTrapezi').innerText = "Pi greco approssimato (Trapezi): " + piApprossimato.toFixed(6);
         }
 
-        // --- LOGICA METODO MONTE CARLO ---
-        // Basato sulla strategia: π ≈ 4 * (M / N)
+        //MONTE CARLO ---
+        // strategia: π ≈ 4 * (M / N)
         const cMonte = document.getElementById('canvasMonteCarlo');
         const ctxM = cMonte.getContext('2d');
         const size = 400; // Dimensione lato quadrato nel canvas
@@ -115,7 +115,7 @@
                 ctxM.fillRect(drawX, drawY, 1.5, 1.5);
             }
 
-            // Formula: π ≈ 4 * (M / N)
+            // Formula: π = 4 * (M / N)
             let piMonteCarlo = (puntiNelCerchio / nPunti) * 4;
             document.getElementById('risultatoMonteCarlo').innerText = "Pi greco approssimato (Monte Carlo): " + piMonteCarlo.toFixed(6);
         }
