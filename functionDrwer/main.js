@@ -64,12 +64,12 @@ function normalizeInp(input) {
 
     var expr = input.replace(/\s+/g, '');
     expr = expr.replace(/\^/g, '**');
-    expr = expr.replace(/(\d)(x)/gi, '$1*$2');
-    expr = expr.replace(/(x)(\d)/gi, '$1*$2');
+    expr = expr.replace(/(\d)(x)/g, '$1*$2');
+    expr = expr.replace(/(x)(\d)/g, '$1*$2');
     expr = expr.replace(/(\d)\(/g, '$1*(');
     expr = expr.replace(/\)(\d)/g, ')*$1');
-    expr = expr.replace(/x\(/gi, 'x*(');
-    expr = expr.replace(/\)x/gi, ')*x');
+    expr = expr.replace(/x\(/g, 'x*(');
+    expr = expr.replace(/\)x/g, ')*x');
     expr = expr.replace(/\)\(/g, ')*(');
 
     return expr;

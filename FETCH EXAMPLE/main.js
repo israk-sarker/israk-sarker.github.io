@@ -1,4 +1,4 @@
-const deckId = "2gwjundl6apv"
+const deckId = "gynn21ch472p"
 
 function main(){
     drawCard();
