@@ -11,7 +11,11 @@
 <body>
     <main>
         <section style="max-width: 1300px;">
-            <h3>Frattale di Von Koch (Recursion Depth: 4)</h3>
+            <h3>Frattale di Von Koch</h3>
+            <div class="slidercontainer">
+                <p>REPS</p>
+                <input type="range" min="0" max="5" value="3" class="slider" id="tReps">
+            </div>
             <canvas id="triangles" width="1200" height="900" style="background-color: #f0f0f0;"></canvas>
             <br><br>
             <a href="index.html" class="button">Back to Home</a>
@@ -21,14 +25,14 @@
     <script>
         const canvas = document.querySelector("#triangles");
         const ctx = canvas.getContext("2d");
-        ctx.strokeStyle = "black";
-        ctx.lineWidth = 1;
+
+        const tReps = document.querySelector("#tReps");
 
         const Turtle = {
             posX: 350,
             posY: 250,
-            angle: 0, // in radianti
-            L: 500, // Lato iniziale
+            angle: 0,
+            L: 500,
 
             drawLine(x, y) {
                 ctx.beginPath();
@@ -51,34 +55,46 @@
 
             recTriangles(len, n) {
                 if (n === 0) {
-                    // Caso base: disegna una linea dritta
                     this.forward(len);
                 } else {
-                    // Passo ricorsivo: disegna 4 segmenti più piccoli
+
                     const side = len / 3;
 
                     this.recTriangles(side, n - 1);
+                    this.turn(-60);
 
-                    this.turn(-60); // Gira a sinistra (punta verso l'esterno)
                     this.recTriangles(side, n - 1);
+                    this.turn(120);
 
-                    this.turn(120); // Gira a destra
                     this.recTriangles(side, n - 1);
+                    this.turn(-60);
 
-                    this.turn(-60); // Gira a sinistra
                     this.recTriangles(side, n - 1);
                 }
             },
 
-            drawEquilateralTriangle(recursionDepth) {
+            drawEquilateralTriangle(depth) {
                 for (let i = 0; i < 3; i++) {
-                    this.recTriangles(this.L, recursionDepth);
+                    this.recTriangles(this.L, depth);
                     this.turn(120);
                 }
             }
         };
 
-        Turtle.drawEquilateralTriangle(10);
+        function drawSnowflake() {
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            Turtle.posX = 350;
+            Turtle.posY = 250;
+            Turtle.angle = 0;
+
+            Turtle.drawEquilateralTriangle(parseInt(tReps.value));
+        }
+
+        tReps.addEventListener("input", drawSnowflake);
+
+        drawSnowflake();
     </script>
 </body>
 
