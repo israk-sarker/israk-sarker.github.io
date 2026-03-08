@@ -13,7 +13,7 @@
         <section style="max-width: 900px;">
             <h3>Calcolo di π col metodo dei Trapezi</h3>
             <div class="slidercontainer">
-                <input type="range" class="slider" min="1" max="1000" value="100" id="trappSlider">
+                <input type="range" class="slider" min="1" max="10000" value="100" id="trappSlider">
             </div>
             <canvas id="canvasTrapezi" width="800" height="400" style="background-color: #f0f0f0;"></canvas>
             <p id="risultatoTrapezi" style="color: #0bc0e0;">Calcolo in corso...</p>
@@ -22,7 +22,7 @@
         <section style="max-width: 900px;">
             <h3>Calcolo di π col metodo Monte Carlo</h3>
             <div class="slidercontainer">
-                <input type="range" class="slider" min="1" max="100000" value="100" id="dotsSlider">
+                <input type="range" class="slider" min="1" max="70000" value="100" id="dotsSlider">
             </div>
             <canvas id="canvasMonteCarlo" width="400" height="400" style="background-color: #f0f0f0; border: 1px solid #ccc;"></canvas>
             <p id="risultatoMonteCarlo" style="color: #0bc0e0;">Calcolo in corso...</p>
@@ -78,7 +78,7 @@
 
             let piApprossimato = (areaTotale * 4) / Math.pow(rT,2);
 
-            risultatoTrapezi.innerText = "Pi greco approssimato (Trapezi): " + piApprossimato.toFixed(6);
+            risultatoTrapezi.innerText = "Pi greco approssimato (Trapezi): " + piApprossimato.toFixed(5);
         }
 
         //MONTE CARLO ---
@@ -127,7 +127,7 @@
 
             let piMonteCarlo = 4 * puntiNelCerchio / nPunti;
 
-            risultatoMonteCarlo.innerText = "Pi greco approssimato (Monte Carlo): " + piMonteCarlo.toFixed(6);
+            risultatoMonteCarlo.innerText = "Pi greco approssimato (Monte Carlo): " + piMonteCarlo.toFixed(5);
         }
 
         tSlider.addEventListener("input", drawTrapezi);
