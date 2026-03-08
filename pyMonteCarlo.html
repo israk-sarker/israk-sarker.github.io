@@ -78,8 +78,7 @@
 
             let piApprossimato = (areaTotale * 4) / Math.pow(rT,2);
 
-            risultatoTrapezi.innerText =
-                "Pi greco approssimato (Trapezi): " + piApprossimato.toFixed(6);
+            risultatoTrapezi.innerText = "Pi greco approssimato (Trapezi): " + piApprossimato.toFixed(6);
         }
 
         //MONTE CARLO ---
@@ -128,17 +127,13 @@
 
             let piMonteCarlo = 4 * puntiNelCerchio / nPunti;
 
-            risultatoMonteCarlo.innerText =
-                "Pi greco approssimato (Monte Carlo): " + piMonteCarlo.toFixed(6);
+            risultatoMonteCarlo.innerText = "Pi greco approssimato (Monte Carlo): " + piMonteCarlo.toFixed(6);
         }
 
-        tSlider.addEventListener("input", () => {
-            drawTrapezi(tSlider.value);
-        });
-
-        dSlider.addEventListener("input", () => {
-            drawMonteCarlo(dSlider.value);
-        });
+        tSlider.addEventListener("input", drawTrapezi);
+        dSlider.addEventListener("input", drawMonteCarlo);
+        drawMonteCarlo();
+        drawTrapezi();
     </script>
 </body>
 
