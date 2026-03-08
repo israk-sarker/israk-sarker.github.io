@@ -12,12 +12,18 @@
     <main>
         <section style="max-width: 900px;">
             <h3>Calcolo di π col metodo dei Trapezi</h3>
+            <div class="slidercontainer">
+                <input type="range" class="slider" min="1" max="1000" value="100" id="trappSlider">
+            </div>
             <canvas id="canvasTrapezi" width="800" height="400" style="background-color: #f0f0f0;"></canvas>
             <p id="risultatoTrapezi" style="color: #0bc0e0;">Calcolo in corso...</p>
         </section>
 
         <section style="max-width: 900px;">
             <h3>Calcolo di π col metodo Monte Carlo</h3>
+            <div class="slidercontainer">
+                <input type="range" class="slider" min="1" max="100000" value="100" id="dotsSlider">
+            </div>
             <canvas id="canvasMonteCarlo" width="400" height="400" style="background-color: #f0f0f0; border: 1px solid #ccc;"></canvas>
             <p id="risultatoMonteCarlo" style="color: #0bc0e0;">Calcolo in corso...</p>
         </section>
@@ -34,34 +40,46 @@
         const rT = 400; // Raggio visualizzazione
         const divs = 10000;
         const xInterval = rT / divs;
+        const tSlider = document.querySelector("#trappSlider")
+        const dSlider = document.querySelector("#dotsSlider")
 
         function getY(r, x) {
             return Math.sqrt(Math.pow(r, 2) - Math.pow(x, 2));
         }
 
         function drawTrapezi() {
+
+            ctxT.clearRect(0,0,cTrapezi.width,cTrapezi.height);
+
+            let divs = parseInt(tSlider.value);
+            let xInterval = rT / divs;
+
             let areaTotale = 0;
+
             for (let i = 0; i < divs; i++) {
+
                 let x1 = i * xInterval;
                 let x2 = (i + 1) * xInterval;
+
                 let y1 = getY(rT, x1);
                 let y2 = getY(rT, x2);
 
                 areaTotale += ((y1 + y2) * xInterval) / 2;
-                
+
                 ctxT.beginPath();
-                ctxT.moveTo(x1, 0);
-                ctxT.lineTo(x1, y1);
-                ctxT.lineTo(x2, y2);
-                ctxT.lineTo(x2, 0);
-                ctxT.strokeStyle = "red";
-                ctxT.lineWidth = 0.5;
+                ctxT.moveTo(x1,0);
+                ctxT.lineTo(x1,y1);
+                ctxT.lineTo(x2,y2);
+                ctxT.lineTo(x2,0);
+                ctxT.strokeStyle="red";
+                ctxT.lineWidth=0.5;
                 ctxT.stroke();
             }
-            // Calcolo Pi: Area del quarto di cerchio è (π*r^2)/4. 
-            // areaTotale approssima Pi ≈ (4 * areaTotale) / r^2
-            let piApprossimato = (areaTotale * 4) / Math.pow(rT, 2);
-            document.getElementById('risultatoTrapezi').innerText = "Pi greco approssimato (Trapezi): " + piApprossimato.toFixed(6);
+
+            let piApprossimato = (areaTotale * 4) / Math.pow(rT,2);
+
+            risultatoTrapezi.innerText =
+                "Pi greco approssimato (Trapezi): " + piApprossimato.toFixed(6);
         }
 
         //MONTE CARLO ---
@@ -74,55 +92,53 @@
         const nPunti = 15000;
 
         function drawMonteCarlo() {
-            // Disegna lo sfondo giallo per il quadrato
+
+            ctxM.clearRect(0,0,size,size);
+
+            let nPunti = parseInt(dSlider.value);
+
             ctxM.fillStyle = "#ffff00";
-            ctxM.fillRect(0, 0, size, size);
+            ctxM.fillRect(0,0,size,size);
 
-            // Disegna il cerchio azzurro
             ctxM.beginPath();
-            ctxM.arc(center, center, rM, 0, Math.PI * 2);
-            ctxM.fillStyle = "#87ceeb";
+            ctxM.arc(center,center,rM,0,Math.PI*2);
+            ctxM.fillStyle="#87ceeb";
             ctxM.fill();
-            ctxM.strokeStyle = "#333";
-            ctxM.stroke();
-
-            // Disegna gli assi cartesiani (x, y) centrati in O
-            ctxM.beginPath();
-            ctxM.moveTo(0, center); ctxM.lineTo(size, center); // Asse X
-            ctxM.moveTo(center, 0); ctxM.lineTo(center, size); // Asse Y
-            ctxM.strokeStyle = "rgba(0,0,0,0.5)";
-            ctxM.lineWidth = 1;
             ctxM.stroke();
 
             let puntiNelCerchio = 0;
 
-            for (let i = 0; i < nPunti; i++) {
-                // Genera coordinate random tra -1 e 1 (scalate al canvas)
-                let randX = (Math.random() * 2 - 1); // Valore tra -1 e 1
-                let randY = (Math.random() * 2 - 1); // Valore tra -1 e 1
+            for(let i=0;i<nPunti;i++){
 
-                // Verifica: x^2 + y^2 <= 1
-                if (Math.pow(randX, 2) + Math.pow(randY, 2) <= 1) {
+                let randX = Math.random()*2-1;
+                let randY = Math.random()*2-1;
+
+                if(randX*randX + randY*randY <= 1){
                     puntiNelCerchio++;
-                    ctxM.fillStyle = "#0000ff"; // Punto nel cerchio (Blu)
+                    ctxM.fillStyle="blue";
                 } else {
-                    ctxM.fillStyle = "#ff0000"; // Punto fuori dal cerchio (Rosso)
+                    ctxM.fillStyle="red";
                 }
-                
-                // Converte le coordinate matematiche (-1, 1) in coordinate canvas (0, 400)
-                let drawX = center + (randX * rM);
-                let drawY = center - (randY * rM);
-                ctxM.fillRect(drawX, drawY, 1.5, 1.5);
+
+                let drawX = center + randX*rM;
+                let drawY = center - randY*rM;
+
+                ctxM.fillRect(drawX,drawY,2,2);
             }
 
-            // Formula: π = 4 * (M / N)
-            let piMonteCarlo = (puntiNelCerchio / nPunti) * 4;
-            document.getElementById('risultatoMonteCarlo').innerText = "Pi greco approssimato (Monte Carlo): " + piMonteCarlo.toFixed(6);
+            let piMonteCarlo = 4 * puntiNelCerchio / nPunti;
+
+            risultatoMonteCarlo.innerText =
+                "Pi greco approssimato (Monte Carlo): " + piMonteCarlo.toFixed(6);
         }
 
-        // Esecuzione delle simulazioni
-        drawTrapezi();
-        drawMonteCarlo();
+        tSlider.addEventListener("input", () => {
+            drawTrapezi(tSlider.value);
+        });
+
+        dSlider.addEventListener("input", () => {
+            drawMonteCarlo(dSlider.value);
+        });
     </script>
 </body>
 
