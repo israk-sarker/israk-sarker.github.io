@@ -11,7 +11,19 @@
 <body>
     <main>
         <section style="max-width: 1300px;">
-            <h3>Frattale TREE</h3>
+            <h2>Frattale TREE</h2>
+            <div class="slidercontainer">
+                <p>LENGTH</p>
+                <input type="range" min="1" max="500" value="350" class="slider" id="tLen">
+            </div>
+            <div class="slidercontainer">
+                <p>ANGLE</p>
+                <input type="range" min="1" max="360" value="90" class="slider" id="tAng">
+            </div>
+            <div class="slidercontainer">
+                <p>REPS</p>
+                <input type="range" min="1" max="20" value="10" class="slider" id="tReps">
+            </div>
             <canvas id="triangles" width="1200" height="900" style="background-color: #f0f0f0;"></canvas>
             <br><br>
             <a href="index.html" class="button">Back to Home</a>
@@ -21,14 +33,18 @@
     <script>
         const canvas = document.querySelector("#triangles");
         const ctx = canvas.getContext("2d");
+
         ctx.strokeStyle = "black";
         ctx.lineWidth = 1;
+
+        const lenSl = document.querySelector("#tLen");
+        const angSl = document.querySelector("#tAng");
+        const repsSl = document.querySelector("#tReps")
 
         const Turtle = {
             posX: 600,
             posY: 800,
-            angle: -90 * Math.PI / 180, // puntare verso l'alto
-            len: 2,
+            angle: -90 * Math.PI / 180,
 
             drawLine(x, y) {
                 ctx.beginPath();
@@ -49,40 +65,49 @@
                 this.angle += deg * Math.PI / 180;
             },
 
-            // Funzione ricorsiva dell'albero
             tree(reps, len) {
+                let ang = parseFloat(angSl.value);
+
                 if (reps === 0) return;
 
-                // disegna il ramo
                 this.forward(len);
 
-                // salva stato DOPO aver avanzato
                 const x = this.posX;
                 const y = this.posY;
                 const a = this.angle;
 
-                // ramo sinistro
-                this.turn(-25);
-                this.tree(reps - 1, len * 0.70);
+                this.turn(-ang);
+                this.tree(reps - 1, len * 0.7);
 
-                // ripristina
                 this.posX = x;
                 this.posY = y;
                 this.angle = a;
 
-                // ramo destro
-                this.turn(25);
-                this.tree(reps - 1, len * 0.70);
+                this.turn(ang);
+                this.tree(reps - 1, len * 0.7);
 
-                // ripristina finale
                 this.posX = x;
                 this.posY = y;
                 this.angle = a;
             }
         };
 
-        // Disegna l'albero
-        Turtle.tree(11, 200);
+        function drawTree() {
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            Turtle.posX = 600;
+            Turtle.posY = 800;
+            Turtle.angle = -90 * Math.PI / 180;
+
+            Turtle.tree(parseFloat(repsSl.value), parseFloat(lenSl.value));
+        }
+
+        lenSl.addEventListener("input", drawTree);
+        angSl.addEventListener("input", drawTree);
+        repsSl.addEventListener("input", drawTree);
+
+        drawTree();
     </script>
 </body>
 
