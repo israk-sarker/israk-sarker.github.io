@@ -1,6 +1,6 @@
-var canvas, ctx, width, height;
-var scale = 40; //unita
-var offsetX, offsetY;
+let canvas, ctx, width, height;
+let scale = 40; //unita
+let offsetX, offsetY;
 
 window.onload = function () {
     canvas = document.querySelector('#graphCanvas');
@@ -20,7 +20,7 @@ window.onload = function () {
 //GRID
 function drawGrid() {
     ctx.beginPath();
-    ctx.strokeStyle = '#eee';
+    ctx.strokeStyle = 'white';
     ctx.lineWidth = 1;
 
     // linee verticali
@@ -44,16 +44,16 @@ function drawAxes() {
 
     ctx.lineWidth = 2;
 
-    // Asse X (orizzontale) → ROSSO
+    // Asse X ROSSO
     ctx.beginPath();
-    ctx.strokeStyle = '#ff4d4d';
+    ctx.strokeStyle = 'red';
     ctx.moveTo(0, offsetY);
     ctx.lineTo(width, offsetY);
     ctx.stroke();
 
-    // Asse Y (verticale) → BLU
+    // Asse Y BLU
     ctx.beginPath();
-    ctx.strokeStyle =  '#ff9f1c';
+    ctx.strokeStyle =  'orange';
     ctx.moveTo(offsetX, 0);
     ctx.lineTo(offsetX, height);
     ctx.stroke();
@@ -62,7 +62,7 @@ function drawAxes() {
 //NORMALIZZAZIONE INPUT
 function normalizeInp(input) {
 
-    var expr = input.replace(/\s+/g, '');
+    let expr = input.replace(/\s+/g, '');
     expr = expr.replace(/\^/g, '**');
     expr = expr.replace(/(\d)(x)/g, '$1*$2');
     expr = expr.replace(/(x)(\d)/g, '$1*$2');
@@ -82,7 +82,7 @@ function drawGraph() {
     const rawInput = document.querySelector('#functionInput').value;
     const expr = normalizeInp(rawInput);
 
-    var mathFunction;
+    let mathFunction;
 
     try {
         mathFunction = new Function('x', 'return ' + expr);
@@ -97,13 +97,13 @@ function drawGraph() {
     drawAxes();   
 
     ctx.beginPath();
-    ctx.strokeStyle = '#4aa3ff';
+    ctx.strokeStyle = 'blue';
     ctx.lineWidth = 2;
 
-    for (var px = 0; px < width; px++) {
-        var x = (px - offsetX) / scale;
-        var y = mathFunction(x);
-        var py = offsetY - (y * scale);//invertito "-"
+    for (let px = 0; px < width; px++) {
+        let x = (px - offsetX) / scale;
+        let y = mathFunction(x);
+        let py = offsetY - (y * scale);
 
         if (px === 0) ctx.moveTo(px, py);
         else ctx.lineTo(px, py);
