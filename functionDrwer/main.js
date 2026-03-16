@@ -10,7 +10,13 @@ window.onload = function () {
     offsetX = width / 2;
     offsetY = height / 2;
 
-    document.querySelector('#btnDraw').onclick = drawGraph;
+    const dButton = document.querySelector('#functionInput')
+    dButton.addEventListener('keydown', (e) => {
+        if(e.key === 'Enter'){
+            drawGraph();
+        }
+    })
+    document.querySelector('#btnDraw').onclick = () => {drawGraph()}
     document.querySelector('#btnZoomIn').onclick = function () { zoom(1.2); };
     document.querySelector('#btnZoomOut').onclick = function () { zoom(0.8); };
 
@@ -62,8 +68,8 @@ function drawAxes() {
 //NORMALIZZAZIONE INPUT
 function normalizeInp(input) {
 
-    let expr = input.replace(/\s+/g, '');
-    expr = expr.replace(/\^/g, '**');
+    let expr = input.replaceAll(' ', '');
+    expr = input.replaceAll('^', '**');
     expr = expr.replace(/(\d)(x)/g, '$1*$2');
     expr = expr.replace(/(x)(\d)/g, '$1*$2');
     expr = expr.replace(/(\d)\(/g, '$1*(');
@@ -71,6 +77,11 @@ function normalizeInp(input) {
     expr = expr.replace(/x\(/g, 'x*(');
     expr = expr.replace(/\)x/g, ')*x');
     expr = expr.replace(/\)\(/g, ')*(');
+    expr = expr.replace(/sin/g, 'Math.sin')
+    expr = expr.replace(/cos/g, 'Math.cos')
+    expr = expr.replace(/tan/g, 'Math.tan')
+    expr = expr.replace(/log/g, 'Math.log')
+    expr = expr.replace(/sqrt/g, 'Math.sqrt' )
 
     return expr;
 }
