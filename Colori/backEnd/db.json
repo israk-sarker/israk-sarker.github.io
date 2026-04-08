@@ -1,1 +1,152 @@
-{}
+{
+  "rgby": [
+    {
+      "id": "rExWF-GZBpY",
+      "r": "103",
+      "g": "243",
+      "b": "118",
+      "y": "Caldo"
+    },
+    {
+      "id": "cDQR1PqzCfI",
+      "r": "105",
+      "g": "210",
+      "b": "160",
+      "y": "Freddo"
+    },
+    {
+      "id": "caqhnUNb_JA",
+      "r": "39",
+      "g": "75",
+      "b": "106",
+      "y": "Freddo"
+    },
+    {
+      "id": "tBAxE4Gu5gc",
+      "r": "13",
+      "g": "156",
+      "b": "145",
+      "y": "Freddo"
+    },
+    {
+      "id": "u692BpqFEJ4",
+      "r": "109",
+      "g": "209",
+      "b": "72",
+      "y": "Freddo"
+    },
+    {
+      "id": "qMlDvGY3ezc",
+      "r": "75",
+      "g": "9",
+      "b": "28",
+      "y": "Caldo"
+    },
+    {
+      "id": "5lEWxA9nr4U",
+      "r": "71",
+      "g": "11",
+      "b": "114",
+      "y": "Freddo"
+    },
+    {
+      "id": "jrOYxAPVOYg",
+      "r": "204",
+      "g": "24",
+      "b": "157",
+      "y": "Freddo"
+    },
+    {
+      "id": "SmPwKJnPSTE",
+      "r": "224",
+      "g": "188",
+      "b": "155",
+      "y": "Freddo"
+    },
+    {
+      "id": "EcYBiL_8Woo",
+      "r": "73",
+      "g": "142",
+      "b": "177",
+      "y": "Freddo"
+    },
+    {
+      "id": "LgEtXACzvRw",
+      "r": "177",
+      "g": "106",
+      "b": "231",
+      "y": "Freddo"
+    },
+    {
+      "id": "z_2XYGuvqqs",
+      "r": "110",
+      "g": "33",
+      "b": "94",
+      "y": "Caldo"
+    },
+    {
+      "id": "d3iM9PTs6vk",
+      "r": "179",
+      "g": "161",
+      "b": "115",
+      "y": "Caldo"
+    },
+    {
+      "id": "I5ltqSI0XPM",
+      "r": "191",
+      "g": "71",
+      "b": "137",
+      "y": "Non lo so"
+    },
+    {
+      "id": "-8WDa7ilDWw",
+      "r": "147",
+      "g": "133",
+      "b": "110",
+      "y": "Caldo"
+    },
+    {
+      "id": "9QfNSZEFBso",
+      "r": "120",
+      "g": "8",
+      "b": "64",
+      "y": "Caldo"
+    },
+    {
+      "id": "o9y46VwByQg",
+      "r": "79",
+      "g": "104",
+      "b": "158",
+      "y": "Non lo so"
+    },
+    {
+      "id": "w4Op9gZw0Es",
+      "r": "229",
+      "g": "113",
+      "b": "212",
+      "y": "Freddo"
+    },
+    {
+      "id": "aKYUExhABuI",
+      "r": "218",
+      "g": "103",
+      "b": "90",
+      "y": "Freddo"
+    },
+    {
+      "id": "hVKE8ixDBnE",
+      "r": "163",
+      "g": "45",
+      "b": "229",
+      "y": "Caldo"
+    },
+    {
+      "id": "n6hct8B7Ff8",
+      "r": "122",
+      "g": "252",
+      "b": "135",
+      "y": "Freddo"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
