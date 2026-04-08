@@ -1,0 +1,63 @@
+let currentColor = { r: 0, g: 0, b: 0 };
+
+// 1. Funzione per generare un colore casuale
+function generateRandomColor() {
+    currentColor.r = Math.floor(Math.random() * 256);
+    currentColor.g = Math.floor(Math.random() * 256);
+    currentColor.b = Math.floor(Math.random() * 256);
+    
+    const box = document.getElementById('colorDisplay');
+    box.style.backgroundColor = `rgb(${currentColor.r}, ${currentColor.g}, ${currentColor.b})`;
+}
+
+// 2. Chiamata FETCH POST per salvare la risposta
+async function saveChoice(choice) {
+    const dataToSave = {
+        // L'ID viene solitamente gestito da json-server automaticamente, 
+        // ma lo inseriamo come stringa univoca se preferisci
+        id: Date.now().toString(), 
+        r: currentColor.r.toString(),
+        g: currentColor.g.toString(),
+        b: currentColor.b.toString(),
+        y: choice
+    };
+
+    try {
+        const response = await fetch('http://localhost:3000/rgby', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(dataToSave)
+        });
+
+        if (response.ok) {
+            alert("Risposta salvata con successo!");
+            generateRandomColor(); // Genera un nuovo colore per il prossimo turno
+        }
+    } catch (error) {
+        console.error("Errore nel salvataggio:", error);
+    }
+}
+
+// 3. Chiamata FETCH GET per mostrare i dati salvati
+async function loadHistory() {
+    try {
+        const response = await fetch('http://localhost:3000/rgby');
+        const data = await response.json();
+        
+        const list = document.getElementById('historyList');
+        list.innerHTML = ""; // Pulisce la lista
+        
+        data.forEach(item => {
+            const li = document.createElement('li');
+            li.textContent = `ID: ${item.id} - RGB(${item.r},${item.g},${item.b}) -> Scelta: ${item.y}`;
+            list.appendChild(li);
+        });
+    } catch (error) {
+        console.error("Errore nel recupero dati:", error);
+    }
+}
+
+// Avvia il primo colore all'apertura
+generateRandomColor();

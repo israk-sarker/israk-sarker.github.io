@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Color Quiz RGBY</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>Di che temperatura è questo colore?</h1>
+    
+    <div id="colorDisplay"></div>
+
+    <div class="buttons">
+        <button onclick="saveChoice('Caldo')">Caldo</button>
+        <button onclick="saveChoice('Freddo')">Freddo</button>
+        <button onclick="saveChoice('Non lo so')">Non lo so</button>
+    </div>
+
+    <hr>
+    <button onclick="loadHistory()">Carica Cronologia (GET)</button>
+    <ul id="historyList"></ul>
+
+    <script src="script.js"></script>
+</body>
+</html>

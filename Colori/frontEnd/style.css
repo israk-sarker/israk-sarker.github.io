@@ -1,0 +1,9 @@
+#colorDisplay {
+    width: 200px;
+    height: 200px;
+    margin: 20px auto;
+    border-radius: 10px;
+    border: 2px solid #333;
+}
+.buttons { text-align: center; }
+button { padding: 10px 20px; cursor: pointer; margin: 5px; }
