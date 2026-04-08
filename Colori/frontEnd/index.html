@@ -7,7 +7,7 @@
 </head>
 <body>
 
-    <h1>Di che temperatura è questo colore?</h1>
+    <h1>Il colore è caldo o freddo?</h1>
     
     <div id="colorDisplay"></div>
 
@@ -18,8 +18,12 @@
     </div>
 
     <hr>
-    <button onclick="loadHistory()">Carica Cronologia (GET)</button>
-    <ul id="historyList"></ul>
+    <div style="text-align: center;">
+        <button id="toggleHistoryBtn" onclick="toggleHistory()">Mostra Cronologia</button>
+    </div>
+    <div id="historySection">
+        <ul id="historyList"></ul>
+    </div>
 
     <script src="script.js"></script>
 </body>

@@ -1,6 +1,6 @@
 let currentColor = { r: 0, g: 0, b: 0 };
+let historyVisible = false;
 
-// 1. Funzione per generare un colore casuale
 function generateRandomColor() {
     currentColor.r = Math.floor(Math.random() * 256);
     currentColor.g = Math.floor(Math.random() * 256);
@@ -10,11 +10,9 @@ function generateRandomColor() {
     box.style.backgroundColor = `rgb(${currentColor.r}, ${currentColor.g}, ${currentColor.b})`;
 }
 
-// 2. Chiamata FETCH POST per salvare la risposta
+// FETCH POST
 async function saveChoice(choice) {
     const dataToSave = {
-        // L'ID viene solitamente gestito da json-server automaticamente, 
-        // ma lo inseriamo come stringa univoca se preferisci
         id: Date.now().toString(), 
         r: currentColor.r.toString(),
         g: currentColor.g.toString(),
@@ -32,7 +30,6 @@ async function saveChoice(choice) {
         });
 
         if (response.ok) {
-            alert("Risposta salvata con successo!");
             generateRandomColor(); // Genera un nuovo colore per il prossimo turno
         }
     } catch (error) {
@@ -40,7 +37,6 @@ async function saveChoice(choice) {
     }
 }
 
-// 3. Chiamata FETCH GET per mostrare i dati salvati
 async function loadHistory() {
     try {
         const response = await fetch('http://localhost:3000/rgby');
@@ -61,3 +57,19 @@ async function loadHistory() {
 
 // Avvia il primo colore all'apertura
 generateRandomColor();
+
+function toggleHistory() {
+    const historySection = document.getElementById('historySection');
+    const btn = document.getElementById('toggleHistoryBtn');
+    
+    historyVisible = !historyVisible;
+    
+    if (historyVisible) {
+        loadHistory();
+        historySection.classList.add('show');
+        btn.textContent = 'Nascondi Cronologia';
+    } else {
+        historySection.classList.remove('show');
+        btn.textContent = 'Mostra Cronologia';
+    }
+}
