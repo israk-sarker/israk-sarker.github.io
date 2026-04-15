@@ -531,6 +531,146 @@
       "g": "245",
       "b": "225",
       "y": "Non lo so"
+    },
+    {
+      "id": "zehC6LWboMU",
+      "r": "18",
+      "g": "146",
+      "b": "90",
+      "y": "Freddo"
+    },
+    {
+      "id": "Ebp-NhpUx30",
+      "r": "240",
+      "g": "117",
+      "b": "64",
+      "y": "Caldo"
+    },
+    {
+      "id": "FpkKO_OyZvA",
+      "r": "61",
+      "g": "72",
+      "b": "242",
+      "y": "Freddo"
+    },
+    {
+      "id": "ps44s1Nujyo",
+      "r": "166",
+      "g": "105",
+      "b": "64",
+      "y": "Caldo"
+    },
+    {
+      "id": "jlQugWH5ykM",
+      "r": "111",
+      "g": "194",
+      "b": "130",
+      "y": "Freddo"
+    },
+    {
+      "id": "is1L-sJvmOc",
+      "r": "112",
+      "g": "90",
+      "b": "56",
+      "y": "Caldo"
+    },
+    {
+      "id": "kRMqXRKKR0o",
+      "r": "145",
+      "g": "156",
+      "b": "139",
+      "y": "Freddo"
+    },
+    {
+      "id": "1yAQTK2M4kY",
+      "r": "108",
+      "g": "89",
+      "b": "59",
+      "y": "Non lo so"
+    },
+    {
+      "id": "RtKNK25pzGI",
+      "r": "89",
+      "g": "150",
+      "b": "139",
+      "y": "Caldo"
+    },
+    {
+      "id": "UyjkCEq31iQ",
+      "r": "184",
+      "g": "179",
+      "b": "145",
+      "y": "Freddo"
+    },
+    {
+      "g": "255",
+      "r": "255",
+      "y": "Caldo",
+      "id": "M3PoIXDoM_Y",
+      "b": "255"
+    },
+    {
+      "g": "123",
+      "r": "123",
+      "y": "Freddo",
+      "b": "123",
+      "id": "LPp8SdRpQBM"
+    },
+    {
+      "r": "227",
+      "g": "66",
+      "b": "190",
+      "y": "Caldo",
+      "id": "HTIwECEEJjc"
+    },
+    {
+      "r": "111",
+      "g": "31",
+      "b": "160",
+      "y": "Freddo",
+      "id": "FFgfiUJwwhA"
+    },
+    {
+      "r": "219",
+      "g": "99",
+      "b": "86",
+      "y": "Caldo",
+      "id": "pUPucyedrIU"
+    },
+    {
+      "r": "191",
+      "g": "82",
+      "b": "158",
+      "y": "Freddo",
+      "id": "wPT2U5Vct7Y"
+    },
+    {
+      "r": "128",
+      "g": "251",
+      "b": "159",
+      "y": "Freddo",
+      "id": "klqxwXMGiFs"
+    },
+    {
+      "r": "83",
+      "g": "61",
+      "b": "83",
+      "y": "Caldo",
+      "id": "J3WN_61Ru-Q"
+    },
+    {
+      "r": "237",
+      "g": "101",
+      "b": "114",
+      "y": "Caldo",
+      "id": "Swnb9clVhjk"
+    },
+    {
+      "r": "67",
+      "g": "254",
+      "b": "90",
+      "y": "Freddo",
+      "id": "Bdxiie2H9Dc"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

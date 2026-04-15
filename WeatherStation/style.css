@@ -1,0 +1,272 @@
+/* RESET DI BASE PER EVITARE SCHIACCIAMENTI */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #121212;
+    color: white;
+}
+
+.main-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.main-container h1 {
+    margin-bottom: 5px;
+    font-size: 2.5rem;
+}
+
+.subtitle {
+    color: #888;
+    margin-bottom: 40px;
+}
+
+.labs-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+}
+
+.lap-card {
+    background-color: #1e1e1e;
+    border: 1px solid #333;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 650px;
+    /* Allargato per non far andare a capo la LAP 2 */
+    padding: 20px;
+    text-decoration: none;
+    color: white;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.lap-card:hover {
+    transform: translateY(-3px);
+    border-color: #4CAF50;
+    cursor: pointer;
+}
+
+.lap-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.schema-container {
+    background-color: #0a0a0a;
+    border: 1px solid #222;
+    border-radius: 8px;
+    padding: 20px;
+    flex-grow: 1;
+}
+
+.click-hint {
+    color: #aaa;
+    font-size: 0.95rem;
+}
+
+.lap1-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 18px;
+    padding-top: 10px;
+}
+
+.desk-block {
+    display: grid;
+    grid-template-columns: repeat(2, 35px);
+    gap: 6px;
+    justify-content: center;
+}
+
+.desk-row {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.row-top,
+.row-bot {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    padding: 10px 0;
+}
+
+.row-mid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 0;
+}
+
+.mid-left,
+.mid-right {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.desk.isolated {
+    background-color: #ff9800;
+    border-color: #ffb74d;
+}
+
+.room-plan-title {
+    margin-bottom: 18px;
+    font-size: 1.1rem;
+    color: #bbb;
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 24px;
+    padding: 12px 20px;
+    background-color: #1e1e1e;
+    border: 1px solid #333;
+    border-radius: 10px;
+    color: white;
+    text-decoration: none;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.back-link:hover {
+    border-color: #4CAF50;
+    background-color: #222;
+}
+
+/* ================= STILE UNIVERSALE DEI BANCHI ================= */
+.desk {
+    background-color: #2c2c2c;
+    border: 1px solid #888;
+    /* Bordo chiaro per distinguerli bene */
+    border-radius: 4px;
+    height: 30px;
+    /* Altezza fissa forzata */
+    width: 35px;
+    /* Larghezza fissa forzata */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    color: #fff;
+    transition: background-color 0.2s;
+}
+
+.desk:hover {
+    background-color: #4CAF50;
+}
+
+/* ================= LAP 1 ================= */
+.cattedra-lap1,
+.teacher-desk-lap1 {
+    width: 150px;
+    height: 35px;
+    background-color: #333;
+    border: 2px solid #666;
+    margin: 0 auto 20px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: #ccc;
+    border-radius: 4px;
+}
+
+.lap1-layout {
+    display: grid;
+    grid-template-columns: repeat(5, 35px);
+    gap: 10px;
+    justify-content: center;
+    padding: 8px 0;
+}
+
+.desk-block-vertical {
+    display: grid;
+    grid-template-columns: 35px 35px;
+    /* 2 colonne esatte */
+    gap: 6px;
+    /* Spazio netto tra i banchi singoli */
+}
+
+/* ================= LAP 2 ================= */
+.lap2-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    align-items: center;
+}
+
+.lap2-row-long,
+.lap2-row-bottom {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.lap2-row-mid {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    width: 100%;
+    max-width: 540px;
+}
+
+.lap2-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.lap2-column.center-block {
+    display: grid;
+    gap: 10px;
+}
+
+.lap2-column.side-left,
+.lap2-column.side-right {
+    min-width: 60px;
+}
+
+.desk-block-horizontal {
+    display: grid;
+    grid-template-columns: repeat(4, 35px);
+    gap: 6px;
+}
+
+.cattedra-lap2 {
+    width: 100px;
+    height: 40px;
+    background-color: #333;
+    border: 2px solid #666;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: #ccc;
+    border-radius: 4px;
+    margin: 0 auto 16px auto;
+}

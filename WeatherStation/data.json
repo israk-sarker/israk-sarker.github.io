@@ -1,0 +1,236 @@
+{
+    "data": [
+        {
+            "id": "550e8400-e29b-41d4-a716-446655440001",
+            "Position": "LENG-1",
+            "Temperture": 21.5,
+            "Humidity ": 45.2,
+            "Luminosity ": 450,
+            "Time stamp ": "26-04-15 12:00:01"
+        },
+        {
+            "id": "550e8400-e29b-41d4-a716-446655440002",
+            "Position": "LENG-2",
+            "Temperture": 21.8,
+            "Humidity ": 44.8,
+            "Luminosity ": 480,
+            "Time stamp ": "26-04-15 12:00:05"
+        },
+        {
+            "id": "550e8400-e29b-41d4-a716-446655440003",
+            "Position": "LENG-3",
+            "Temperture": 22.1,
+            "Humidity ": 46.0,
+            "Luminosity ": 420,
+            "Time stamp ": "26-04-15 12:00:10"
+        },
+        {
+            "id": "550e8400-e29b-41d4-a716-446655440004",
+            "Position": "LENG-4",
+            "Temperture": 20.9,
+            "Humidity ": 48.2,
+            "Luminosity ": 390,
+            "Time stamp ": "26-04-15 12:00:15"
+        },
+        {
+            "id": "550e8400-e29b-41d4-a716-446655440005",
+            "Position": "LENG-5",
+            "Temperture": 21.3,
+            "Humidity ": 45.5,
+            "Luminosity ": 510,
+            "Time stamp ": "26-04-15 12:00:20"
+        },
+        {
+            "id": "550e8400-e29b-41d4-a716-446655440006",
+            "Position": "LENG-6",
+            "Temperture": 22.5,
+            "Humidity ": 43.1,
+            "Luminosity ": 600,
+            "Time stamp ": "26-04-15 12:00:25"
+        },
+        {
+            "id": "550e8400-e29b-41d4-a716-446655440007",
+            "Position": "LENG-7",
+            "Temperture": 21.9,
+            "Humidity ": 44.2,
+            "Luminosity ": 440,
+            "Time stamp ": "26-04-15 12:00:30"
+        },
+        {
+            "id": "550e8400-e29b-41d4-a716-446655440008",
+            "Position": "LENG-8",
+            "Temperture": 22.0,
+            "Humidity ": 45.0,
+            "Luminosity ": 430,
+            "Time stamp ": "26-04-15 12:00:35"
+        },
+        {
+            "id": "550e8400-e29b-41d4-a716-446655440009",
+            "Position": "LENG-9",
+            "Temperture": 23.1,
+            "Humidity ": 41.8,
+            "Luminosity ": 750,
+            "Time stamp ": "26-04-15 12:00:40"
+        },
+        {
+            "id": "550e8400-e29b-41d4-a716-446655440010",
+            "Position": "LENG-10",
+            "Temperture": 21.7,
+            "Humidity ": 45.9,
+            "Luminosity ": 410,
+            "Time stamp ": "26-04-15 12:00:45"
+        },
+        {
+            "id": "550e8400-e29b-41d4-a716-446655440011",
+            "Position": "LENG-11",
+            "Temperture": 21.4,
+            "Humidity ": 46.5,
+            "Luminosity ": 380,
+            "Time stamp ": "26-04-15 12:00:50"
+        },
+        {
+            "id": "550e8400-e29b-41d4-a716-446655440012",
+            "Position": "LENG-12",
+            "Temperture": 22.2,
+            "Humidity ": 44.0,
+            "Luminosity ": 490,
+            "Time stamp ": "26-04-15 12:00:55"
+        },
+        {
+            "id": "550e8400-e29b-41d4-a716-446655440013",
+            "Position": "LENG-13",
+            "Temperture": 21.6,
+            "Humidity ": 45.3,
+            "Luminosity ": 425,
+            "Time stamp ": "26-04-15 12:01:00"
+        },
+        {
+            "id": "550e8400-e29b-41d4-a716-446655440014",
+            "Position": "LENG-14",
+            "Temperture": 22.4,
+            "Humidity ": 43.5,
+            "Luminosity ": 530,
+            "Time stamp ": "26-04-15 12:01:05"
+        },
+        {
+            "id": "550e8400-e29b-41d4-a716-446655440015",
+            "Position": "LENG-15",
+            "Temperture": 21.2,
+            "Humidity ": 47.1,
+            "Luminosity ": 360,
+            "Time stamp ": "26-04-15 12:01:10"
+        },
+        {
+            "id": "550e8400-e29b-41d4-a716-446655440016",
+            "Position": "LENG-16",
+            "Temperture": 21.8,
+            "Humidity ": 44.9,
+            "Luminosity ": 470,
+            "Time stamp ": "26-04-15 12:01:15"
+        },
+        {
+            "id": "550e8400-e29b-41d4-a716-446655440017",
+            "Position": "LENG-1",
+            "Temperture": 22.0,
+            "Humidity ": 44.5,
+            "Luminosity ": 445,
+            "Time stamp ": "26-04-15 12:01:20"
+        },
+        {
+            "id": "550e8400-e29b-41d4-a716-446655440018",
+            "Position": "LENG-18",
+            "Temperture": 22.7,
+            "Humidity ": 42.4,
+            "Luminosity ": 680,
+            "Time stamp ": "26-04-15 12:01:25"
+        },
+        {
+            "id": "550e8400-e29b-41d4-a716-446655440019",
+            "Position": "LENG-19",
+            "Temperture": 21.5,
+            "Humidity ": 45.8,
+            "Luminosity ": 405,
+            "Time stamp ": "26-04-15 12:01:30"
+        },
+        {
+            "id": "550e8400-e29b-41d4-a716-446655440020",
+            "Position": "LENG-20",
+            "Temperture": 21.3,
+            "Humidity ": 46.2,
+            "Luminosity ": 395,
+            "Time stamp ": "26-04-15 12:01:35"
+        },
+        {
+            "id": "550e8400-e29b-41d4-a716-446655440021",
+            "Position": "LENG-21",
+            "Temperture": 22.3,
+            "Humidity ": 43.8,
+            "Luminosity ": 550,
+            "Time stamp ": "26-04-15 12:01:40"
+        },
+        {
+            "id": "550e8400-e29b-41d4-a716-446655440022",
+            "Position": "LENG-22",
+            "Temperture": 21.9,
+            "Humidity ": 44.7,
+            "Luminosity ": 460,
+            "Time stamp ": "26-04-15 12:01:45"
+        },
+        {
+            "id": "550e8400-e29b-41d4-a716-446655440023",
+            "Position": "LENG-23",
+            "Temperture": 21.1,
+            "Humidity ": 47.5,
+            "Luminosity ": 340,
+            "Time stamp ": "26-04-15 12:01:50"
+        },
+        {
+            "id": "550e8400-e29b-41d4-a716-446655440024",
+            "Position": "LENG-24",
+            "Temperture": 22.6,
+            "Humidity ": 42.9,
+            "Luminosity ": 620,
+            "Time stamp ": "26-04-15 12:01:55"
+        },
+        {
+            "id": "550e8400-e29b-41d4-a716-446655440025",
+            "Position": "LENG-25",
+            "Temperture": 22.0,
+            "Humidity ": 44.1,
+            "Luminosity ": 435,
+            "Time stamp ": "26-04-15 12:02:00"
+        },
+        {
+            "id": "550e8400-e29b-41d4-a716-446655440026",
+            "Position": "LENG-26",
+            "Temperture": 21.4,
+            "Humidity ": 46.8,
+            "Luminosity ": 375,
+            "Time stamp ": "26-04-15 12:02:05"
+        },
+        {
+            "id": "550e8400-e29b-41d4-a716-446655440027",
+            "Position": "LENG-27",
+            "Temperture": 21.7,
+            "Humidity ": 45.4,
+            "Luminosity ": 415,
+            "Time stamp ": "26-04-15 12:02:10"
+        },
+        {
+            "id": "550e8400-e29b-41d4-a716-446655440028",
+            "Position": "LENG-28",
+            "Temperture": 22.2,
+            "Humidity ": 43.6,
+            "Luminosity ": 505,
+            "Time stamp ": "26-04-15 12:02:15"
+        },
+        {
+            "id": "550e8400-e29b-41d4-a716-446655440029",
+            "Position": "LENG-29",
+            "Temperture": 21.8,
+            "Humidity ": 45.1,
+            "Luminosity ": 440,
+            "Time stamp ": "26-04-15 12:02:20"
+        }
+    ]
+}
