@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rubik Solver — Interactive 3D Cube</title>
+  <meta name="description" content="Modern interactive 3D Rubik's Cube solver with drag-to-rotate, step-by-step solutions, WCA scrambles, famous patterns, and timer." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div id="app">
+    <!-- 3D Canvas -->
+    <div id="canvas-wrap">
+      <canvas id="cube-canvas"></canvas>
+      <div id="loading-overlay">
+        <div class="loader-ring"></div>
+        <p>Initializing solver…</p>
+      </div>
+      <div class="canvas-hint">Drag cube to rotate layers · Right-click to orbit</div>
+    </div>
+
+    <!-- Floating Control Panel -->
+    <aside id="panel" class="panel">
+      <div class="panel-handle" id="panel-handle">
+        <span></span>
+      </div>
+
+      <!-- Header -->
+      <div class="panel-header">
+        <div class="brand">
+          <span class="brand-icon">◩</span>
+          <h1>Rubik<span>Solver</span></h1>
+        </div>
+        <button id="btn-theme" class="icon-btn" title="Toggle theme" aria-label="Toggle theme">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"/>
+            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mode Tabs -->
+      <div class="mode-tabs">
+        <button class="tab active" data-mode="play" id="tab-play">Play</button>
+        <button class="tab" data-mode="solve" id="tab-solve">Solve</button>
+        <button class="tab" data-mode="paint" id="tab-paint">Paint</button>
+        <button class="tab" data-mode="timer" id="tab-timer">Timer</button>
+      </div>
+
+      <!-- Play Mode -->
+      <section id="mode-play" class="mode-section active">
+        <div class="btn-row">
+          <button id="btn-scramble" class="btn btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>
+            Scramble
+          </button>
+          <button id="btn-reset" class="btn btn-ghost">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+            Reset
+          </button>
+        </div>
+
+        <div class="field">
+          <label for="pattern-select">Patterns</label>
+          <select id="pattern-select">
+            <option value="">— Select Pattern —</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="speed">Animation Speed</label>
+          <input id="speed" type="range" min="50" max="900" value="680" step="10" />
+        </div>
+
+        <div class="keyboard-hint">
+          <h3>Keyboard</h3>
+          <div class="key-grid">
+            <kbd>R</kbd><kbd>L</kbd><kbd>U</kbd><kbd>D</kbd><kbd>F</kbd><kbd>B</kbd>
+          </div>
+          <p>Hold <kbd>Shift</kbd> for counter-clockwise</p>
+        </div>
+      </section>
+
+      <!-- Solve Mode -->
+      <section id="mode-solve" class="mode-section">
+        <div class="btn-row">
+          <button id="btn-solve" class="btn btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            Solve (Auto)
+          </button>
+          <button id="btn-step-mode" class="btn btn-ghost">Step Mode</button>
+        </div>
+
+        <div id="step-card" class="step-card" hidden>
+          <div class="step-header">
+            <span class="step-label">Step</span>
+            <span class="step-counter"><span id="step-current">0</span> / <span id="step-total">0</span></span>
+          </div>
+          <div class="step-move" id="step-move">—</div>
+          <div class="step-progress">
+            <div class="step-progress-bar" id="step-progress-bar"></div>
+          </div>
+          <div class="btn-row">
+            <button id="btn-prev" class="btn btn-ghost btn-sm">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+              Prev
+            </button>
+            <button id="btn-next" class="btn btn-primary btn-sm">
+              Next
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+          <div id="moves-list" class="moves-list"></div>
+        </div>
+      </section>
+
+      <!-- Paint Mode -->
+      <section id="mode-paint" class="mode-section">
+        <p class="section-desc">Click stickers on the cube to paint them.</p>
+        <div class="color-palette" id="color-palette">
+          <button class="color-swatch active" data-color="ffffff" style="--swatch-color: #ffffff" title="White (U)"></button>
+          <button class="color-swatch" data-color="ffd500" style="--swatch-color: #ffd500" title="Yellow (D)"></button>
+          <button class="color-swatch" data-color="009b48" style="--swatch-color: #009b48" title="Green (F)"></button>
+          <button class="color-swatch" data-color="0045ad" style="--swatch-color: #0045ad" title="Blue (B)"></button>
+          <button class="color-swatch" data-color="b71234" style="--swatch-color: #b71234" title="Red (R)"></button>
+          <button class="color-swatch" data-color="ff5800" style="--swatch-color: #ff5800" title="Orange (L)"></button>
+        </div>
+        <button id="btn-reset-colors" class="btn btn-ghost btn-full">Reset Colors</button>
+      </section>
+
+      <!-- Timer Mode -->
+      <section id="mode-timer" class="mode-section">
+        <div class="timer-display" id="timer-display">
+          <span class="timer-digits" id="timer-digits">0:00.00</span>
+        </div>
+        <p class="timer-hint">Press <kbd>Space</kbd> to start/stop</p>
+        <div class="btn-row">
+          <button id="btn-timer-scramble" class="btn btn-primary btn-full">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>
+            Scramble & Start Inspection
+          </button>
+        </div>
+        <div id="timer-history" class="timer-history"></div>
+      </section>
+
+      <!-- Notation Legend -->
+      <div class="legend">
+        <p><strong>Notation:</strong> U D L R F B = faces · <em>'</em> = counter-clockwise · <em>2</em> = double turn</p>
+      </div>
+    </aside>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast" hidden></div>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

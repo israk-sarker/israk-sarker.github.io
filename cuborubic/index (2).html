@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Rubik Solver — Cubo 3D Interattivo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">◩</span>
+      <h1>Rubik<span>Solver</span></h1>
+    </div>
+    <p class="tagline">Cubo 3D interattivo · risoluzione automatica e passo&nbsp;per&nbsp;passo</p>
+  </header>
+
+  <main class="layout">
+    <section class="stage">
+      <div id="canvas-wrap">
+        <canvas id="cube-canvas"></canvas>
+        <div class="hint">Trascina per ruotare la vista · scroll per zoom</div>
+      </div>
+    </section>
+
+    <aside class="panel">
+      <div class="card">
+        <h2>Controlli</h2>
+        <div class="row">
+          <button id="btn-scramble" class="btn primary">Mescola</button>
+          <button id="btn-reset" class="btn ghost">Reset</button>
+        </div>
+
+        <label class="field">
+          <span>Algoritmo di risoluzione</span>
+          <select id="algo-select">
+            <option value="kociemba">Kociemba</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span>Velocità animazione</span>
+          <input id="speed" type="range" min="80" max="900" value="320" step="20" />
+        </label>
+
+        <div class="row">
+          <button id="btn-solve" class="btn primary">Risolvi (auto)</button>
+          <button id="btn-step-mode" class="btn ghost">Passo passo</button>
+        </div>
+      </div>
+
+      <div class="card" id="paint-card">
+        <h2>Paint</h2>
+        <button id="btn-paint-mode" class="btn ghost">Modalità paint</button>
+        <label class="field">
+          <span>Colori</span>
+          <div class="color-palette">
+            <button class="paint-color-btn active" data-color="ffffff" style="background: #ffffff;" title="Bianco (U)"></button>
+            <button class="paint-color-btn" data-color="ffd500" style="background: #ffd500;" title="Giallo (D)"></button>
+            <button class="paint-color-btn" data-color="009b48" style="background: #009b48;" title="Verde (F)"></button>
+            <button class="paint-color-btn" data-color="0045ad" style="background: #0045ad;" title="Blu (B)"></button>
+            <button class="paint-color-btn" data-color="b71234" style="background: #b60000;" title="Rosso (R)"></button>
+            <button class="paint-color-btn" data-color="ff5800" style="background: #ff5800;" title="Arancione (L)"></button>
+          </div>
+        </label>
+        <button id="btn-reset-colors" class="btn ghost">Resetta colori</button>
+      </div>
+
+      <div class="card" id="step-card" hidden>
+        <h2>Risoluzione passo-passo</h2>
+        <div class="step-info">
+          <div class="step-counter"><span id="step-current">0</span> / <span id="step-total">0</span></div>
+          <div class="step-move" id="step-move">—</div>
+        </div>
+        <div class="row">
+          <button id="btn-prev" class="btn ghost">◀ Indietro</button>
+          <button id="btn-next" class="btn primary">Avanti ▶</button>
+        </div>
+        <details>
+          <summary>Sequenza completa</summary>
+          <div id="moves-list" class="moves-list"></div>
+        </details>
+      </div>
+
+      <div class="card legend">
+        <h2>Notazione</h2>
+        <p>U D L R F B = facce · suffisso <em>'</em> = anti-orario · <em>2</em> = doppio giro</p>
+      </div>
+    </aside>
+  </main>
+
+  <div id="toast" class="toast" hidden></div>
+
+  <!-- Three.js + OrbitControls via importmap -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
+  <!-- Kociemba solver (UMD) -->
+  <script src="https://cdn.jsdelivr.net/npm/cubejs@1.3.2/lib/cube.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cubejs@1.3.2/lib/solve.js"></script>
+  <script type="module" src="cube.js"></script>
+</body>
+</html>

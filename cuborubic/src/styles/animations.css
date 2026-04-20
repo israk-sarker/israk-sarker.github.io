@@ -1,0 +1,110 @@
+/* ═══════════════════════════════════════════════════════════════════
+   Rubik Solver — Animations
+   Keyframes, transitions, micro-animations
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ─── Spin (loading) ────────────────────────────────────────────── */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ─── Toast entrance ────────────────────────────────────────────── */
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(16px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+}
+
+/* ─── Pulse glow (timer inspection) ─────────────────────────────── */
+@keyframes pulse-glow {
+  0%, 100% { opacity: 1; text-shadow: 0 0 20px rgba(245, 158, 11, 0.3); }
+  50% { opacity: 0.6; text-shadow: 0 0 40px rgba(245, 158, 11, 0.6); }
+}
+
+/* ─── Panel slide-in ────────────────────────────────────────────── */
+@keyframes panel-enter {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.panel {
+  animation: panel-enter 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@media (max-width: 768px) {
+  .panel {
+    animation: panel-enter-mobile 0.4s ease both;
+  }
+
+  @keyframes panel-enter-mobile {
+    from {
+      opacity: 0;
+      transform: translateY(100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(calc(100% - 200px));
+    }
+  }
+}
+
+/* ─── Tab switch animation ──────────────────────────────────────── */
+.mode-section {
+  animation: mode-fade 0.25s ease both;
+}
+
+@keyframes mode-fade {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Button press ──────────────────────────────────────────────── */
+.btn:not(:disabled):active {
+  animation: btn-press 0.15s ease;
+}
+
+@keyframes btn-press {
+  0% { transform: scale(1); }
+  50% { transform: scale(0.96); }
+  100% { transform: scale(1); }
+}
+
+/* ─── Sticker hover glow (for paint mode indicator) ─────────────── */
+@keyframes sticker-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 var(--accent-glow); }
+  50% { box-shadow: 0 0 12px 4px var(--accent-glow); }
+}
+
+/* ─── Step highlight ────────────────────────────────────────────── */
+.moves-list span.active {
+  animation: step-pop 0.3s var(--transition-spring);
+}
+
+@keyframes step-pop {
+  from { transform: scale(0.85); }
+  to { transform: scale(1); }
+}
+
+/* ─── Timer digit tick ──────────────────────────────────────────── */
+@keyframes digit-tick {
+  0% { transform: translateY(-2px); opacity: 0.7; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+/* ─── Subtle float for solved cube celebration ──────────────────── */
+@keyframes float-celebrate {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-4px) rotate(0.5deg); }
+  75% { transform: translateY(-2px) rotate(-0.3deg); }
+}
