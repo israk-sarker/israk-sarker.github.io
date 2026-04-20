@@ -13,7 +13,7 @@
         <section style="max-width: 900px;">
             <h3>Calcolo di π col metodo dei Trapezi</h3>
             <div class="slidercontainer">
-                <input type="range" class="slider" min="1" max="10000" value="100" id="trappSlider">
+                <input type="range" class="slider" min="1" max="1000" value="100" id="trappSlider">
             </div>
             <canvas id="canvasTrapezi" width="800" height="400" style="background-color: #f0f0f0;"></canvas>
             <p id="risultatoTrapezi" style="color: #0bc0e0;">Calcolo in corso...</p>
@@ -81,8 +81,8 @@
             risultatoTrapezi.innerText = "Pi greco approssimato (Trapezi): " + piApprossimato.toFixed(5);
         }
 
-        //MONTE CARLO ---
-        // strategia: π ≈ 4 * (M / N)
+        //MONTE CARLO
+        // formula: π ≈ 4 * (M / N)
         const cMonte = document.getElementById('canvasMonteCarlo');
         const ctxM = cMonte.getContext('2d');
         const size = 400; // Dimensione lato quadrato nel canvas

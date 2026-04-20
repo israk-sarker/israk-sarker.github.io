@@ -50,21 +50,56 @@ export function initEngine(canvasEl) {
   fillLight.position.set(-8, 2, 4);
   scene.add(fillLight);
 
-  // Procedural environment map for PBR reflections
+  // Procedural environment map for PBR reflections (studio-like lighting)
   const pmremGenerator = new THREE.PMREMGenerator(renderer);
   const envScene = new THREE.Scene();
-  envScene.background = new THREE.Color(0x1a1a2e);
+  envScene.background = new THREE.Color(0x181825);
 
-  // Add gradient sphere for reflections
-  const envGeo = new THREE.SphereGeometry(50, 32, 16);
-  const envMat = new THREE.MeshBasicMaterial({
-    color: 0x2a2d3e,
+  // Gradient sky sphere with warm top / cool bottom
+  const envGeo = new THREE.SphereGeometry(50, 64, 32);
+  const envMat = new THREE.ShaderMaterial({
     side: THREE.BackSide,
+    uniforms: {
+      topColor: { value: new THREE.Color(0x3a3a5c) },
+      bottomColor: { value: new THREE.Color(0x0e0e18) },
+      horizonColor: { value: new THREE.Color(0x2a2a42) },
+    },
+    vertexShader: `
+      varying vec3 vWorldPos;
+      void main() {
+        vec4 worldPos = modelMatrix * vec4(position, 1.0);
+        vWorldPos = worldPos.xyz;
+        gl_Position = projectionMatrix * viewMatrix * worldPos;
+      }
+    `,
+    fragmentShader: `
+      uniform vec3 topColor;
+      uniform vec3 bottomColor;
+      uniform vec3 horizonColor;
+      varying vec3 vWorldPos;
+      void main() {
+        float h = normalize(vWorldPos).y;
+        vec3 col = mix(bottomColor, horizonColor, smoothstep(-0.5, 0.0, h));
+        col = mix(col, topColor, smoothstep(0.0, 0.6, h));
+        gl_FragColor = vec4(col, 1.0);
+      }
+    `,
   });
   envScene.add(new THREE.Mesh(envGeo, envMat));
-  envScene.add(new THREE.AmbientLight(0xffffff, 1));
 
-  const envMap = pmremGenerator.fromScene(envScene, 0.04).texture;
+  // Studio lights inside env scene for crisp reflections
+  envScene.add(new THREE.AmbientLight(0xffffff, 0.4));
+  const envKey = new THREE.PointLight(0xffeedd, 60, 100);
+  envKey.position.set(10, 20, 15);
+  envScene.add(envKey);
+  const envFill = new THREE.PointLight(0xccddff, 30, 100);
+  envFill.position.set(-15, 5, -10);
+  envScene.add(envFill);
+  const envRim = new THREE.PointLight(0xffe4c4, 20, 80);
+  envRim.position.set(0, -10, 20);
+  envScene.add(envRim);
+
+  const envMap = pmremGenerator.fromScene(envScene, 0.02).texture;
   scene.environment = envMap;
   pmremGenerator.dispose();
   envGeo.dispose();

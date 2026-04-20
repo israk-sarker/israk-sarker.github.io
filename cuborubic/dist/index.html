@@ -8,8 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
-  <script type="module" crossorigin src="./assets/index-Dg9OW4bO.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-BdC7gmtB.css">
+  <script type="module" crossorigin src="./assets/index-BfVaeRWT.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-DR6loXdI.css">
 </head>
 <body>
   <div id="app">
@@ -129,7 +129,19 @@
           <button class="color-swatch" data-color="b71234" style="--swatch-color: #b71234" title="Red (R)"></button>
           <button class="color-swatch" data-color="ff5800" style="--swatch-color: #ff5800" title="Orange (L)"></button>
         </div>
-        <button id="btn-reset-colors" class="btn btn-ghost btn-full">Reset Colors</button>
+
+        <div id="validation-status" class="validation-status" hidden>
+          <div class="validation-header">
+            <span class="validation-icon" id="validation-icon">⚠</span>
+            <span class="validation-title" id="validation-title">Validation</span>
+          </div>
+          <ul id="validation-errors" class="validation-errors"></ul>
+        </div>
+
+        <div class="btn-row">
+          <button id="btn-validate-solve" class="btn btn-primary">Validate & Solve</button>
+          <button id="btn-reset-colors" class="btn btn-ghost">Reset</button>
+        </div>
       </section>
 
       <!-- Timer Mode -->
@@ -156,6 +168,6 @@
     <!-- Toast Notification -->
     <div id="toast" class="toast" hidden></div>
   </div>
-
+
 </body>
 </html>

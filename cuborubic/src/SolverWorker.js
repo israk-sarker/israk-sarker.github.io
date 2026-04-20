@@ -16,7 +16,7 @@ let rejectSolve = null;
  */
 export function initSolver() {
   return new Promise((resolve, reject) => {
-    worker = new Worker(new URL('./solver.worker.js', import.meta.url), { type: 'module' });
+    worker = new Worker(new URL('./solver.worker.js', import.meta.url));
 
     worker.onmessage = (e) => {
       const { type, data, error } = e.data;

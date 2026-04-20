@@ -5,12 +5,13 @@
 
 import state, { subscribe } from './state.js';
 import { buildCube } from './CubeModel.js';
-import { parseMoves, playMoves, getFacelets } from './CubeLogic.js';
+import { parseMoves, playMoves, animateMove, getFacelets } from './CubeLogic.js';
 import { randomScramble } from './Scrambler.js';
 import { patterns } from './PatternLibrary.js';
 import { ensureSolverReady, solve } from './SolverWorker.js';
 import { formatTime, toggleTimer, startInspection, resetTimer } from './Timer.js';
 import { markDirty } from './ThreeEngine.js';
+import { validateCubeState } from './StateValidator.js';
 
 const $ = id => document.getElementById(id);
 
@@ -35,6 +36,7 @@ export function initUI() {
     btnResetColors: $('btn-reset-colors'),
     btnTheme: $('btn-theme'),
     btnTimerScramble: $('btn-timer-scramble'),
+    btnValidateSolve: $('btn-validate-solve'),
     speedInput: $('speed'),
     stepCard: $('step-card'),
     stepCurrent: $('step-current'),
@@ -50,6 +52,10 @@ export function initUI() {
     panel: $('panel'),
     panelHandle: $('panel-handle'),
     colorPalette: $('color-palette'),
+    validationStatus: $('validation-status'),
+    validationIcon: $('validation-icon'),
+    validationTitle: $('validation-title'),
+    validationErrors: $('validation-errors'),
   };
 
   // ─── Speed slider ───────────────────────────────────────────
@@ -68,6 +74,10 @@ export function initUI() {
   subscribe('currentMode', (mode) => {
     document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.mode === mode));
     document.querySelectorAll('.mode-section').forEach(s => s.classList.toggle('active', s.id === `mode-${mode}`));
+    // Clear validation when leaving paint mode
+    if (mode !== 'paint' && els.validationStatus) {
+      els.validationStatus.hidden = true;
+    }
   });
 
   // ─── Scramble ───────────────────────────────────────────────
@@ -88,30 +98,12 @@ export function initUI() {
   });
 
   // ─── Solve (auto) ──────────────────────────────────────────
-  els.btnSolve.addEventListener('click', async () => {
-    if (state.isAnimating) return;
-    setBusy(true);
-    try {
-      await ensureSolverReady();
-      const facelets = getFacelets();
-      const solution = await solve(facelets);
-      const moves = parseMoves(solution);
+  els.btnSolve.addEventListener('click', () => handleSolve());
 
-      if (!moves.length) {
-        toast('Already solved!', 'success');
-        setBusy(false);
-        return;
-      }
-
-      showSteps(moves);
-      await playMoves(moves, (i, m) => updateStepUI(i + 1, m));
-      toast('Solved ✓', 'success');
-    } catch (e) {
-      console.error(e);
-      toast('Solver error: ' + (e.message || e), 'error', 4000);
-    }
-    setBusy(false);
-  });
+  // ─── Validate & Solve (paint mode) ─────────────────────────
+  if (els.btnValidateSolve) {
+    els.btnValidateSolve.addEventListener('click', () => handleValidateAndSolve());
+  }
 
   // ─── Step mode ─────────────────────────────────────────────
   els.btnStepMode.addEventListener('click', async () => {
@@ -145,7 +137,6 @@ export function initUI() {
     setBusy(true);
     const m = stepMoves[stepIdx];
     updateStepUI(stepIdx + 1, m);
-    const { animateMove } = await import('./CubeLogic.js');
     await animateMove(m.face, m.turns);
     stepIdx++;
     if (stepIdx >= stepMoves.length) toast('Solved ✓', 'success');
@@ -157,7 +148,6 @@ export function initUI() {
     setBusy(true);
     stepIdx--;
     const m = stepMoves[stepIdx];
-    const { animateMove } = await import('./CubeLogic.js');
     await animateMove(m.face, m.turns === 2 ? 2 : -m.turns);
     updateStepUI(stepIdx, stepMoves[stepIdx] ?? null);
     setBusy(false);
@@ -197,6 +187,7 @@ export function initUI() {
   els.btnResetColors.addEventListener('click', () => {
     if (state.isAnimating) return;
     buildCube();
+    clearValidation();
     toast('Colors reset', 'success');
   });
 
@@ -255,11 +246,115 @@ export function initUI() {
   });
 }
 
+// ─── Solve handler ──────────────────────────────────────────────
+async function handleSolve() {
+  if (state.isAnimating) return;
+  setBusy(true);
+  try {
+    await ensureSolverReady();
+    const facelets = getFacelets();
+    const solution = await solve(facelets);
+    const moves = parseMoves(solution);
+
+    if (!moves.length) {
+      toast('Already solved!', 'success');
+      setBusy(false);
+      return;
+    }
+
+    showSteps(moves);
+    await playMoves(moves, (i, m) => updateStepUI(i + 1, m));
+    toast('Solved ✓', 'success');
+  } catch (e) {
+    console.error(e);
+    toast('Solver error: ' + (e.message || e), 'error', 4000);
+  }
+  setBusy(false);
+}
+
+// ─── Validate & Solve (paint mode) ──────────────────────────────
+async function handleValidateAndSolve() {
+  if (state.isAnimating) return;
+
+  // Step 1: Validate
+  const facelets = getFacelets();
+  const result = validateCubeState(facelets);
+
+  if (!result.valid) {
+    showValidation(result.errors);
+    toast('Invalid cube state — fix errors first', 'error', 3000);
+    return;
+  }
+
+  // Valid — clear warnings and solve
+  showValidationSuccess();
+
+  // Step 2: Solve
+  setBusy(true);
+  try {
+    await ensureSolverReady();
+    const solution = await solve(facelets);
+    const moves = parseMoves(solution);
+
+    if (!moves.length) {
+      toast('Already solved!', 'success');
+      setBusy(false);
+      return;
+    }
+
+    // Switch to solve mode to show step UI
+    state.currentMode = 'solve';
+    showSteps(moves);
+    await playMoves(moves, (i, m) => updateStepUI(i + 1, m));
+    toast('Solved ✓', 'success');
+  } catch (e) {
+    console.error(e);
+    toast('Solver error: ' + (e.message || e), 'error', 4000);
+  }
+  setBusy(false);
+}
+
+// ─── Validation UI helpers ──────────────────────────────────────
+function showValidation(errors) {
+  if (!els.validationStatus) return;
+  els.validationStatus.hidden = false;
+  els.validationIcon.textContent = '✗';
+  els.validationIcon.className = 'validation-icon error';
+  els.validationTitle.textContent = `${errors.length} issue${errors.length !== 1 ? 's' : ''} found`;
+  els.validationTitle.className = 'validation-title error';
+
+  els.validationErrors.innerHTML = '';
+  for (const err of errors) {
+    const li = document.createElement('li');
+    li.textContent = err;
+    els.validationErrors.appendChild(li);
+  }
+}
+
+function showValidationSuccess() {
+  if (!els.validationStatus) return;
+  els.validationStatus.hidden = false;
+  els.validationIcon.textContent = '✓';
+  els.validationIcon.className = 'validation-icon success';
+  els.validationTitle.textContent = 'Cube state valid';
+  els.validationTitle.className = 'validation-title success';
+  els.validationErrors.innerHTML = '';
+}
+
+function clearValidation() {
+  if (!els.validationStatus) return;
+  els.validationStatus.hidden = true;
+  els.validationErrors.innerHTML = '';
+}
+
 // ─── Helpers ────────────────────────────────────────────────────
 
 function setBusy(b) {
   state.isAnimating = b;
-  const buttons = [els.btnScramble, els.btnReset, els.btnSolve, els.btnStepMode, els.btnPrev, els.btnNext];
+  const buttons = [
+    els.btnScramble, els.btnReset, els.btnSolve, els.btnStepMode,
+    els.btnPrev, els.btnNext, els.btnValidateSolve,
+  ];
   buttons.forEach(btn => { if (btn) btn.disabled = b; });
 }
 
@@ -288,6 +383,10 @@ function showSteps(moves) {
     const s = document.createElement('span');
     s.textContent = m.token;
     s.dataset.idx = i;
+    s.title = `Step ${i + 1}: ${m.token}`;
+    s.style.cursor = 'pointer';
+    // Clickable step scrubbing
+    s.addEventListener('click', () => jumpToStep(i));
     frag.appendChild(s);
   });
   els.movesList.replaceChildren(frag);
@@ -313,10 +412,43 @@ function updateStepUI(current, move) {
   if (activeEl) activeEl.scrollIntoView({ block: 'nearest', inline: 'center' });
 }
 
+/**
+ * Jump to a specific step (by applying or undoing moves).
+ * Only jumps forward from current position.
+ */
+async function jumpToStep(targetIdx) {
+  if (state.isAnimating) return;
+  if (targetIdx === stepIdx - 1) return; // Already here
+
+  // Only support jumping forward (simpler, more reliable)
+  if (targetIdx >= stepIdx && targetIdx < stepMoves.length) {
+    setBusy(true);
+    for (let i = stepIdx; i <= targetIdx; i++) {
+      const m = stepMoves[i];
+      updateStepUI(i + 1, m);
+      await animateMove(m.face, m.turns);
+    }
+    stepIdx = targetIdx + 1;
+    if (stepIdx >= stepMoves.length) toast('Solved ✓', 'success');
+    setBusy(false);
+  }
+}
+
 function renderTimerHistory() {
   const container = els.timerHistory;
   if (!container) return;
   container.innerHTML = '';
+
+  if (state.timerHistory.length === 0) return;
+
+  // Show average
+  const times = state.timerHistory.map(e => e.time);
+  const avg = times.reduce((a, b) => a + b, 0) / times.length;
+
+  const avgDiv = document.createElement('div');
+  avgDiv.className = 'timer-avg';
+  avgDiv.innerHTML = `<span class="label">Avg (${times.length})</span><span class="time">${formatTime(avg)}</span>`;
+  container.appendChild(avgDiv);
 
   state.timerHistory.forEach((entry, i) => {
     const div = document.createElement('div');
