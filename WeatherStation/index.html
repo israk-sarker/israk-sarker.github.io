@@ -1,113 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather Station - Mappa Aule</title>
+    <title>Weather Station Dashboard</title>
+    <meta name="description" content="Dashboard per il monitoraggio dei sensori ambientali nei laboratori scolastici">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <div class="main-container">
-        <h1>Stazione Meteo - Mappa Aule</h1>
-        <p class="subtitle">Seleziona un'aula per visualizzare i dettagli dei sensori</p>
-
-        <div class="labs-wrapper">
-
-            <a href="lap1.html" class="lap-card">
-                <div class="lap-header">
-                    <h2>LAP 1</h2>
-                    <span class="click-hint">Clicca per i dettagli &rarr;</span>
-                </div>
-
-                <div class="schema-container">
-                    <div class="teacher-desk-lap1">Cattedra</div>
-                    <div class="lap1-grid">
-                        <div class="desk-block">
-                            <div class="desk" id="lap1-1"></div>
-                            <div class="desk" id="lap1-2"></div>
-                            <div class="desk" id="lap1-3"></div>
-                            <div class="desk" id="lap1-4"></div>
-                            <div class="desk" id="lap1-5"></div>
-                            <div class="desk" id="lap1-6"></div>
-                            <div class="desk" id="lap1-7"></div>
-                            <div class="desk" id="lap1-8"></div>
-                        </div>
-                        <div class="desk-block">
-                            <div class="desk" id="lap1-9"></div>
-                            <div class="desk" id="lap1-10"></div>
-                            <div class="desk" id="lap1-11"></div>
-                            <div class="desk" id="lap1-12"></div>
-                            <div class="desk" id="lap1-13"></div>
-                            <div class="desk" id="lap1-14"></div>
-                            <div class="desk" id="lap1-15"></div>
-                            <div class="desk" id="lap1-16"></div>
-                        </div>
-                        <div class="desk-block">
-                            <div class="desk" id="lap1-17"></div>
-                            <div class="desk" id="lap1-18"></div>
-                            <div class="desk" id="lap1-19"></div>
-                            <div class="desk" id="lap1-20"></div>
-                            <div class="desk" id="lap1-21"></div>
-                            <div class="desk" id="lap1-22"></div>
-                            <div class="desk" id="lap1-23"></div>
-                            <div class="desk" id="lap1-24"></div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-            <a href="lap2.html" class="lap-card">
-                <div class="lap-header">
-                    <h2>LAP 2</h2>
-                    <span class="click-hint">Clicca per i dettagli &rarr;</span>
-                </div>
-
-                <div class="schema-container">
-                    <div class="lap2-layout">
-                        <div class="row-top">
-                            <div class="desk" id="lap2-1"></div>
-                            <div class="desk" id="lap2-2"></div>
-                            <div class="desk" id="lap2-3"></div>
-                            <div class="desk" id="lap2-4"></div>
-                            <div class="desk" id="lap2-5"></div>
-                            <div class="desk" id="lap2-6"></div>
-                            <div class="desk" id="lap2-7"></div>
-                            <div class="desk" id="lap2-8"></div>
-                        </div>
-                        <div class="row-mid">
-                            <div class="mid-left">
-                                <div class="desk" id="lap2-9"></div>
-                                <div class="desk" id="lap2-10"></div>
-                                <div class="desk" id="lap2-11"></div>
-                                <div class="desk" id="lap2-12"></div>
-                                <div class="desk" id="lap2-13"></div>
-                                <div class="desk" id="lap2-14"></div>
-                            </div>
-                            <div class="mid-right">
-                                <div class="desk isolated" id="lap2-15"></div>
-                            </div>
-                        </div>
-                        <div class="row-bot">
-                            <div class="desk" id="lap2-16"></div>
-                            <div class="desk" id="lap2-17"></div>
-                            <div class="desk" id="lap2-18"></div>
-                            <div class="desk" id="lap2-19"></div>
-                            <div class="desk" id="lap2-20"></div>
-                            <div class="desk" id="lap2-21"></div>
-                            <div class="desk" id="lap2-22"></div>
-                            <div class="desk" id="lap2-23"></div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-
+        <header class="app-header">
+            <h1>Weather Station</h1>
+            <p class="subtitle">Monitoraggio sensori ambientali</p>
+        </header>
+        <div id="app">
+            <!-- Content rendered dynamically by main.js -->
         </div>
     </div>
+    <script src="main.js"></script>
 </body>
 
 </html>
