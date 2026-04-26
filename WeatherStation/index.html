@@ -1,28 +1,91 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather Station Dashboard</title>
-    <meta name="description" content="Dashboard per il monitoraggio dei sensori ambientali nei laboratori scolastici">
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Weather Station</title>
+
+    <link rel="stylesheet" href="./style.css">
+
+    <!-- App logic -->
+    <script src="./script.js" defer></script>
 </head>
 
 <body>
-    <div class="main-container">
-        <header class="app-header">
+
+    <section>
+        <div class="container">
             <h1>Weather Station</h1>
-            <p class="subtitle">Monitoraggio sensori ambientali</p>
-        </header>
-        <div id="app">
-            <!-- Content rendered dynamically by main.js -->
+            <p>Environmental sensor monitoring.</p>
+
+            <div class="controls header-controls">
+                <label>IP / URL</label>
+                <input type="text" id="ws-ip" class="ip-input" placeholder="http://localhost:3000">
+                <button class="button" id="ws-btn-connect" onclick="connectToServer()">Connect</button>
+                <label id="ws-status-text" class="status-text">OFFLINE</label>
+            </div>
+
+            <p id="ws-error-msg" class="error-msg"></p>
+
+            <div id="ws-content-container" class="content-container">
+                <div class="layout-cols">
+
+                    <!-- Labs Column -->
+                    <div class="col">
+                        <h3 class="col-title">Labs Available</h3>
+                        <div class="controls" id="ws-lab-list">
+                            <!-- Labs injected here as buttons -->
+                        </div>
+                    </div>
+
+                    <!-- Positions Column -->
+                    <div class="col">
+                        <h3 class="col-title">Positions / Stations</h3>
+                        <select id="ws-station-select" class="station-select" onchange="selectStation()">
+                            <option value=""> Select a Station </option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Dashboard Boxes -->
+                <div id="ws-dashboard" class="dashboard">
+
+                    <!-- Temp Box -->
+                    <div class="stat-box">
+                        <div class="stat-label">TEMP</div>
+                        <div class="stat-value-container">
+                            <span id="ws-temp-val">--</span><span class="stat-unit">°C</span>
+                        </div>
+                    </div>
+
+                    <!-- Hum Box -->
+                    <div class="stat-box">
+                        <div class="stat-label">HUMIDITY</div>
+                        <div class="stat-value-container">
+                            <span id="ws-hum-val">--</span><span class="stat-unit">%</span>
+                        </div>
+                    </div>
+
+                    <!-- Lux Box -->
+                    <div class="stat-box">
+                        <div class="stat-label">LUX</div>
+                        <div class="stat-value-container">
+                            <span id="ws-lux-val">--</span><span class="stat-unit">lux</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <p id="ws-timestamp-text" class="timestamp-text">
+                    Last updated: <span id="ws-timestamp">--</span>
+                </p>
+
+            </div>
+
         </div>
-    </div>
-    <script src="main.js"></script>
+    </section>
+
 </body>
 
 </html>
