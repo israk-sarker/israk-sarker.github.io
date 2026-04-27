@@ -19,8 +19,8 @@
         {
             "id": "31f75070-a603-4411-9e08-b07f2ba505e9",
             "position": "LAN1-3",
-            "temperature": 23.0,
-            "humidity": 43.0,
+            "temperature": 23,
+            "humidity": 43,
             "luminosity": 453,
             "timestamp": "26-04-15 12:00:11"
         },
@@ -107,8 +107,8 @@
         {
             "id": "9ad82d80-0ee3-4408-95db-2f44d487847b",
             "position": "LAN1-14",
-            "temperature": 23.0,
-            "humidity": 47.0,
+            "temperature": 23,
+            "humidity": 47,
             "luminosity": 346,
             "timestamp": "26-04-15 12:01:06"
         },
@@ -123,8 +123,8 @@
         {
             "id": "a2634d07-b717-4abb-8fde-6aa12c1960fa",
             "position": "LAN1-16",
-            "temperature": 23.0,
-            "humidity": 48.0,
+            "temperature": 23,
+            "humidity": 48,
             "luminosity": 675,
             "timestamp": "26-04-15 12:01:16"
         },
@@ -163,7 +163,7 @@
         {
             "id": "a0de672d-f4c8-4e31-9ddd-6b7ba8b1aadc",
             "position": "LAN1-21",
-            "temperature": 21.0,
+            "temperature": 21,
             "humidity": 45.1,
             "luminosity": 732,
             "timestamp": "26-04-15 12:01:41"
@@ -171,7 +171,7 @@
         {
             "id": "4d4ff935-6c9b-49ed-a029-d2dad9fb34e2",
             "position": "LAN1-22",
-            "temperature": 21.0,
+            "temperature": 21,
             "humidity": 46.2,
             "luminosity": 509,
             "timestamp": "26-04-15 12:01:46"
@@ -179,7 +179,7 @@
         {
             "id": "55ce1279-8b90-489b-b9a3-6bd14b981aa4",
             "position": "LAN1-23",
-            "temperature": 23.0,
+            "temperature": 23,
             "humidity": 46.4,
             "luminosity": 502,
             "timestamp": "26-04-15 12:01:51"
@@ -235,7 +235,7 @@
         {
             "id": "d401e644-c0f8-47cf-a1bf-8fb78c6a10bc",
             "position": "LAN1-30",
-            "temperature": 23.0,
+            "temperature": 23,
             "humidity": 45.2,
             "luminosity": 699,
             "timestamp": "26-04-15 12:02:26"
@@ -267,8 +267,8 @@
         {
             "id": "9f19de77-f359-4afc-88d4-a8e7b833c76f",
             "position": "LAN2-4",
-            "temperature": 22.0,
-            "humidity": 45.0,
+            "temperature": 22,
+            "humidity": 45,
             "luminosity": 416,
             "timestamp": "26-04-15 12:02:46"
         },
@@ -299,8 +299,8 @@
         {
             "id": "045927f7-9f0d-455c-a715-89f237a87632",
             "position": "LAN2-8",
-            "temperature": 23.0,
-            "humidity": 46.0,
+            "temperature": 23,
+            "humidity": 46,
             "luminosity": 562,
             "timestamp": "26-04-15 12:03:06"
         },
@@ -323,7 +323,7 @@
         {
             "id": "cec0d40a-f3b4-4711-b0f1-dc496ef4af18",
             "position": "LAN2-11",
-            "temperature": 22.0,
+            "temperature": 22,
             "humidity": 42.2,
             "luminosity": 346,
             "timestamp": "26-04-15 12:03:21"
@@ -355,7 +355,7 @@
         {
             "id": "bb79bc40-8cd2-498d-a0ef-a2fe6f9dc305",
             "position": "LAN2-15",
-            "temperature": 23.0,
+            "temperature": 23,
             "humidity": 45.8,
             "luminosity": 604,
             "timestamp": "26-04-15 12:03:41"
@@ -379,7 +379,7 @@
         {
             "id": "fc357b92-3c4e-44a2-ba97-fa8ee03e6128",
             "position": "LAN2-18",
-            "temperature": 23.0,
+            "temperature": 23,
             "humidity": 43.1,
             "luminosity": 558,
             "timestamp": "26-04-15 12:03:56"
@@ -395,7 +395,7 @@
         {
             "id": "c4d0d062-8e06-4d8c-bfa3-7e53c22002d6",
             "position": "LAN2-20",
-            "temperature": 21.0,
+            "temperature": 21,
             "humidity": 45.5,
             "luminosity": 441,
             "timestamp": "26-04-15 12:04:06"
@@ -435,7 +435,7 @@
         {
             "id": "4a6b0403-68e8-4205-8015-e1d2b4ad0fb5",
             "position": "LAN2-25",
-            "temperature": 23.0,
+            "temperature": 23,
             "humidity": 43.5,
             "luminosity": 370,
             "timestamp": "26-04-15 12:04:31"
@@ -479,6 +479,726 @@
             "humidity": 48.2,
             "luminosity": 506,
             "timestamp": "26-04-15 12:04:56"
+        },
+        {
+            "id": "352cbeba-17a3-47b7-90ae-0c98dcb20248",
+            "position": "PNRR-1",
+            "temperature": 21.6,
+            "humidity": 48.5,
+            "luminosity": 406,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "4c61c1ea-2482-4281-b970-65047463b2c3",
+            "position": "PNRR-2",
+            "temperature": 21,
+            "humidity": 41.4,
+            "luminosity": 733,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "a703fce0-72f5-4191-90d3-4d8adcfe8096",
+            "position": "PNRR-3",
+            "temperature": 20.8,
+            "humidity": 42.6,
+            "luminosity": 656,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "0ccd1b6c-af41-4bd5-8477-d90aa3de042c",
+            "position": "PNRR-4",
+            "temperature": 21.3,
+            "humidity": 48.7,
+            "luminosity": 447,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "96dcf0cb-63ef-472d-9a39-69e8e97d1e98",
+            "position": "PNRR-5",
+            "temperature": 22.1,
+            "humidity": 45.9,
+            "luminosity": 486,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "f91fe857-1f9c-4164-8c7a-66cffe9e60d5",
+            "position": "PNRR-6",
+            "temperature": 20.2,
+            "humidity": 48.5,
+            "luminosity": 354,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "eec98b65-444a-4021-894b-8e7e0a9f65e9",
+            "position": "PNRR-7",
+            "temperature": 22.9,
+            "humidity": 43.4,
+            "luminosity": 745,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "e7179360-ffb4-473e-8f2b-0cfe5a731a7e",
+            "position": "PNRR-8",
+            "temperature": 21.7,
+            "humidity": 43.6,
+            "luminosity": 634,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "6b8d7d98-403d-4a55-ac38-32807fcacef8",
+            "position": "PNRR-9",
+            "temperature": 23.3,
+            "humidity": 44.7,
+            "luminosity": 799,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "f61d9e32-514b-4dcf-8e78-49f6e9f48745",
+            "position": "PNRR-10",
+            "temperature": 21.1,
+            "humidity": 42.3,
+            "luminosity": 654,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "8191d32f-7683-4eea-ad2b-9c112e39158e",
+            "position": "PNRR-11",
+            "temperature": 20.6,
+            "humidity": 47.2,
+            "luminosity": 497,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "98687fbb-ff76-47c6-bd30-4962e1231400",
+            "position": "PNRR-12",
+            "temperature": 23.1,
+            "humidity": 42.5,
+            "luminosity": 602,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "fc5aa4f8-a93f-43a3-ba35-50ec20262ce4",
+            "position": "PNRR-13",
+            "temperature": 22.4,
+            "humidity": 42.2,
+            "luminosity": 412,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "e2817ae4-7a3e-43ab-bb19-05ce2d50bb39",
+            "position": "PNRR-14",
+            "temperature": 21.6,
+            "humidity": 42.9,
+            "luminosity": 732,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "1a8ccf8a-9a11-4974-9206-297a02eb44e0",
+            "position": "PNRR-15",
+            "temperature": 23,
+            "humidity": 49.8,
+            "luminosity": 755,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "98413577-f2c0-4e68-bc0e-627db821b84e",
+            "position": "PNRR-16",
+            "temperature": 20,
+            "humidity": 46.1,
+            "luminosity": 624,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "4663fc66-2957-44fe-a45a-ffe7463bf0d0",
+            "position": "PNRR-17",
+            "temperature": 23.7,
+            "humidity": 46.3,
+            "luminosity": 443,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "88f446ea-fd7f-4d2e-b359-0b7568e58615",
+            "position": "PNRR-18",
+            "temperature": 21.1,
+            "humidity": 46.4,
+            "luminosity": 386,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "970e5ec0-21d6-4cb8-803d-68594defb3dd",
+            "position": "PNRR-19",
+            "temperature": 21,
+            "humidity": 45.4,
+            "luminosity": 565,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "6012e813-53cf-4b5f-8897-1df568d97db6",
+            "position": "PNRR-20",
+            "temperature": 22.6,
+            "humidity": 46.9,
+            "luminosity": 793,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "202d3ded-4454-429b-89bd-f44207a7984d",
+            "position": "PNRR-21",
+            "temperature": 22.7,
+            "humidity": 45.4,
+            "luminosity": 534,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "15a2f331-520c-464a-92e8-fcb999cb34e2",
+            "position": "PNRR-22",
+            "temperature": 23.9,
+            "humidity": 44.9,
+            "luminosity": 679,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "aa1f0466-05a3-4649-8fc3-63bf428799c7",
+            "position": "PNRR-23",
+            "temperature": 22.9,
+            "humidity": 49.3,
+            "luminosity": 529,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "615c9002-f41c-4fc2-990c-906ce5d1862e",
+            "position": "PNRR-24",
+            "temperature": 21.2,
+            "humidity": 41.8,
+            "luminosity": 516,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "d0dd665d-a146-44e9-898b-2489934803f5",
+            "position": "PNRR-25",
+            "temperature": 20.2,
+            "humidity": 49,
+            "luminosity": 720,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "51ea1769-c44e-4598-8258-a65b0bbde112",
+            "position": "PNRR-26",
+            "temperature": 23.7,
+            "humidity": 41.5,
+            "luminosity": 404,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "815bbb67-c5b4-4bec-9973-82c6f91a432d",
+            "position": "PNRR-27",
+            "temperature": 23.3,
+            "humidity": 47.3,
+            "luminosity": 607,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "afb4f484-e542-4539-b326-7ad8a78cef6a",
+            "position": "PNRR-28",
+            "temperature": 20,
+            "humidity": 41,
+            "luminosity": 343,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "9cbc1e6e-3de7-4009-8263-cf9be9f305a2",
+            "position": "PNRR-29",
+            "temperature": 22.9,
+            "humidity": 45.1,
+            "luminosity": 597,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "fa0b9971-c43c-49f4-b29b-84e8a6a761b8",
+            "position": "PNRR-30",
+            "temperature": 21.4,
+            "humidity": 42.8,
+            "luminosity": 701,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "e6369fc1-807c-4f75-9dbe-79ba669476d2",
+            "position": "OEN-1",
+            "temperature": 20.8,
+            "humidity": 47.1,
+            "luminosity": 685,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "51a224b4-9781-4c47-8ea8-38dda8719f44",
+            "position": "OEN-2",
+            "temperature": 22.2,
+            "humidity": 46.8,
+            "luminosity": 557,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "48bb24b1-13bd-45cd-8eac-13ba23ce23e6",
+            "position": "OEN-3",
+            "temperature": 22.7,
+            "humidity": 40.7,
+            "luminosity": 408,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "dc8ecece-7235-4225-a203-2233c070e349",
+            "position": "OEN-4",
+            "temperature": 24,
+            "humidity": 41.8,
+            "luminosity": 336,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "3d5899ee-3712-48f2-8edb-8bc2a5e4af2d",
+            "position": "OEN-5",
+            "temperature": 22.6,
+            "humidity": 48.1,
+            "luminosity": 590,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "049742eb-5b9b-44a5-82d6-abd9c50a23f9",
+            "position": "OEN-6",
+            "temperature": 23.9,
+            "humidity": 47.2,
+            "luminosity": 693,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "260565b7-51bb-4aa3-9b67-8466378e3a61",
+            "position": "OEN-7",
+            "temperature": 20.9,
+            "humidity": 43.4,
+            "luminosity": 719,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "c6f44ec1-3040-4a54-8473-e7592459872c",
+            "position": "OEN-8",
+            "temperature": 23.8,
+            "humidity": 47.2,
+            "luminosity": 717,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "698cfe5d-47c5-4b3c-a251-31331eab2328",
+            "position": "OEN-9",
+            "temperature": 23,
+            "humidity": 41.1,
+            "luminosity": 426,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "1b60a632-96fc-4353-8e34-f8252ef11d59",
+            "position": "OEN-10",
+            "temperature": 20.5,
+            "humidity": 48.9,
+            "luminosity": 527,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "038e996b-a38d-404a-a277-8eef012d38fa",
+            "position": "OEN-11",
+            "temperature": 22.5,
+            "humidity": 47.5,
+            "luminosity": 530,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "e8821686-84e4-4b53-8ad6-ce5882cf7d1b",
+            "position": "OEN-12",
+            "temperature": 22,
+            "humidity": 46.8,
+            "luminosity": 472,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "58207f41-cbf7-4920-9352-c132a1287afe",
+            "position": "OEN-13",
+            "temperature": 23.7,
+            "humidity": 46.5,
+            "luminosity": 500,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "d70ff7ae-a10b-4c9a-99f9-901c28c879b8",
+            "position": "OEN-14",
+            "temperature": 22.8,
+            "humidity": 48.1,
+            "luminosity": 616,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "08053147-c380-4e97-be1e-71785d2ab14d",
+            "position": "OEN-15",
+            "temperature": 23.7,
+            "humidity": 40.6,
+            "luminosity": 620,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "9bcc23d0-9214-40cb-98d5-5b192c579704",
+            "position": "OEN-16",
+            "temperature": 20.5,
+            "humidity": 48.1,
+            "luminosity": 642,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "f082bb26-8d85-42b3-a732-8e285cc6f6cc",
+            "position": "OEN-17",
+            "temperature": 20.1,
+            "humidity": 44.7,
+            "luminosity": 497,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "917f9933-6ff0-4219-9d4d-4aecb915151f",
+            "position": "OEN-18",
+            "temperature": 22.2,
+            "humidity": 46.8,
+            "luminosity": 668,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "aedaa4f4-99ff-433a-8844-ee18af53ed40",
+            "position": "OEN-19",
+            "temperature": 20.8,
+            "humidity": 47.6,
+            "luminosity": 712,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "f6f91177-72db-4763-b274-836954de8bb6",
+            "position": "OEN-20",
+            "temperature": 20.8,
+            "humidity": 41,
+            "luminosity": 771,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "722bce42-c01a-4982-b432-515f99f437fb",
+            "position": "OEN-21",
+            "temperature": 21.6,
+            "humidity": 40.1,
+            "luminosity": 383,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "d0f7e319-34d0-49cc-957c-823ef8c858b4",
+            "position": "OEN-22",
+            "temperature": 23.1,
+            "humidity": 41.4,
+            "luminosity": 777,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "30fc07bf-b612-4a18-8ead-4b81e55652b8",
+            "position": "OEN-23",
+            "temperature": 22.4,
+            "humidity": 45,
+            "luminosity": 738,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "6a285dbf-ea9b-43ca-bb93-e1fccbdfb147",
+            "position": "OEN-24",
+            "temperature": 23.4,
+            "humidity": 40.4,
+            "luminosity": 319,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "f01a0be3-ee0f-44a8-bd7d-7c14dfa4cf3e",
+            "position": "OEN-25",
+            "temperature": 21.4,
+            "humidity": 46,
+            "luminosity": 785,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "6ad36408-ceba-4da4-baf1-a1d190c72158",
+            "position": "OEN-26",
+            "temperature": 22.6,
+            "humidity": 46.5,
+            "luminosity": 661,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "8ec721f8-a06a-43fb-a303-f4d5703b9747",
+            "position": "OEN-27",
+            "temperature": 21.8,
+            "humidity": 42.4,
+            "luminosity": 773,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "f061a3aa-434a-4d9e-92e3-bd0ad0c97300",
+            "position": "OEN-28",
+            "temperature": 20.6,
+            "humidity": 40.4,
+            "luminosity": 729,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "89c15d6f-80fd-4af4-acb9-9f50263bb33f",
+            "position": "OEN-29",
+            "temperature": 21.9,
+            "humidity": 48.6,
+            "luminosity": 375,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "15a7fdfc-81d5-4b5a-846f-57c38404aae3",
+            "position": "OEN-30",
+            "temperature": 20.4,
+            "humidity": 43,
+            "luminosity": 604,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "836bbab0-efb2-494d-91a5-df8a9cca8ab8",
+            "position": "LAS-1",
+            "temperature": 20.6,
+            "humidity": 46.6,
+            "luminosity": 696,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "15967339-df14-4935-90f9-1ca6b6e31be7",
+            "position": "LAS-2",
+            "temperature": 22.7,
+            "humidity": 46.4,
+            "luminosity": 349,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "996cacc7-ec9c-41aa-8de6-074740c56338",
+            "position": "LAS-3",
+            "temperature": 22.4,
+            "humidity": 44.8,
+            "luminosity": 566,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "0bb6a33c-7c82-4916-8441-d21646fed133",
+            "position": "LAS-4",
+            "temperature": 20.1,
+            "humidity": 45.9,
+            "luminosity": 742,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "49edaeb5-5d32-40ec-ab83-a97f0a809acb",
+            "position": "LAS-5",
+            "temperature": 21.1,
+            "humidity": 47.9,
+            "luminosity": 566,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "49eb2790-405b-481b-a5d1-3e90e6539e4e",
+            "position": "LAS-6",
+            "temperature": 21.6,
+            "humidity": 42.9,
+            "luminosity": 656,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "d85ecfb9-af5b-4218-9a1d-ad6c4c6cbfd1",
+            "position": "LAS-7",
+            "temperature": 20.8,
+            "humidity": 49.2,
+            "luminosity": 741,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "a8ec7852-a6ed-40ec-9628-af5db06347f4",
+            "position": "LAS-8",
+            "temperature": 22.9,
+            "humidity": 45.3,
+            "luminosity": 699,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "336669fc-1337-4b11-bc51-f89bbd2d20d0",
+            "position": "LAS-9",
+            "temperature": 22.5,
+            "humidity": 48.7,
+            "luminosity": 386,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "b01304c4-dde5-4a6e-b37b-6cfc1447883a",
+            "position": "LAS-10",
+            "temperature": 20.7,
+            "humidity": 47.1,
+            "luminosity": 627,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "cd9f3d6b-158d-42af-a3f2-6fa7c6b1ce80",
+            "position": "LAS-11",
+            "temperature": 21.3,
+            "humidity": 45.7,
+            "luminosity": 368,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "cfe32c6f-c8a8-4358-95c4-96201d19c68d",
+            "position": "LAS-12",
+            "temperature": 22.7,
+            "humidity": 41.6,
+            "luminosity": 341,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "ad8160ad-db03-42a7-a80f-9a8472ced58b",
+            "position": "LAS-13",
+            "temperature": 21.4,
+            "humidity": 44.2,
+            "luminosity": 685,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "58b023b8-8d47-4545-9c53-043eef43b2b8",
+            "position": "LAS-14",
+            "temperature": 23.1,
+            "humidity": 47,
+            "luminosity": 526,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "065ec0e6-8fc1-4843-afff-26ef40a75861",
+            "position": "LAS-15",
+            "temperature": 22.4,
+            "humidity": 46,
+            "luminosity": 784,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "6dbb31d3-7221-43b1-83aa-efaa354cd08a",
+            "position": "LAS-16",
+            "temperature": 20.7,
+            "humidity": 43.5,
+            "luminosity": 748,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "5036b90e-066d-4631-95e4-ebfc49d8527b",
+            "position": "LAS-17",
+            "temperature": 23.2,
+            "humidity": 40.8,
+            "luminosity": 575,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "1a056f55-805b-46bb-a7a5-1438d8f2d232",
+            "position": "LAS-18",
+            "temperature": 23.1,
+            "humidity": 43.8,
+            "luminosity": 405,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "50e1cb1e-dd0d-4ce8-92ca-610b362ab6b5",
+            "position": "LAS-19",
+            "temperature": 20.6,
+            "humidity": 49.8,
+            "luminosity": 386,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "e14b1ab3-3759-45e0-9a1b-80cd68679ef1",
+            "position": "LAS-20",
+            "temperature": 21.8,
+            "humidity": 47.7,
+            "luminosity": 582,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "2310a77b-a9dd-4a3d-be24-33e35be1f95f",
+            "position": "LAS-21",
+            "temperature": 23,
+            "humidity": 42.5,
+            "luminosity": 437,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "8f3d8885-3677-448a-b744-4305285139ed",
+            "position": "LAS-22",
+            "temperature": 23.1,
+            "humidity": 42.2,
+            "luminosity": 708,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "14dd05b9-ac5b-4690-8788-b3161fa58da7",
+            "position": "LAS-23",
+            "temperature": 21.3,
+            "humidity": 43.5,
+            "luminosity": 366,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "2aed4af1-9af0-4493-98c3-64c6cd72add1",
+            "position": "LAS-24",
+            "temperature": 20.3,
+            "humidity": 48.6,
+            "luminosity": 724,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "e5315b20-f432-437e-bcf5-c6fb78bfb5ba",
+            "position": "LAS-25",
+            "temperature": 20.8,
+            "humidity": 46.8,
+            "luminosity": 514,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "468219db-1ab2-48b5-baa0-cbab61b7c14a",
+            "position": "LAS-26",
+            "temperature": 20.5,
+            "humidity": 47.9,
+            "luminosity": 687,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "e9f98436-7dca-4a14-96f5-7197559f046e",
+            "position": "LAS-27",
+            "temperature": 22.4,
+            "humidity": 45.9,
+            "luminosity": 493,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "a0b362d0-f290-49cf-a1e2-bc4092202e00",
+            "position": "LAS-28",
+            "temperature": 21.9,
+            "humidity": 49.1,
+            "luminosity": 796,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "b21fb0d3-1441-45cc-9235-1ff36075f1ec",
+            "position": "LAS-29",
+            "temperature": 21.7,
+            "humidity": 48.3,
+            "luminosity": 747,
+            "timestamp": "26-04-15 06:30:54"
+        },
+        {
+            "id": "596a1867-4d9c-47fb-b808-e0cd0f69bb4e",
+            "position": "LAS-30",
+            "temperature": 21.3,
+            "humidity": 49.3,
+            "luminosity": 348,
+            "timestamp": "26-04-15 06:30:54"
         }
     ]
 }

@@ -30,9 +30,10 @@ function hideError() {
 
 function formatTimestamp(ts) {
   if (!ts) return '—';
-  const m = ts.match(/(\d+)-(\d+)-(\d+)\s+(\d+:\d+:\d+)/);
-  if (!m) return ts;
-  return `20${m[1]}-${m[2]}-${m[3]} ${m[4]}`;
+  const m = String(ts).match(/(\d+)-(\d+)-(\d+)\s+(\d+:\d+:\d+)/);
+  if (!m) return String(ts);
+  const year = m[1].length === 2 ? `20${m[1]}` : m[1];
+  return `${year}-${m[2]}-${m[3]} ${m[4]}`;
 }
 
 async function connectToServer() {
@@ -40,7 +41,8 @@ async function connectToServer() {
   if (url.includes('localhost') && location.protocol === 'file:') {
     url = './data.json';
   } else {
-    url += '/data';
+    if (url.endsWith('/')) url = url.slice(0, -1);
+    if (!url.endsWith('/data')) url += '/data';
   }
 
   hideError();
@@ -79,6 +81,10 @@ async function connectToServer() {
 
         const labNames = Object.keys(labs).sort();
         if (labNames.length > 0) selectLab(labNames[0]);
+
+        if ($('ws-ip').value.trim() !== '') {
+          showError(`Cannot connect to ${url} — ${e.message}`);
+        }
       } catch (err) {
         setStatus('ERROR', true);
         showError(`Cannot connect to ${url} — ${e.message}`);
@@ -93,9 +99,20 @@ async function connectToServer() {
 function parseData() {
   labs = {};
   for (const item of allData) {
-    const m = item.position.match(/^([A-Z]+\d+)-(\d+)$/);
-    if (!m) continue;
-    const lab = m[1];
+    if (!item || !item.position) continue;
+    
+    // Clean up parenthesis to extract lab group
+    let cleanPos = String(item.position).replace(/[()]/g, '').trim(); 
+    let lab = "Unknown";
+    const dashIdx = cleanPos.indexOf('-');
+    if (dashIdx > 0) {
+      lab = cleanPos.substring(0, dashIdx); // e.g. "LEN", "LEN4", "LAN1"
+    } else {
+      const mMatch = cleanPos.match(/^([A-Za-z]+)/);
+      if (mMatch) lab = mMatch[1].toUpperCase();
+      else lab = cleanPos;
+    }
+    
     if (!labs[lab]) labs[lab] = [];
     labs[lab].push(item);
   }
@@ -147,23 +164,30 @@ function selectLab(lab) {
 }
 
 function selectStation() {
-  const pos = $('ws-station-select').value;
-  if (!pos) {
-    $('ws-dashboard').classList.remove('visible');
-    $('ws-timestamp-text').classList.remove('visible');
-    return;
+  try {
+    const pos = $('ws-station-select').value;
+    if (!pos) {
+      $('ws-dashboard').classList.remove('visible');
+      $('ws-timestamp-text').classList.remove('visible');
+      return;
+    }
+    const station = allData.find(d => d.position === pos);
+    if (station) renderDashboard(station);
+  } catch (err) {
+    console.error("Error displaying station data:", err);
   }
-  const station = allData.find(d => d.position === pos);
-  if (station) renderDashboard(station);
 }
 
 function renderDashboard(station) {
   $('ws-dashboard').classList.add('visible');
   $('ws-timestamp-text').classList.add('visible');
 
-  $('ws-temp-val').textContent = station.temperature.toFixed(1);
-  $('ws-hum-val').textContent = station.humidity.toFixed(1);
-  $('ws-lux-val').textContent = station.luminosity;
+  const temp = Number(station.temperature);
+  const hum = Number(station.humidity);
+
+  $('ws-temp-val').textContent = !isNaN(temp) ? temp.toFixed(1) : '--';
+  $('ws-hum-val').textContent = !isNaN(hum) ? hum.toFixed(1) : '--';
+  $('ws-lux-val').textContent = station.luminosity !== undefined ? station.luminosity : '--';
   $('ws-timestamp').textContent = formatTimestamp(station.timestamp);
 }
 
