@@ -4,9 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Minimalist environmental sensor monitoring dashboard with historical data analysis.">
     <title>Weather Station</title>
 
     <link rel="stylesheet" href="./style.css">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <!-- App logic -->
     <script src="./script.js" defer></script>
@@ -16,70 +21,182 @@
 
     <section>
         <div class="container">
-            <h1>Weather Station</h1>
-            <p>Environmental sensor monitoring.</p>
 
-            <div class="controls header-controls">
-                <label>IP / URL</label>
+            <!-- ── HEADER ── -->
+            <header class="app-header">
+                <div>
+                    <h1>Weather Station</h1>
+                    <p class="subtitle">Environmental sensor monitoring dashboard</p>
+                </div>
+                <div class="header-right">
+                    <span id="ws-status-badge" class="status-badge offline">OFFLINE</span>
+                </div>
+            </header>
+
+            <!-- ── CONNECTION BAR ── -->
+            <div class="connection-bar">
+                <label>Server</label>
                 <input type="text" id="ws-ip" class="ip-input" placeholder="http://localhost:3000">
-                <button class="button" id="ws-btn-connect" onclick="connectToServer()">Connect</button>
-                <label id="ws-status-text" class="status-text">OFFLINE</label>
+                <button class="button btn-connect" id="ws-btn-connect" onclick="connectToServer()">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                    Connect
+                </button>
             </div>
 
             <p id="ws-error-msg" class="error-msg"></p>
 
+            <!-- ── MAIN CONTENT ── -->
             <div id="ws-content-container" class="content-container">
-                <div class="layout-cols">
 
-                    <!-- Labs Column -->
-                    <div class="col">
-                        <h3 class="col-title">Labs Available</h3>
-                        <div class="controls" id="ws-lab-list">
-                            <!-- Labs injected here as buttons -->
+                <!-- Navigation: Labs + Stations side-by-side -->
+                <div class="nav-panel">
+                    <div class="nav-section">
+                        <h3 class="section-title">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7c6aff"
+                                stroke-width="2">
+                                <path d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
+                            </svg>
+                            Laboratories
+                        </h3>
+                        <div class="lab-grid" id="ws-lab-list">
+                            <!-- Labs injected here -->
                         </div>
                     </div>
-
-                    <!-- Positions Column -->
-                    <div class="col">
-                        <h3 class="col-title">Positions / Stations</h3>
+                    <div class="nav-divider"></div>
+                    <div class="nav-section">
+                        <h3 class="section-title">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7c6aff"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="3" />
+                                <path
+                                    d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z" />
+                            </svg>
+                            Station
+                        </h3>
                         <select id="ws-station-select" class="station-select" onchange="selectStation()">
-                            <option value=""> Select a Station </option>
+                            <option value="">— Choose a station —</option>
                         </select>
+                        <p id="ws-station-count" class="station-count"></p>
                     </div>
                 </div>
 
-                <!-- Dashboard Boxes -->
-                <div id="ws-dashboard" class="dashboard">
+                <!-- Lab Overview Chart -->
+                <div id="ws-lab-overview" class="panel lab-overview-panel">
+                    <div class="panel-header">
+                        <h3 class="section-title">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7c6aff"
+                                stroke-width="2">
+                                <rect x="3" y="3" width="7" height="7" />
+                                <rect x="14" y="3" width="7" height="7" />
+                                <rect x="14" y="14" width="7" height="7" />
+                                <rect x="3" y="14" width="7" height="7" />
+                            </svg>
+                            Lab Overview
+                        </h3>
+                        <span id="ws-lab-station-count" class="badge"></span>
+                    </div>
+                    <div class="chart-container lab-chart-container">
+                        <canvas id="labOverviewChart"></canvas>
+                    </div>
+                </div>
 
-                    <!-- Temp Box -->
-                    <div class="stat-box">
-                        <div class="stat-label">TEMP</div>
+                <!-- Current Reading Cards -->
+                <div id="ws-dashboard" class="dashboard">
+                    <div class="stat-box stat-box-temp">
+                        <div class="stat-icon"></div>
+                        <div class="stat-label">TEMPERATURE</div>
                         <div class="stat-value-container">
                             <span id="ws-temp-val">--</span><span class="stat-unit">°C</span>
                         </div>
                     </div>
-
-                    <!-- Hum Box -->
-                    <div class="stat-box">
+                    <div class="stat-box stat-box-hum">
+                        <div class="stat-icon"></div>
                         <div class="stat-label">HUMIDITY</div>
                         <div class="stat-value-container">
                             <span id="ws-hum-val">--</span><span class="stat-unit">%</span>
                         </div>
                     </div>
-
-                    <!-- Lux Box -->
-                    <div class="stat-box">
-                        <div class="stat-label">LUX</div>
+                    <div class="stat-box stat-box-lux">
+                        <div class="stat-icon"></div>
+                        <div class="stat-label">LUMINOSITY</div>
                         <div class="stat-value-container">
                             <span id="ws-lux-val">--</span><span class="stat-unit">lux</span>
                         </div>
                     </div>
-
                 </div>
 
                 <p id="ws-timestamp-text" class="timestamp-text">
-                    Last updated: <span id="ws-timestamp">--</span>
+                    Latest reading: <span id="ws-timestamp">--</span>
                 </p>
+
+                <!-- Station History Panel -->
+                <div id="ws-history-panel" class="panel history-panel">
+                    <div class="panel-header">
+                        <h3 class="section-title">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7c6aff"
+                                stroke-width="2">
+                                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+                            </svg>
+                            Station History
+                        </h3>
+                        <div class="history-tools">
+                            <input type="date" id="ws-date-input" class="date-input">
+                            <button class="button btn-sm" onclick="filterByDate()">Filter</button>
+                            <button class="button btn-sm" onclick="clearDateFilter()">All</button>
+                            <button class="button btn-sm btn-accent" onclick="exportCSV()">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
+                                    <polyline points="7 10 12 15 17 10" />
+                                    <line x1="12" y1="15" x2="12" y2="3" />
+                                </svg>
+                                CSV
+                            </button>
+                        </div>
+                    </div>
+                    <p id="ws-history-indicator" class="history-indicator"></p>
+
+                    <div class="stats-row">
+                        <div class="stat-mini-box mini-temp">
+                            <div class="stat-mini-label">TEMP °C</div>
+                            <div class="stat-mini-vals">
+                                <span class="mini-val"><em>Min</em> <span id="stat-temp-min">--</span></span>
+                                <span class="mini-val"><em>Avg</em> <span id="stat-temp-avg">--</span></span>
+                                <span class="mini-val"><em>Max</em> <span id="stat-temp-max">--</span></span>
+                            </div>
+                        </div>
+                        <div class="stat-mini-box mini-hum">
+                            <div class="stat-mini-label">HUMIDITY %</div>
+                            <div class="stat-mini-vals">
+                                <span class="mini-val"><em>Min</em> <span id="stat-hum-min">--</span></span>
+                                <span class="mini-val"><em>Avg</em> <span id="stat-hum-avg">--</span></span>
+                                <span class="mini-val"><em>Max</em> <span id="stat-hum-max">--</span></span>
+                            </div>
+                        </div>
+                        <div class="stat-mini-box mini-lux">
+                            <div class="stat-mini-label">LUX</div>
+                            <div class="stat-mini-vals">
+                                <span class="mini-val"><em>Min</em> <span id="stat-lux-min">--</span></span>
+                                <span class="mini-val"><em>Avg</em> <span id="stat-lux-avg">--</span></span>
+                                <span class="mini-val"><em>Max</em> <span id="stat-lux-max">--</span></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="history-charts">
+                        <div class="chart-container">
+                            <canvas id="tempChart"></canvas>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="humChart"></canvas>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="luxChart"></canvas>
+                        </div>
+                    </div>
+                </div>
 
             </div>
 
