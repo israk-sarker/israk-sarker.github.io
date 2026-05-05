@@ -14,80 +14,107 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <!-- App logic -->
-    <script src="./script.js" defer></script>
+    <script src="./data.js" defer></script>
+    <script src="./charts.js" defer></script>
+    <script src="./app.js" defer></script>
 </head>
 
 <body>
 
-    <section>
-        <div class="container">
+    <div class="container">
 
-            <!-- ── HEADER ── -->
-            <header class="app-header">
-                <div>
-                    <h1>Weather Station</h1>
-                    <p class="subtitle">Environmental sensor monitoring dashboard</p>
-                </div>
-                <div class="header-right">
-                    <span id="ws-status-badge" class="status-badge offline">OFFLINE</span>
-                </div>
-            </header>
-
-            <!-- ── CONNECTION BAR ── -->
-            <div class="connection-bar">
-                <label>Server</label>
-                <input type="text" id="ws-ip" class="ip-input" placeholder="http://localhost:3000">
-                <button class="button btn-connect" id="ws-btn-connect" onclick="connectToServer()">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M5 12h14M12 5l7 7-7 7" />
-                    </svg>
-                    Connect
-                </button>
+        <!-- ── HEADER ── -->
+        <header class="appHeader">
+            <div>
+                <h1>Weather Station</h1>
+                <p class="subtitle">Environmental sensor monitoring dashboard</p>
             </div>
+            <div class="headerRight">
+                <span id="wsStatusBadge" class="statusBadge offline">OFFLINE</span>
+            </div>
+        </header>
 
-            <p id="ws-error-msg" class="error-msg"></p>
+        <!-- ── CONNECTION BAR ── -->
+        <div class="connectionBar">
+            <label>Server</label>
+            <input type="text" id="wsIp" class="ipInput" placeholder="http://localhost:3000">
+            <button class="button btnConnect" id="wsBtnConnect">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+                Connect
+            </button>
+        </div>
 
-            <!-- ── MAIN CONTENT ── -->
-            <div id="ws-content-container" class="content-container">
+        <p id="wsErrorMsg" class="errorMsg"></p>
 
-                <!-- Navigation: Labs + Stations side-by-side -->
-                <div class="nav-panel">
-                    <div class="nav-section">
-                        <h3 class="section-title">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7c6aff"
-                                stroke-width="2">
-                                <path d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
-                            </svg>
-                            Laboratories
-                        </h3>
-                        <div class="lab-grid" id="ws-lab-list">
-                            <!-- Labs injected here -->
+        <!-- ── MAIN CONTENT (TWO COLUMNS) ── -->
+        <div id="wsContentContainer" class="contentContainer">
+
+            <!-- SIDEBAR -->
+            <aside class="sidebar">
+                <div class="navSection">
+                    <h3 class="sectionTitle">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7c6aff" stroke-width="2">
+                            <path d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
+                        </svg>
+                        Laboratories
+                    </h3>
+                    <div class="labGrid" id="wsLabList">
+                        <!-- Labs injected here -->
+                    </div>
+                </div>
+                <div class="navDivider"></div>
+                <div class="navSection">
+                    <h3 class="sectionTitle">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7c6aff" stroke-width="2">
+                            <circle cx="12" cy="12" r="3" />
+                            <path
+                                d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z" />
+                        </svg>
+                        Station
+                    </h3>
+                    <select id="wsStationSelect" class="stationSelect">
+                        <option value="">— Choose a station —</option>
+                    </select>
+                    <p id="wsStationCount" class="stationCount"></p>
+                </div>
+            </aside>
+
+            <!-- MAIN AREA -->
+            <main class="mainArea">
+                
+                <!-- Current Reading Cards -->
+                <div id="wsDashboard" class="dashboard">
+                    <div class="statBox statBoxTemp">
+                        <div class="statLabel">TEMPERATURE</div>
+                        <div class="statValueContainer">
+                            <span id="wsTempVal">--</span><span class="statUnit">°C</span>
                         </div>
                     </div>
-                    <div class="nav-divider"></div>
-                    <div class="nav-section">
-                        <h3 class="section-title">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7c6aff"
-                                stroke-width="2">
-                                <circle cx="12" cy="12" r="3" />
-                                <path
-                                    d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z" />
-                            </svg>
-                            Station
-                        </h3>
-                        <select id="ws-station-select" class="station-select" onchange="selectStation()">
-                            <option value="">— Choose a station —</option>
-                        </select>
-                        <p id="ws-station-count" class="station-count"></p>
+                    <div class="statBox statBoxHum">
+                        <div class="statLabel">HUMIDITY</div>
+                        <div class="statValueContainer">
+                            <span id="wsHumVal">--</span><span class="statUnit">%</span>
+                        </div>
+                    </div>
+                    <div class="statBox statBoxLux">
+                        <div class="statLabel">LUMINOSITY</div>
+                        <div class="statValueContainer">
+                            <span id="wsLuxVal">--</span><span class="statUnit">lux</span>
+                        </div>
                     </div>
                 </div>
 
+                <p id="wsTimestampText" class="timestampText">
+                    Latest reading: <span id="wsTimestamp">--</span>
+                </p>
+
                 <!-- Lab Overview Chart -->
-                <div id="ws-lab-overview" class="panel lab-overview-panel">
-                    <div class="panel-header">
-                        <h3 class="section-title">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7c6aff"
-                                stroke-width="2">
+                <div id="wsLabOverview" class="panel labOverviewPanel">
+                    <div class="panelHeader">
+                        <h3 class="sectionTitle">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7c6aff" stroke-width="2">
                                 <rect x="3" y="3" width="7" height="7" />
                                 <rect x="14" y="3" width="7" height="7" />
                                 <rect x="14" y="14" width="7" height="7" />
@@ -95,59 +122,28 @@
                             </svg>
                             Lab Overview
                         </h3>
-                        <span id="ws-lab-station-count" class="badge"></span>
+                        <span id="wsLabStationCount" class="badge"></span>
                     </div>
-                    <div class="chart-container lab-chart-container">
+                    <div class="chartContainer labChartContainer">
                         <canvas id="labOverviewChart"></canvas>
                     </div>
                 </div>
 
-                <!-- Current Reading Cards -->
-                <div id="ws-dashboard" class="dashboard">
-                    <div class="stat-box stat-box-temp">
-                        <div class="stat-icon"></div>
-                        <div class="stat-label">TEMPERATURE</div>
-                        <div class="stat-value-container">
-                            <span id="ws-temp-val">--</span><span class="stat-unit">°C</span>
-                        </div>
-                    </div>
-                    <div class="stat-box stat-box-hum">
-                        <div class="stat-icon"></div>
-                        <div class="stat-label">HUMIDITY</div>
-                        <div class="stat-value-container">
-                            <span id="ws-hum-val">--</span><span class="stat-unit">%</span>
-                        </div>
-                    </div>
-                    <div class="stat-box stat-box-lux">
-                        <div class="stat-icon"></div>
-                        <div class="stat-label">LUMINOSITY</div>
-                        <div class="stat-value-container">
-                            <span id="ws-lux-val">--</span><span class="stat-unit">lux</span>
-                        </div>
-                    </div>
-                </div>
-
-                <p id="ws-timestamp-text" class="timestamp-text">
-                    Latest reading: <span id="ws-timestamp">--</span>
-                </p>
-
                 <!-- Station History Panel -->
-                <div id="ws-history-panel" class="panel history-panel">
-                    <div class="panel-header">
-                        <h3 class="section-title">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7c6aff"
-                                stroke-width="2">
+                <div id="wsHistoryPanel" class="panel historyPanel">
+                    <div class="panelHeader">
+                        <h3 class="sectionTitle">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7c6aff" stroke-width="2">
                                 <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
                             </svg>
                             Station History
                         </h3>
-                        <div class="history-tools">
-                            <input type="date" id="ws-date-input" class="date-input">
-                            <button class="button btn-sm" onclick="filterByDate()">Filter</button>
-                            <button class="button btn-sm" onclick="clearDateFilter()">All</button>
-                            <button class="button btn-sm btn-accent" onclick="exportCSV()">
-                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2">
+                        <div class="historyTools">
+                            <input type="date" id="wsDateInput" class="dateInput">
+                            <button class="button btnSm" id="wsBtnFilter">Filter</button>
+                            <button class="button btnSm" id="wsBtnClear">All</button>
+                            <button class="button btnSm btnAccent" id="wsBtnCsv">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
                                     <polyline points="7 10 12 15 17 10" />
                                     <line x1="12" y1="15" x2="12" y2="3" />
@@ -156,52 +152,53 @@
                             </button>
                         </div>
                     </div>
-                    <p id="ws-history-indicator" class="history-indicator"></p>
+                    <p id="wsHistoryIndicator" class="historyIndicator"></p>
 
-                    <div class="stats-row">
-                        <div class="stat-mini-box mini-temp">
-                            <div class="stat-mini-label">TEMP °C</div>
-                            <div class="stat-mini-vals">
-                                <span class="mini-val"><em>Min</em> <span id="stat-temp-min">--</span></span>
-                                <span class="mini-val"><em>Avg</em> <span id="stat-temp-avg">--</span></span>
-                                <span class="mini-val"><em>Max</em> <span id="stat-temp-max">--</span></span>
+                    <div class="statsRow">
+                        <div class="statMiniBox miniTemp">
+                            <div class="statMiniLabel">TEMP °C</div>
+                            <div class="statMiniVals">
+                                <span class="miniVal"><em>Min</em> <span id="statTempMin">--</span></span>
+                                <span class="miniVal"><em>Avg</em> <span id="statTempAvg">--</span></span>
+                                <span class="miniVal"><em>Max</em> <span id="statTempMax">--</span></span>
                             </div>
                         </div>
-                        <div class="stat-mini-box mini-hum">
-                            <div class="stat-mini-label">HUMIDITY %</div>
-                            <div class="stat-mini-vals">
-                                <span class="mini-val"><em>Min</em> <span id="stat-hum-min">--</span></span>
-                                <span class="mini-val"><em>Avg</em> <span id="stat-hum-avg">--</span></span>
-                                <span class="mini-val"><em>Max</em> <span id="stat-hum-max">--</span></span>
+                        <div class="statMiniBox miniHum">
+                            <div class="statMiniLabel">HUMIDITY %</div>
+                            <div class="statMiniVals">
+                                <span class="miniVal"><em>Min</em> <span id="statHumMin">--</span></span>
+                                <span class="miniVal"><em>Avg</em> <span id="statHumAvg">--</span></span>
+                                <span class="miniVal"><em>Max</em> <span id="statHumMax">--</span></span>
                             </div>
                         </div>
-                        <div class="stat-mini-box mini-lux">
-                            <div class="stat-mini-label">LUX</div>
-                            <div class="stat-mini-vals">
-                                <span class="mini-val"><em>Min</em> <span id="stat-lux-min">--</span></span>
-                                <span class="mini-val"><em>Avg</em> <span id="stat-lux-avg">--</span></span>
-                                <span class="mini-val"><em>Max</em> <span id="stat-lux-max">--</span></span>
+                        <div class="statMiniBox miniLux">
+                            <div class="statMiniLabel">LUX</div>
+                            <div class="statMiniVals">
+                                <span class="miniVal"><em>Min</em> <span id="statLuxMin">--</span></span>
+                                <span class="miniVal"><em>Avg</em> <span id="statLuxAvg">--</span></span>
+                                <span class="miniVal"><em>Max</em> <span id="statLuxMax">--</span></span>
                             </div>
                         </div>
                     </div>
 
-                    <div class="history-charts">
-                        <div class="chart-container">
+                    <div class="historyCharts">
+                        <div class="chartContainer">
                             <canvas id="tempChart"></canvas>
                         </div>
-                        <div class="chart-container">
+                        <div class="chartContainer">
                             <canvas id="humChart"></canvas>
                         </div>
-                        <div class="chart-container">
+                        <div class="chartContainer">
                             <canvas id="luxChart"></canvas>
                         </div>
                     </div>
                 </div>
 
-            </div>
+            </main>
 
         </div>
-    </section>
+
+    </div>
 
 </body>
 

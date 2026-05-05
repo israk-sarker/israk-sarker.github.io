@@ -52,9 +52,9 @@ function formatTimestamp(ts) {
   if (!ts) return '—';
   const d = new Date(ts);
   if (!isNaN(d.getTime())) {
-      return d.toLocaleDateString() + ' ' + d.toLocaleTimeString();
+    return d.toLocaleDateString() + ' ' + d.toLocaleTimeString();
   }
-  
+
   // Custom parsing for formats like "26-04-15 12:00:00"
   const m = String(ts).match(/(\d+)-(\d+)-(\d+)\s+(\d+:\d+:\d+)/);
   if (!m) return String(ts);
@@ -75,10 +75,10 @@ function normalizeData(dataArray) {
     }
     // Fix JS date parsing if format is YY-MM-DD
     if (newItem.timestamp && typeof newItem.timestamp === 'string') {
-        const m = newItem.timestamp.match(/^(\d{2})-(\d{2})-(\d{2})\s+(.*)$/);
-        if (m) {
-            newItem.timestamp = `20${m[1]}-${m[2]}-${m[3]}T${m[4]}`;
-        }
+      const m = newItem.timestamp.match(/^(\d{2})-(\d{2})-(\d{2})\s+(.*)$/);
+      if (m) {
+        newItem.timestamp = `20${m[1]}-${m[2]}-${m[3]}T${m[4]}`;
+      }
     }
     return newItem;
   });
@@ -137,15 +137,15 @@ async function connectToServer() {
 
 function processData() {
   labs = {};
-  
+
   // Sort data by timestamp ascending to ensure charts go left-to-right
   allData.sort((a, b) => new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime());
 
   for (const item of allData) {
     if (!item || !item.position) continue;
-    
+
     // Clean up parenthesis to extract lab group
-    let cleanPos = String(item.position).replace(/[()]/g, '').trim(); 
+    let cleanPos = String(item.position).replace(/[()]/g, '').trim();
     let lab = "Unknown";
     const dashIdx = cleanPos.indexOf('-');
     if (dashIdx > 0) {
@@ -155,10 +155,10 @@ function processData() {
       if (mMatch) lab = mMatch[1].toUpperCase();
       else lab = cleanPos;
     }
-    
+
     if (!labs[lab]) labs[lab] = {};
     if (!labs[lab][item.position]) labs[lab][item.position] = [];
-    
+
     labs[lab][item.position].push(item);
   }
 
@@ -178,7 +178,7 @@ function processData() {
   }
 
   if (labNames.length > 0) {
-      selectLab(labNames[0]);
+    selectLab(labNames[0]);
   }
 }
 
@@ -196,7 +196,7 @@ function selectLab(labName) {
   }
 
   // Populate Dropdown
-  const sel = $('ws-station-select');
+  const sel = C;
   sel.innerHTML = '<option value="">— Choose a station —</option>';
 
   const stationNames = Object.keys(labs[labName] || {}).sort();
@@ -223,7 +223,7 @@ function renderLabOverviewChart(labName) {
   const canvas = $('labOverviewChart');
   const stationsMap = labs[labName] || {};
   const stationNames = Object.keys(stationsMap);
-  
+
   if (stationNames.length === 0) {
     container.style.display = 'none';
     return;
@@ -231,18 +231,18 @@ function renderLabOverviewChart(labName) {
   container.style.display = 'block';
 
   if (labChart) labChart.destroy();
-  
+
   // Get latest reading for each station
   const labels = [];
   const temps = [];
   const hums = [];
 
-  for(const s of stationNames) {
-      labels.push(s);
-      const readings = stationsMap[s];
-      const latest = readings[readings.length - 1]; // sorted ascending
-      temps.push(Number(latest.temperature) || 0);
-      hums.push(Number(latest.humidity) || 0);
+  for (const s of stationNames) {
+    labels.push(s);
+    const readings = stationsMap[s];
+    const latest = readings[readings.length - 1]; // sorted ascending
+    temps.push(Number(latest.temperature) || 0);
+    hums.push(Number(latest.humidity) || 0);
   }
 
   labChart = new Chart(canvas, {
@@ -268,9 +268,9 @@ function selectStation() {
   }
 
   currentStationData = labs[selectedLab][pos];
-  
+
   const latestReading = currentStationData[currentStationData.length - 1];
-  
+
   renderDashboard(latestReading);
   $('ws-date-input').value = '';
   renderStationHistory(currentStationData);
@@ -283,17 +283,17 @@ function filterByDate() {
 }
 
 function clearDateFilter() {
-    $('ws-date-input').value = '';
-    if (currentStationData) {
-        renderStationHistory(currentStationData);
-    }
+  $('ws-date-input').value = '';
+  if (currentStationData) {
+    renderStationHistory(currentStationData);
+  }
 }
 
 function renderStationHistory(historyArray, dateFilter = null) {
   $('ws-history-panel').style.display = 'block';
-  
+
   let dataToRender = historyArray;
-  
+
   if (dateFilter) {
     dataToRender = dataToRender.filter(d => {
       const dDate = new Date(d.timestamp);
@@ -304,18 +304,18 @@ function renderStationHistory(historyArray, dateFilter = null) {
   }
 
   if (dataToRender.length === 0) {
-     $('ws-history-indicator').textContent = 'No data available for the selected timeframe.';
-     if(tempChart) tempChart.destroy();
-     if(humChart) humChart.destroy();
-     if(luxChart) luxChart.destroy();
-     ['temp', 'hum', 'lux'].forEach(k => {
-         $(`stat-${k}-min`).textContent = '--';
-         $(`stat-${k}-avg`).textContent = '--';
-         $(`stat-${k}-max`).textContent = '--';
-     });
-     return;
+    $('ws-history-indicator').textContent = 'No data available for the selected timeframe.';
+    if (tempChart) tempChart.destroy();
+    if (humChart) humChart.destroy();
+    if (luxChart) luxChart.destroy();
+    ['temp', 'hum', 'lux'].forEach(k => {
+      $(`stat-${k}-min`).textContent = '--';
+      $(`stat-${k}-avg`).textContent = '--';
+      $(`stat-${k}-max`).textContent = '--';
+    });
+    return;
   }
-  
+
   $('ws-history-indicator').textContent = `Showing ${dataToRender.length} recorded data points.`;
 
   const temps = dataToRender.map(d => Number(d.temperature));
@@ -324,15 +324,15 @@ function renderStationHistory(historyArray, dateFilter = null) {
 
   const updateStats = (arr, prefix) => {
     const valid = arr.filter(n => !isNaN(n));
-    if(!valid.length) {
-        $(`stat-${prefix}-min`).textContent = '--';
-        $(`stat-${prefix}-avg`).textContent = '--';
-        $(`stat-${prefix}-max`).textContent = '--';
-        return;
+    if (!valid.length) {
+      $(`stat-${prefix}-min`).textContent = '--';
+      $(`stat-${prefix}-avg`).textContent = '--';
+      $(`stat-${prefix}-max`).textContent = '--';
+      return;
     }
     $(`stat-${prefix}-min`).textContent = Math.min(...valid).toFixed(1);
     $(`stat-${prefix}-max`).textContent = Math.max(...valid).toFixed(1);
-    $(`stat-${prefix}-avg`).textContent = (valid.reduce((a,b)=>a+b,0)/valid.length).toFixed(1);
+    $(`stat-${prefix}-avg`).textContent = (valid.reduce((a, b) => a + b, 0) / valid.length).toFixed(1);
   };
 
   updateStats(temps, 'temp');
@@ -342,9 +342,9 @@ function renderStationHistory(historyArray, dateFilter = null) {
   const labels = dataToRender.map(d => {
     const dt = new Date(d.timestamp);
     if (dateFilter) {
-      return dt.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+      return dt.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
     } else {
-      return dt.toLocaleDateString([], {month:'short', day:'numeric'}) + ' ' + dt.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+      return dt.toLocaleDateString([], { month: 'short', day: 'numeric' }) + ' ' + dt.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
     }
   });
 
@@ -376,7 +376,7 @@ function exportCSV() {
 
   const headers = "Timestamp,Temperature,Humidity,Luminosity\n";
   const rows = currentStationData.map(d => `${d.timestamp},${d.temperature},${d.humidity},${d.luminosity}`).join("\n");
-  
+
   const blob = new Blob([headers + rows], { type: 'text/csv' });
   const url = window.URL.createObjectURL(blob);
   const a = document.createElement('a');
