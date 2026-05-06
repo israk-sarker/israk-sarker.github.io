@@ -307,8 +307,24 @@ valorant-tracker/
 
 ## 9. Next Steps
 
-1. Delete all React/Vite files
-2. Create `index.html`, `style.css`, `api.js`, `app.js`
-3. Test in browser with a real Riot ID
-4. Verify all 5 tabs work correctly
-5. Fine-tune styling and layout
+1. Delete all React/Vite files (Done)
+2. Create `index.html`, `style.css`, `api.js`, `app.js` (Done)
+3. Test in browser with a real Riot ID (Done)
+4. Verify all 5 tabs work correctly (Done)
+5. Fine-tune styling and layout (Done)
+
+---
+
+## 10. Completed Work (Vanilla JS Refactor)
+
+The React-to-Vanilla JS refactor has been fully executed. The project is now a lightweight, build-tool-free application that runs directly in the browser. 
+
+### Key Implementations:
+- **Files Created**: `index.html`, `style.css`, `api.js`, and `app.js`.
+- **Legacy Removal**: All React, Vite, and related Node dependencies (`package.json`, `node_modules`, `src` directory) were deleted.
+- **Routing & State**: Replaced React Router with simple hash-based routing (`#overview`, `#performance`, etc.). State is now managed globally via an `APP` object in `app.js`.
+- **API Integration**: Centralized in `api.js` utilizing the HenrikDev API. Caching is implemented for assets (agents, maps, weapons, ranks) to minimize redundant requests.
+- **UI/UX**: Rebuilt the dark dashboard theme purely with CSS variables and flexbox/grid in `style.css`. Used Chart.js via CDN for the rank progression chart in the Performance tab.
+- **Features Verified**: All 5 tabs (Overview, Performance, Match History, Weapons, Compare) are fully functional using DOM manipulation (`innerHTML` and targeted updates). 
+
+The application meets the original requirements of being clean, modern, simplistic, and desktop-only, without any build processes.

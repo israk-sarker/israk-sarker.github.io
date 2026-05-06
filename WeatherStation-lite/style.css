@@ -18,7 +18,6 @@
 }
 
 body {
-  font-family: sans-serif;
   background: var(--bg);
   color: var(--text);
   font-size: 16px;
@@ -27,7 +26,7 @@ body {
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 900px;
   margin: 0 auto;
   padding: 20px;
 }
@@ -82,15 +81,6 @@ button:hover {
   background: var(--accent);
   color: var(--bg);
 }
-.btnAccent {
-  font-weight: bold;
-  background: var(--accent);
-  color: var(--bg);
-}
-.btnAccent:hover {
-  background: var(--bg);
-  color: var(--accent);
-}
 
 .connectionBar {
   margin-bottom: 20px;
@@ -114,130 +104,86 @@ button:hover {
 
 .contentContainer {
   display: none;
+  flex-direction: column;
   gap: 20px;
-}
-.sidebar {
-  width: 250px;
-  border-right: 1px solid var(--border);
-  background: var(--bg-surface);
-  border-radius: 6px;
-  padding: 15px;
-  padding-right: 20px;
-}
-.mainArea {
-  flex: 1;
 }
 
 .navSection {
-  margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
 }
-.sectionTitle {
-  margin-bottom: 10px;
+
+.labGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
+
 .labBtn {
-  display: block;
-  width: 100%;
-  margin-bottom: 5px;
-  text-align: left;
+  padding: 8px 16px;
 }
 .labBtn.active {
   background: var(--accent);
   color: var(--bg);
 }
+
+.stationSelection {
+  padding: 10px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
 .stationSelect {
-  width: 100%;
+  min-width: 200px;
+}
+.stationCount {
+  font-size: 14px;
+  opacity: 0.8;
 }
 
 .dashboard {
   display: none;
-  gap: 10px;
+  gap: 15px;
   margin-bottom: 20px;
 }
+
 .statBox {
   flex: 1;
   border: 1px solid var(--border);
-  padding: 15px;
+  padding: 20px;
   background: var(--bg-surface);
   border-radius: 6px;
   transition: border-color 0.2s ease;
+  text-align: center;
 }
 .statBox:hover {
   border-color: var(--border-hover);
 }
 .statLabel {
   font-weight: bold;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  letter-spacing: 1px;
 }
 .statValueContainer {
-  font-size: 2em;
+  font-size: 2.5em;
   color: var(--text-bright);
 }
 .statUnit {
   font-size: 0.5em;
   margin-left: 5px;
+  opacity: 0.8;
 }
 
-.panel {
-  border: 1px solid var(--border);
-  padding: 15px;
-  margin-bottom: 20px;
-  background: var(--bg-surface);
-  border-radius: 6px;
-}
-.panelHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-}
-.historyPanel {
-  display: none;
-}
-.statsRow {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 10px;
-}
-.statMiniBox {
-  border: 1px solid var(--border);
-  padding: 10px;
-  flex: 1;
-  background: rgba(11, 17, 32, 0.5);
-  border-radius: 4px;
-}
-.statMiniLabel {
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-.statMiniVals {
-  display: flex;
-  justify-content: space-between;
-}
-.miniVal {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.miniVal em {
-  font-size: 0.8em;
-  font-style: normal;
-}
-.historyCharts {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-.chartContainer {
-  height: 250px;
-  position: relative;
-}
-.labChartContainer {
-  height: 300px;
-}
 .timestampText { 
   display: none; 
-  margin-bottom: 10px;
-}
-.historyIndicator {
-  margin-bottom: 10px;
+  text-align: center;
+  font-size: 14px;
+  opacity: 0.7;
 }

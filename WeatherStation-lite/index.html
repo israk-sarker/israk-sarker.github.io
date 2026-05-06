@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Station</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="./app.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <header class="appHeader">
+            <div>
+                <h1>Weather Station</h1>
+                <p class="subtitle">Environmental sensor monitoring dashboard</p>
+            </div>
+            <div class="headerRight">
+                <span id="wsStatusBadge" class="statusBadge offline">OFFLINE</span>
+            </div>
+        </header>
+
+        <div class="connectionBar">
+            <label>Server</label>
+            <input type="text" id="wsIp" class="ipInput" placeholder="http://localhost:3000">
+            <button class="button btnConnect" id="wsBtnConnect">Connect</button>
+        </div>
+
+        <p id="wsErrorMsg" class="errorMsg"></p>
+
+        <div id="wsContentContainer" class="contentContainer">
+            <div class="navSection">
+                <div class="labGrid" id="wsLabList"></div>
+            </div>
+            
+            <div class="navSection stationSelection">
+                <select id="wsStationSelect" class="stationSelect">
+                    <option value="">— Choose a station —</option>
+                </select>
+                <span id="wsStationCount" class="stationCount"></span>
+            </div>
+
+            <main class="mainArea">
+                <div id="wsDashboard" class="dashboard">
+                    <div class="statBox statBoxTemp">
+                        <div class="statLabel">TEMPERATURE</div>
+                        <div class="statValueContainer">
+                            <span id="wsTempVal">--</span><span class="statUnit">°C</span>
+                        </div>
+                    </div>
+                    <div class="statBox statBoxHum">
+                        <div class="statLabel">HUMIDITY</div>
+                        <div class="statValueContainer">
+                            <span id="wsHumVal">--</span><span class="statUnit">%</span>
+                        </div>
+                    </div>
+                    <div class="statBox statBoxLux">
+                        <div class="statLabel">LUMINOSITY</div>
+                        <div class="statValueContainer">
+                            <span id="wsLuxVal">--</span><span class="statUnit">lux</span>
+                        </div>
+                    </div>
+                </div>
+
+                <p id="wsTimestampText" class="timestampText">
+                    Latest reading: <span id="wsTimestamp">--</span>
+                </p>
+            </main>
+        </div>
+    </div>
+</body>
+</html>
