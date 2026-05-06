@@ -4,7 +4,7 @@ function formatTimestamp(ts) {
     if (!isNaN(d.getTime())) {
         return d.toLocaleDateString() + ' ' + d.toLocaleTimeString();
     }
-    
+
     // Custom parsing for formats like "26-04-15 12:00:00"
     const m = String(ts).match(/(\d+)-(\d+)-(\d+)\s+(\d+:\d+:\d+)/);
     if (!m) return String(ts);
@@ -35,15 +35,15 @@ function normalizeData(dataArray) {
 
 function processData(allData) {
     const labs = {};
-    
+
     // Sort data by timestamp ascending to ensure charts go left-to-right
     allData.sort((a, b) => new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime());
 
     for (const item of allData) {
         if (!item || !item.position) continue;
-        
+
         // Clean up parenthesis to extract lab group
-        let cleanPos = String(item.position).replace(/[()]/g, '').trim(); 
+        let cleanPos = String(item.position).replace(/[()]/g, '').trim();
         let lab = "Unknown";
         const dashIdx = cleanPos.indexOf('-');
         if (dashIdx > 0) {
@@ -53,10 +53,10 @@ function processData(allData) {
             if (mMatch) lab = mMatch[1].toUpperCase();
             else lab = cleanPos;
         }
-        
+
         if (!labs[lab]) labs[lab] = {};
         if (!labs[lab][item.position]) labs[lab][item.position] = [];
-        
+
         labs[lab][item.position].push(item);
     }
     return labs;

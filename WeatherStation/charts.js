@@ -5,10 +5,10 @@ const CHART_OPTIONS = {
         mode: 'index',
         intersect: false,
     },
-    plugins: { legend: { labels: { color: '#e0e0e0' } } },
+    plugins: { legend: { labels: { color: '#ffffff' } } },
     scales: {
-        x: { ticks: { color: '#888' }, grid: { color: '#2a2a2a' } },
-        y: { ticks: { color: '#888' }, grid: { color: '#2a2a2a' } }
+        x: { ticks: { color: '#ffffff' }, grid: { color: '#ffffff' } },
+        y: { ticks: { color: '#ffffff' }, grid: { color: '#ffffff' } }
     }
 };
 
@@ -19,7 +19,6 @@ function renderLabOverviewChart(canvas, stationsMap) {
         return null;
     }
     
-    // Get latest reading for each station
     const labels = [];
     const temps = [];
     const hums = [];
@@ -27,7 +26,7 @@ function renderLabOverviewChart(canvas, stationsMap) {
     for(const s of stationNames) {
         labels.push(s);
         const readings = stationsMap[s];
-        const latest = readings[readings.length - 1]; // sorted ascending
+        const latest = readings[readings.length - 1]; 
         temps.push(Number(latest.temperature) || 0);
         hums.push(Number(latest.humidity) || 0);
     }
@@ -37,8 +36,8 @@ function renderLabOverviewChart(canvas, stationsMap) {
         data: {
             labels: labels,
             datasets: [
-                { label: 'Temp (°C)', data: temps, backgroundColor: '#7c6aff', borderRadius: 4 },
-                { label: 'Humidity (%)', data: hums, backgroundColor: '#22c55e', borderRadius: 4 }
+                { label: 'Temp (°C)', data: temps, backgroundColor: '#0000ff' },
+                { label: 'Humidity (%)', data: hums, backgroundColor: '#ff0000' }
             ]
         },
         options: CHART_OPTIONS
@@ -63,19 +62,19 @@ function renderHistoryCharts(canvases, dataToRender, dateFilter = null) {
 
     const tempChart = new Chart(tempCanvas, {
         type: 'line',
-        data: { labels, datasets: [{ label: 'Temperature (°C)', data: temps, borderColor: '#7c6aff', backgroundColor: 'rgba(124, 106, 255, 0.1)', fill: true, tension: 0.2, pointRadius: 0, pointHitRadius: 10 }] },
+        data: { labels, datasets: [{ label: 'Temperature (°C)', data: temps, borderColor: '#0000ff', fill: false, tension: 0.1 }] },
         options: CHART_OPTIONS
     });
 
     const humChart = new Chart(humCanvas, {
         type: 'line',
-        data: { labels, datasets: [{ label: 'Humidity (%)', data: hums, borderColor: '#22c55e', backgroundColor: 'rgba(34, 197, 94, 0.1)', fill: true, tension: 0.2, pointRadius: 0, pointHitRadius: 10 }] },
+        data: { labels, datasets: [{ label: 'Humidity (%)', data: hums, borderColor: '#ff0000', fill: false, tension: 0.1 }] },
         options: CHART_OPTIONS
     });
 
     const luxChart = new Chart(luxCanvas, {
         type: 'line',
-        data: { labels, datasets: [{ label: 'Luminosity (lux)', data: luxs, borderColor: '#f59e0b', backgroundColor: 'rgba(245, 158, 11, 0.1)', fill: true, tension: 0.2, pointRadius: 0, pointHitRadius: 10 }] },
+        data: { labels, datasets: [{ label: 'Luminosity (lux)', data: luxs, borderColor: '#ffffff', fill: false, tension: 0.1 }] },
         options: CHART_OPTIONS
     });
 
