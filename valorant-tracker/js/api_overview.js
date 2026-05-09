@@ -1,22 +1,14 @@
-const API = {
+export const APIOverview = {
   KEY: "HDEV-fa745e56-7c8e-42d0-b114-812ec9cb6d01",
   BASE: "https://api.henrikdev.xyz/valorant",
 
   cache: {
     agents: null,
-    maps: null,
-    weapons: null,
     ranks: null
   },
 
   async fetchWithKey(url) {
-    const res = await fetch(url, {
-      headers: { "Authorization": this.KEY }
-    });
-    if (!res.ok) {
-      const errorData = await res.json().catch(() => ({}));
-      throw new Error(errorData.message || `API Error: ${res.status}`);
-    }
+    const res = await fetch(url, { headers: { "Authorization": this.KEY } });
     return res.json();
   },
 
@@ -32,10 +24,6 @@ const API = {
     return this.fetchWithKey(`${this.BASE}/v3/matches/${region}/${encodeURIComponent(name)}/${encodeURIComponent(tag)}?size=${size}`);
   },
 
-  async getMMRHistory(region, name, tag) {
-    return this.fetchWithKey(`${this.BASE}/v1/mmr-history/${region}/${encodeURIComponent(name)}/${encodeURIComponent(tag)}`);
-  },
-
   async getAgents() {
     if (this.cache.agents) return this.cache.agents;
     const res = await fetch("https://valorant-api.com/v1/agents?isPlayableCharacter=true");
@@ -48,28 +36,6 @@ const API = {
     const agents = await this.getAgents();
     const agent = agents.find(a => a.displayName.toLowerCase() === agentName.toLowerCase());
     return agent ? agent.displayIcon : "";
-  },
-
-  async getMaps() {
-    if (this.cache.maps) return this.cache.maps;
-    const res = await fetch("https://valorant-api.com/v1/maps");
-    const json = await res.json();
-    this.cache.maps = json.data;
-    return json.data;
-  },
-
-  async getMapImage(mapName) {
-    const maps = await this.getMaps();
-    const map = maps.find(m => m.displayName.toLowerCase() === mapName.toLowerCase());
-    return map ? map.listViewIcon : "";
-  },
-
-  async getWeapons() {
-    if (this.cache.weapons) return this.cache.weapons;
-    const res = await fetch("https://valorant-api.com/v1/weapons");
-    const json = await res.json();
-    this.cache.weapons = json.data;
-    return json.data;
   },
 
   async getRankTiers() {

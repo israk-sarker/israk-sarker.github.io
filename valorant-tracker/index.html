@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Valorant Tracker</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -10,54 +11,49 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <!-- Search Screen -->
-  <div id="search-screen" class="active">
-    <div class="search-container">
-      <h1>VAL<span>TRACKER</span></h1>
-      <p>Enter your Riot ID to view stats</p>
-      <div class="search-box">
-        <select id="search-region">
-          <option value="eu" selected>EU</option>
-          <option value="na">NA</option>
-          <option value="ap">AP</option>
-          <option value="kr">KR</option>
-          <option value="latam">LATAM</option>
-          <option value="br">BR</option>
-        </select>
-        <input type="text" id="search-input" placeholder="Name#Tag" autocomplete="off" />
-        <button id="search-btn">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-        </button>
-      </div>
-      <div id="search-error" class="error-msg"></div>
-    </div>
-  </div>
 
+<body>
   <!-- Dashboard -->
-  <div id="dashboard" class="hidden">
+  <div id="dashboard">
     <nav class="navbar">
       <div class="nav-content">
         <div class="nav-brand">VAL<span>TRACKER</span></div>
+        <div class="nav-search-container">
+          <select id="search-region" class="nav-region-select">
+            <option value="eu" selected>EU</option>
+            <option value="na">NA</option>
+            <option value="ap">AP</option>
+            <option value="kr">KR</option>
+            <option value="latam">LATAM</option>
+            <option value="br">BR</option>
+          </select>
+          <input type="text" id="search-input" placeholder="Name#Tag" autocomplete="off" class="nav-search-input" />
+          <button id="search-btn" class="nav-search-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </button>
+        </div>
         <div class="nav-player" id="nav-player">
-          <!-- Populated by JS -->
+          <!-- JS -->
         </div>
         <div class="nav-links">
           <a href="#overview" class="nav-link active" data-tab="overview">Overview</a>
           <a href="#performance" class="nav-link" data-tab="performance">Performance</a>
-          <a href="#matches" class="nav-link" data-tab="matches">Match History</a>
-          <a href="#weapons" class="nav-link" data-tab="weapons">Weapons</a>
-          <a href="#compare" class="nav-link" data-tab="compare">Compare</a>
         </div>
-        <button id="back-btn" class="back-btn">Search</button>
       </div>
     </nav>
+    
+    <div id="search-error" class="error-msg" style="text-align: center; margin-top: 10px;"></div>
+
     <main id="tab-content" class="tab-content">
-      <!-- Populated by JS -->
+      <div class="empty-state">Search for a player to view stats.</div>
     </main>
   </div>
 
-  <script src="api.js"></script>
-  <script src="app.js"></script>
+  <script type="module" src="js/main.js"></script>
 </body>
+
 </html>
