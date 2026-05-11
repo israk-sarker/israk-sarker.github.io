@@ -93,7 +93,7 @@ export function switchTab(tabName) {
     }
   });
 
-  const contentDiv = document.getElementById('tab-content');
+  const contentDiv = document.querySelector('#tab-content');
   contentDiv.innerHTML = '<div class="loader-container"><div class="loader"></div><div>Loading stats...</div></div>';
 
   setTimeout(() => {
@@ -105,12 +105,12 @@ export function switchTab(tabName) {
   }, 100);
 }
 
-// --- INIT ---
+//INIT
 document.addEventListener("DOMContentLoaded", init);
 
 function init() {
-  document.getElementById('search-btn').addEventListener('click', handleSearch);
-  document.getElementById('search-input').addEventListener('keypress', (e) => {
+  document.querySelector('#search-btn').addEventListener('click', handleSearch);
+  document.querySelector('#search-input').addEventListener('keypress', (e) => {
     if (e.key === 'Enter') handleSearch();
   });
 
@@ -133,10 +133,10 @@ function init() {
 }
 
 async function handleSearch() {
-  const region = document.getElementById('search-region').value;
-  const input = document.getElementById('search-input').value.trim();
-  const errorMsg = document.getElementById('search-error');
-  const searchBtn = document.getElementById('search-btn');
+  const region = document.querySelector('#search-region').value;
+  const input = document.querySelector('#search-input').value.trim();
+  const errorMsg = document.querySelector('#search-error');
+  const searchBtn = document.querySelector('#search-btn');
 
   errorMsg.textContent = '';
 
@@ -167,11 +167,11 @@ async function handleSearch() {
     state.mmr = mmrRes.data;
     state.matches = matchesRes.data || [];
 
-    document.getElementById('nav-player').innerHTML = `
-      <img src="${state.account.card.small}" alt="Card" style="width:32px;height:32px;border-radius:4px;object-fit:cover;">
+    document.querySelector('#nav-player').innerHTML = `
+      <img src="${state.account.card.small}" alt="Card" class="nav-player-card-img">
       <span class="name">${state.account.name}</span>
       <span class="tag">#${state.account.tag}</span>
-      <span class="level" style="font-size:12px;background:#171923;padding:2px 6px;border-radius:4px;">${state.account.account_level}</span>`;
+      <span class="level nav-player-level">${state.account.account_level}</span>`;
 
     const hash = window.location.hash.replace('#', '') || 'overview';
     switchTab(hash);

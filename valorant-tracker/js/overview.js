@@ -2,7 +2,7 @@ import { state, calculateStats, calculateBestMatch, formatSeasonName } from './m
 import { APIOverview } from './api_overview.js';
 
 export async function renderOverview() {
-  const contentDiv = document.getElementById('tab-content');
+  const contentDiv = document.querySelector('#tab-content');
   
   if (!state.account) {
     contentDiv.innerHTML = '<div class="empty-state">Search for a player to view stats.</div>';
@@ -72,7 +72,7 @@ export async function renderOverview() {
       </div>
     </div>
 
-    <h3 class="card-title" style="margin-top:40px; margin-bottom:16px;">Recent Stats (Last ${state.matches.length} Matches)</h3>
+    <h3 class="card-title section-heading">Recent Stats (Last ${state.matches.length} Matches)</h3>
     <div class="grid-4">
       <div class="card stat-card">
         <div class="card-title">K/D Ratio</div>
@@ -118,23 +118,23 @@ export async function renderOverview() {
     const scoreText = `${match.teams.red.rounds_won} - ${match.teams.blue.rounds_won}`;
     
     html += `
-      <h3 class="card-title" style="margin-top:40px; margin-bottom:16px;">Best Performance</h3>
-      <div class="card" style="display:flex; align-items:center; justify-content:space-between; padding:20px;">
-        <div style="display:flex; align-items:center; gap:20px;">
-          <img src="${player.assets.agent.small}" alt="${player.character}" style="width:60px; height:60px; border-radius:50%; background:#171923; padding:5px;">
+      <h3 class="card-title section-heading">Best Performance</h3>
+      <div class="card best-match-card">
+        <div class="best-match-info">
+          <img src="${player.assets.agent.small}" alt="${player.character}" class="best-match-agent-img">
           <div>
-            <div style="font-size:1.2rem; font-weight:700; color:#e8eaf0;">${mode} • ${map}</div>
-            <div style="color:#8b8fa3; margin-top:4px;">${scoreText}</div>
+            <div class="best-match-mode">${mode} • ${map}</div>
+            <div class="best-match-score">${scoreText}</div>
           </div>
         </div>
-        <div style="display:flex; gap:30px; text-align:center;">
+        <div class="best-match-stats">
           <div>
-            <div style="color:#8b8fa3; font-size:0.9rem;">K/D/A</div>
-            <div style="font-size:1.2rem; font-weight:700; color:#e8eaf0;">${stats.kills} / ${stats.deaths} / ${stats.assists}</div>
+            <div class="best-match-stat-label">K/D/A</div>
+            <div class="best-match-stat-value">${stats.kills} / ${stats.deaths} / ${stats.assists}</div>
           </div>
           <div>
-            <div style="color:#8b8fa3; font-size:0.9rem;">Score</div>
-            <div style="font-size:1.2rem; font-weight:700; color:#e8eaf0;">${stats.score}</div>
+            <div class="best-match-stat-label">Score</div>
+            <div class="best-match-stat-value">${stats.score}</div>
           </div>
         </div>
       </div>

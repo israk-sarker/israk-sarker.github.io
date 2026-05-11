@@ -154,6 +154,8 @@ body {
 .error-msg {
   color: var(--red);
   font-size: 0.9rem;
+  text-align: center;
+  margin-top: 10px;
 }
 
 /* Tab Content */
@@ -329,4 +331,109 @@ body {
   text-align: center;
   padding: 60px 20px;
   color: var(--text-secondary);
+}
+
+/* Nav Player Card */
+.nav-player-card-img {
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.nav-player-level {
+  font-size: 12px;
+  background: #171923;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* Section Heading */
+.section-heading {
+  margin-top: 40px;
+  margin-bottom: 16px;
+}
+
+/* Best Match Card */
+.best-match-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.best-match-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.best-match-agent-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #171923;
+  padding: 5px;
+}
+
+.best-match-mode {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #e8eaf0;
+}
+
+.best-match-score {
+  color: #8b8fa3;
+  margin-top: 4px;
+}
+
+.best-match-stats {
+  display: flex;
+  gap: 30px;
+  text-align: center;
+}
+
+.best-match-stat-label {
+  color: #8b8fa3;
+  font-size: 0.9rem;
+}
+
+.best-match-stat-value {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #e8eaf0;
+}
+
+/* Card Variants */
+.card-mb {
+  margin-bottom: 32px;
+}
+
+.card-no-padding {
+  padding: 0;
+  overflow: hidden;
+}
+
+/* Season Row Padding */
+.season-row-padded {
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+/* Season Data Cells */
+.season-rank-name {
+  color: var(--text-primary);
+}
+
+.season-wins {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.season-games {
+  color: var(--text-primary);
+}
+
+.season-winrate {
+  color: var(--text-primary);
 }

@@ -2,7 +2,7 @@ import { state, formatSeasonName } from './main.js';
 import { APIPerformance } from './api_performance.js';
 
 export async function renderPerformance() {
-  const contentDiv = document.getElementById('tab-content');
+  const contentDiv = document.querySelector('#tab-content');
 
   if (!state.mmr || !state.mmr.by_season) {
     contentDiv.innerHTML = '<div class="empty-state">No performance data available.</div>';
@@ -40,15 +40,15 @@ export async function renderPerformance() {
   const chartData = [...seasons].reverse();
 
   let html = `
-    <div class="card" style="margin-bottom: 32px;">
+    <div class="card card-mb">
       <div class="card-title">Rank Progression</div>
       <div class="chart-container">
         <canvas id="progressionChart"></canvas>
       </div>
     </div>
 
-    <div class="card" style="padding: 0; overflow: hidden;">
-      <div class="season-row-header" style="padding-left:24px; padding-right:24px;">
+    <div class="card card-no-padding">
+      <div class="season-row-header season-row-padded">
         <div>Season</div>
         <div>Final Rank</div>
         <div>Wins</div>
@@ -61,19 +61,19 @@ export async function renderPerformance() {
 
   contentDiv.innerHTML = html;
 
-  const seasonsList = document.getElementById('seasons-list');
+  const seasonsList = document.querySelector('#seasons-list');
   for (const s of seasons) {
     const rankImg = await APIPerformance.getRankImage(s.rankId);
     seasonsList.innerHTML += `
-      <div class="season-row" style="padding-left:24px; padding-right:24px;">
+      <div class="season-row season-row-padded">
         <div class="season-name">${s.name}</div>
         <div class="season-rank">
           <img src="${rankImg}" alt="${s.rankName}">
-          <span style="color:#e8eaf0;">${s.rankName}</span>
+          <span class="season-rank-name">${s.rankName}</span>
         </div>
-        <div style="color:#e8eaf0; font-weight:600;">${s.wins} W</div>
-        <div style="color:#e8eaf0;">${s.games} Games</div>
-        <div style="color:#e8eaf0;">${s.winRate}%</div>
+        <div class="season-wins">${s.wins} W</div>
+        <div class="season-games">${s.games} Games</div>
+        <div class="season-winrate">${s.winRate}%</div>
       </div>
     `;
   }
@@ -83,7 +83,7 @@ export async function renderPerformance() {
     state.chartInstance.destroy();
   }
 
-  const ctx = document.getElementById('progressionChart').getContext('2d');
+  const ctx = document.querySelector('#progressionChart').getContext('2d');
 
   const rankNames = chartData.map(s => s.rankName);
   const rankIds = chartData.map(s => s.rankId || 0);
