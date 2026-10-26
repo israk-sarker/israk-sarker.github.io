@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Veeam M365 Restore Tester — Israk Sarker</title>
+  <meta name="description" content="Case study: Automated Microsoft 365 restore verification tool built during an IT infrastructure internship at Logos Technologies.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <header class="nav">
+    <div class="wrap">
+      <a href="../index.html" class="nav-name">Israk Sarker</a>
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="../projects.html">Work</a></li>
+          <li><a href="../experience.html">Experience</a></li>
+          <li><a href="../cv.html">CV</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+
+      <!-- Breadcrumb -->
+      <div class="case-breadcrumb">
+        <a href="../projects.html" class="arrow-link" style="color: var(--ink-muted); flex-direction: row-reverse;">
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" style="transform: rotate(180deg);"><path d="M1 7h12m0 0L8 2m5 5-5 5"/></svg>
+          All work
+        </a>
+      </div>
+
+      <!-- Title -->
+      <h1 class="case-title">Veeam M365 Restore Tester</h1>
+
+      <!-- Metadata Grid -->
+      <div class="case-meta">
+        <div class="case-meta-cell">
+          <dt>Context</dt>
+          <dd>Logos Technologies Internship</dd>
+        </div>
+        <div class="case-meta-cell">
+          <dt>Year</dt>
+          <dd>2026</dd>
+        </div>
+        <div class="case-meta-cell">
+          <dt>Role</dt>
+          <dd>Systems & Automation Engineering</dd>
+        </div>
+        <div class="case-meta-cell">
+          <dt>Stack</dt>
+          <dd>PowerShell 7, PySide6, Veeam SDK</dd>
+        </div>
+        <div class="case-meta-cell">
+          <dt>Status</dt>
+          <dd>Completed v1.2.4</dd>
+        </div>
+        <div class="case-meta-cell">
+          <dt>Repository</dt>
+          <dd><a href="https://github.com/israk101/veeam-m365-export-automation" target="_blank" rel="noopener" style="color: var(--accent);">GitHub ↗</a></dd>
+        </div>
+      </div>
+
+      <!-- Body -->
+      <div class="case-body">
+        <h3>The problem</h3>
+        <p>
+          A backup job completing successfully doesn't prove that data can actually be restored when disaster strikes.
+          Organizations running Veeam Backup for Microsoft 365 need a repeatable way to verify that Exchange emails,
+          OneDrive files, and SharePoint documents can be extracted from restore points — not just that a backup
+          job reported "success."
+        </p>
+
+        <h3>What I built</h3>
+        <p>
+          A standalone automation tool that connects to a Veeam Backup for Microsoft 365 server, auto-discovers
+          organizations and jobs, selects random representative items from the latest restore points, extracts
+          them locally (non-destructive — nothing is restored to production), and verifies their integrity with
+          SHA-256 cryptographic hashes.
+        </p>
+        <p>
+          The tool covers three Microsoft 365 workloads:
+        </p>
+        <ul style="list-style: none; margin-bottom: 16px;">
+          <li style="padding-left: 16px; position: relative; color: var(--ink-secondary);">
+            <span style="position: absolute; left: 0; color: var(--ink-faint);">→</span>
+            <strong>Exchange Online</strong> — Extracts .msg email files from mailbox backup
+          </li>
+          <li style="padding-left: 16px; position: relative; color: var(--ink-secondary);">
+            <span style="position: absolute; left: 0; color: var(--ink-faint);">→</span>
+            <strong>OneDrive</strong> — Extracts documents from user drive backup
+          </li>
+          <li style="padding-left: 16px; position: relative; color: var(--ink-secondary);">
+            <span style="position: absolute; left: 0; color: var(--ink-faint);">→</span>
+            <strong>SharePoint Online</strong> — Extracts items from site backup
+          </li>
+        </ul>
+
+        <h3>Architecture</h3>
+        <p>
+          The core engine is a PowerShell 7 script (<code>Invoke-VB365OriginalRestoreTest.ps1</code>) that uses the
+          Veeam Archiver PowerShell SDK to interact with backup sessions. A PySide6 (Qt) desktop application
+          wraps this engine with a process queue, organization workspace isolation, and automated retention cleanup.
+        </p>
+
+        <h3>Audit & reporting</h3>
+        <p>
+          Every test run produces structured evidence: JSON data, HTML reports, plain text summaries, and
+          PDF audit documents with timestamps, sample file details, SHA-256 checksums, and pass/fail verdicts.
+          These reports are designed to be delivered to a client as monthly compliance evidence.
+        </p>
+
+        <h3>Limitations I identified</h3>
+        <p>
+          During development, I discovered that SharePoint verification can fail even when the restore
+          operation succeeds — the test account may lack site-level permissions to independently verify the
+          restored content. The tool explicitly distinguishes between a failed restore and an item that couldn't
+          be verified, rather than silently marking everything as successful.
+        </p>
+      </div>
+
+      <!-- Screenshots -->
+      <div class="case-gallery">
+        <div class="app-frame">
+          <div class="app-frame-bar">
+            <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
+            <span class="app-frame-title">Dashboard</span>
+          </div>
+          <div class="app-frame-body"><img src="../assets/images/veeam/dashboard.png" alt="Dashboard view"></div>
+        </div>
+        <div class="app-frame">
+          <div class="app-frame-bar">
+            <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
+            <span class="app-frame-title">Execution</span>
+          </div>
+          <div class="app-frame-body"><img src="../assets/images/veeam/run.png" alt="Execution view"></div>
+        </div>
+        <div class="app-frame">
+          <div class="app-frame-bar">
+            <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
+            <span class="app-frame-title">Reports & Audit</span>
+          </div>
+          <div class="app-frame-body"><img src="../assets/images/veeam/reports.png" alt="Reports view"></div>
+        </div>
+        <div class="app-frame">
+          <div class="app-frame-bar">
+            <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
+            <span class="app-frame-title">Settings</span>
+          </div>
+          <div class="app-frame-body"><img src="../assets/images/veeam/settings.png" alt="Settings view"></div>
+        </div>
+      </div>
+
+      <div style="padding: 40px 0 80px;">
+        <a href="https://github.com/israk101/veeam-m365-export-automation" target="_blank" rel="noopener" class="btn btn-fill">View on GitHub →</a>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap footer-bottom">
+      <p>© 2026 Israk Sarker · Mestre, Venezia, Italy</p>
+    </div>
+  </footer>
+
+  <script src="../main.js"></script>
+</body>
+</html>
