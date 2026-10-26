@@ -1,1215 +1,251 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Israk Sarker | Systems, Cloud & Software Portfolio</title>
-  <meta name="description" content="Portfolio of Israk Sarker — Computer Science Student at ITIS Carlo Zuccante specializing in IT Systems Administration, Cloud Virtualization, Network Engineering, and Software Development.">
-  <meta name="keywords" content="Israk Sarker, Portfolio, IT Infrastructure, Systems Administrator, VMware ESXi, Veeam Backup, PowerShell, Docker, Debian, Networking, Venice, Mestre">
-  <meta name="author" content="Israk Sarker">
-
-  <!-- Open Graph / Meta Preview -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://israk-sarker.github.io/">
-  <meta property="og:title" content="Israk Sarker | Systems, Cloud & Software Portfolio">
-  <meta property="og:description" content="Computer Science Student specializing in Systems Infrastructure, Cloud Virtualization, and Software Development.">
-  <meta property="og:image" content="assets/images/profile.jpg">
-
-  <!-- Google Fonts -->
+  <title>Israk Sarker — Systems, Automation & Software</title>
+  <meta name="description" content="Israk Sarker — CS student at ITIS Carlo Zuccante, Venice. Systems infrastructure, backup automation, and software development.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-
-  <!-- Main Stylesheet -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-  <!-- =========================================================================
-       NAVBAR
-       ========================================================================= -->
-  <header class="navbar">
-    <div class="container">
-      <a href="#hero" class="nav-brand">
-        <span class="brand-dot"></span>
-        <span>Israk Sarker</span>
-      </a>
-
+  <!-- NAV -->
+  <header class="nav">
+    <div class="wrap">
+      <a href="index.html" class="nav-name">Israk Sarker</a>
       <nav>
         <ul class="nav-links" id="navLinks">
-          <li><a href="#about" class="nav-link">About</a></li>
-          <li><a href="#featured" class="nav-link">Enterprise Project</a></li>
-          <li><a href="#homelab" class="nav-link">Homelab</a></li>
-          <li><a href="#projects" class="nav-link">Projects</a></li>
-          <li><a href="#experience" class="nav-link">Experience</a></li>
-          <li><a href="#skills" class="nav-link">Skills</a></li>
-          <li><a href="#cv-section" class="nav-link">CV / Resume</a></li>
-          <li><a href="#contact" class="nav-link">Contact</a></li>
+          <li><a href="projects.html">Work</a></li>
+          <li><a href="experience.html">Experience</a></li>
+          <li><a href="cv.html">CV</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
-
-      <div class="nav-actions">
-        <button class="btn btn-outline btn-sm" data-action="view-cv">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
-            <circle cx="12" cy="12" r="3"></circle>
-          </svg>
-          View CV
-        </button>
-        <a href="assets/cv/Israk_Sarker_CV.pdf" download="Israk_Sarker_CV.pdf" class="btn btn-primary btn-sm">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-            <polyline points="7 10 12 15 17 10"></polyline>
-            <line x1="12" y1="15" x2="12" y2="3"></line>
-          </svg>
-          Download CV
-        </a>
-        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="3" y1="12" x2="21" y2="12"></line>
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <line x1="3" y1="18" x2="21" y2="18"></line>
-          </svg>
-        </button>
-      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
     </div>
   </header>
 
   <main>
-    <!-- =======================================================================
-         HERO SECTION
-         ======================================================================= -->
-    <section class="hero" id="hero">
-      <div class="container hero-grid">
-        <div class="hero-content">
-          <div class="status-pill">
-            <span class="status-indicator"></span>
-            <span>Entering 5th Year @ ITIS Carlo Zuccante (Diploma 2027)</span>
-          </div>
 
-          <h1 class="hero-title">
-            Hi, I'm <span class="gradient-text">Israk Sarker</span>
-          </h1>
-
-          <h2 class="hero-subtitle">
-            Systems & Cloud Infrastructure &bull; Automation &bull; Software Development
-          </h2>
-
-          <p class="hero-description">
-            Computer Science student based in Venice, Italy. Passionate about datacenter infrastructure, VMware virtualization, Windows Server & Active Directory administration, Cisco CCNA networking, Linux homelab self-hosting, and engineering auditable enterprise automation tools.
-          </p>
-
-          <div class="hero-cta">
-            <button class="btn btn-primary" data-action="view-cv">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                <polyline points="14 2 14 8 20 8"></polyline>
-                <line x1="16" y1="13" x2="8" y2="13"></line>
-                <line x1="16" y1="17" x2="8" y2="17"></line>
-                <polyline points="10 9 9 9 8 9"></polyline>
-              </svg>
-              View & Download CV
-            </button>
-            <a href="#featured" class="btn btn-secondary">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-              </svg>
-              Enterprise Work
-            </a>
-            <a href="#projects" class="btn btn-outline">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="16 18 22 12 16 6"></polyline>
-                <polyline points="8 6 2 12 8 18"></polyline>
-              </svg>
-              Explore Projects
-            </a>
-          </div>
-
-          <div class="hero-meta">
-            <div class="meta-item">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                <circle cx="12" cy="10" r="3"></circle>
-              </svg>
-              <span>Mestre, Venezia, Italy</span>
-            </div>
-            <a href="https://github.com/israk101" target="_blank" rel="noopener noreferrer" class="meta-item">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-              </svg>
-              <span>github.com/israk101</span>
-            </a>
-            <a href="https://linkedin.com/in/israk-sarker" target="_blank" rel="noopener noreferrer" class="meta-item">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-              </svg>
-              <span>in/israk-sarker</span>
-            </a>
-            <a href="mailto:israk.sarker08@gmail.com" class="meta-item">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                <polyline points="22,6 12,13 2,6"></polyline>
-              </svg>
-              <span>israk.sarker08@gmail.com</span>
-            </a>
-          </div>
-        </div>
-
-        <div class="hero-visual">
-          <div class="portrait-wrapper">
-            <img src="assets/images/profile.jpg" alt="Israk Sarker" class="portrait-img">
-            
-            <div class="floating-badge badge-top">
-              <div class="badge-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
-                  <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
-                  <line x1="6" y1="6" x2="6.01" y2="6"></line>
-                  <line x1="6" y1="18" x2="6.01" y2="18"></line>
-                </svg>
-              </div>
-              <div>
-                <div class="badge-label">Homelab Linux Node</div>
-                <div class="badge-value">Debian 12 + Docker</div>
-              </div>
-            </div>
-
-            <div class="floating-badge badge-bottom">
-              <div class="badge-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                </svg>
-              </div>
-              <div>
-                <div class="badge-label">Enterprise Automation</div>
-                <div class="badge-value">Veeam M365 Tester</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- =======================================================================
-         METRICS / HIGHLIGHTS STRIP
-         ======================================================================= -->
-    <div class="container metrics-strip">
-      <div class="metrics-grid">
-        <div class="metric-card">
-          <div class="metric-header">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
-              <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
-            </svg>
-            <span>Education</span>
-          </div>
-          <div class="metric-title">ITIS C. Zuccante</div>
-          <div class="metric-detail">5th Year Computer Science (Diploma 2027)</div>
-        </div>
-
-        <div class="metric-card">
-          <div class="metric-header">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-              <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-            </svg>
-            <span>Internship</span>
-          </div>
-          <div class="metric-title">Logos Technologies</div>
-          <div class="metric-detail">IT Infrastructure, VMware ESXi & Veeam</div>
-        </div>
-
-        <div class="metric-card">
-          <div class="metric-header">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
-              <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
-              <line x1="6" y1="6" x2="6.01" y2="6"></line>
-              <line x1="6" y1="18" x2="6.01" y2="18"></line>
-            </svg>
-            <span>Self-Hosted</span>
-          </div>
-          <div class="metric-title">Homelab Debian 12</div>
-          <div class="metric-detail">Docker, Tailscale, Pi-hole & Vaultwarden</div>
-        </div>
-
-        <div class="metric-card">
-          <div class="metric-header">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"></circle>
-              <line x1="2" y1="12" x2="22" y2="12"></line>
-              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-            </svg>
-            <span>Communication</span>
-          </div>
-          <div class="metric-title">4 Languages</div>
-          <div class="metric-detail">Italian (Native), Bengali (Native), English, Hindi</div>
+    <!-- HERO -->
+    <div class="hero">
+      <div class="wrap">
+        <h1 class="hero-statement">
+          I configure servers, automate backups, and build <span class="light">tools.</span>
+        </h1>
+        <p class="hero-bio">
+          I'm Israk Sarker, a 5th-year Computer Science student at ITIS Carlo Zuccante in Venice, Italy.
+          I work with datacenter infrastructure, VMware virtualization, Windows Server administration,
+          and PowerShell automation. I also self-host a Debian homelab and write code in Java, Python, and JavaScript.
+        </p>
+        <div class="hero-row">
+          <a href="cv.html" class="btn btn-fill">View CV →</a>
+          <a href="assets/cv/Israk_Sarker_CV.pdf" download="Israk_Sarker_CV.pdf" class="btn btn-ghost">Download PDF ↓</a>
+          <a href="https://github.com/israk101" target="_blank" rel="noopener" class="btn btn-ghost">GitHub ↗</a>
         </div>
       </div>
     </div>
 
-    <!-- =======================================================================
-         ABOUT SECTION
-         ======================================================================= -->
-    <section id="about">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag">Profile & Focus</span>
-          <h2 class="section-title">Bridging Systems Infrastructure & Software Craftsmanship</h2>
-          <p class="section-subtitle">
-            I enjoy understanding how enterprise computing works from bare metal to user applications — configuring physical Dell hypervisors, orchestrating Active Directory networks, and writing resilient automation software.
-          </p>
-        </div>
-
-        <div class="dual-section-grid">
-          <div class="info-card">
-            <h3>
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent-secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"></circle>
-                <line x1="12" y1="16" x2="12" y2="12"></line>
-                <line x1="12" y1="8" x2="12.01" y2="8"></line>
-              </svg>
-              Technical Mindset
-            </h3>
-            <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px;">
-              Currently entering my 5th and final year in the Computer Science track at <strong>ITIS Carlo Zuccante</strong> (Mestre), my focus extends beyond textbook programming into practical systems architecture, network troubleshooting, and enterprise backup reliability.
+    <!-- FEATURED: Veeam M365 Restore Tester -->
+    <div class="page-section">
+      <div class="wrap">
+        <p class="label" style="margin-bottom: 28px;">Featured Project</p>
+        <div class="spotlight">
+          <div class="spotlight-info">
+            <h2 class="spotlight-title">Veeam M365 Restore Tester</h2>
+            <dl class="spotlight-meta">
+              <dt>Context</dt>
+              <dd>Logos Technologies Internship</dd>
+              <dt>Year</dt>
+              <dd>2026</dd>
+              <dt>Role</dt>
+              <dd>Systems & Automation Engineering</dd>
+              <dt>Stack</dt>
+              <dd>PowerShell 7, PySide6, Veeam SDK</dd>
+              <dt>Status</dt>
+              <dd>Completed v1.2.4</dd>
+            </dl>
+            <p class="spotlight-desc">
+              A backup job completing doesn't mean data can actually be restored. This tool automatically tests
+              restore points across Exchange, OneDrive, and SharePoint by extracting items locally and verifying
+              them with SHA-256 hashes. It generates audit-ready PDF, HTML, and JSON reports.
             </p>
-            <p style="color: var(--text-secondary); line-height: 1.7;">
-              During my hands-on internship at <strong>Logos Technologies</strong>, I worked directly with physical Dell servers, VMware ESXi 7.0.3, QNAP iSCSI datastores, Windows Server 2025 domain controller failovers, and Microsoft Entra ID hybrid synchronization, culminating in building a standalone restore-testing automation suite for Veeam Backup for Microsoft 365.
-            </p>
-          </div>
-
-          <div class="info-card">
-            <h3>
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent-secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                <circle cx="9" cy="7" r="4"></circle>
-                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-              </svg>
-              Work Ethic & Client Experience
-            </h3>
-            <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px;">
-              Technical skill is amplified by clear communication and real-world responsibility. Beyond IT, I have worked as a sales assistant at our family retail business, <strong>Isha Boutique</strong> (managing customer relations, inventory, and point-of-sale operations), and as floor staff at <strong>Ristorantino Da Carla</strong>.
-            </p>
-            <p style="color: var(--text-secondary); line-height: 1.7;">
-              Serving tables in Venice allowed me to act as a fluent English/Italian communication bridge between international diners and the kitchen, streamlining requests and cutting miscommunication times significantly.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- =======================================================================
-         FEATURED ENTERPRISE PROJECT (VEEAM M365)
-         ======================================================================= -->
-    <section id="featured">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag">Enterprise Spotlight &bull; Logos Technologies</span>
-          <h2 class="section-title">Veeam Backup for Microsoft 365 Restore Tester</h2>
-          <p class="section-subtitle">
-            An auditable, non-destructive restore testing automation engine with a standalone PySide6 (Qt) desktop application, solving the monthly backup compliance dilemma.
-          </p>
-        </div>
-
-        <div class="featured-card">
-          <div class="featured-content">
-            <div>
-              <div class="featured-tag-row">
-                <span class="tag-badge badge-accent">Production v1.2.4</span>
-                <span class="tag-badge">PowerShell 7.0+</span>
-                <span class="tag-badge">Python & PySide6</span>
-                <span class="tag-badge">Veeam PowerShell SDK</span>
-                <span class="tag-badge">SHA-256 Auditing</span>
-              </div>
-
-              <h3 class="featured-title">Automated M365 Restoration & Verification Suite</h3>
-
-              <p class="featured-summary">
-                A completed backup job alone doesn't prove that data can be restored when disaster strikes. Developed during my internship at Logos Technologies, this tool automatically tests restore points across <strong>Exchange Online (.msg)</strong>, <strong>OneDrive</strong>, and <strong>SharePoint</strong> by performing local, non-destructive extraction from backup repositories, verifying cryptographic SHA-256 checksums, and generating client-ready audit reports.
-              </p>
-
-              <ul class="feature-highlights">
-                <li>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span><strong>Multi-Tenant Auto-Discovery:</strong> Discovers local VB365 organizations and jobs automatically without manual hardcoding.</span>
-                </li>
-                <li>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span><strong>Cryptographic Integrity Audit:</strong> Enforces non-zero byte checks, valid candidate sampling, and SHA-256 hashing on all extracted test items.</span>
-                </li>
-                <li>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span><strong>Client-Ready Audit Evidence:</strong> Produces structured JSON, HTML, plain text, and PDF reports with timestamps and sample details for compliance logs.</span>
-                </li>
-                <li>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span><strong>Portable Desktop GUI:</strong> Built with PySide6, featuring live process queue execution, organization workspace isolation, and automated retention cleanup.</span>
-                </li>
-              </ul>
-            </div>
-
-            <div style="display: flex; gap: 14px; flex-wrap: wrap;">
-              <a href="https://github.com/israk101/veeam-m365-export-automation" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                </svg>
-                View Repository on GitHub
+            <div class="spotlight-actions">
+              <a href="projects/veeam-m365.html" class="arrow-link">
+                Read case study
+                <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 7h12m0 0L8 2m5 5-5 5"/></svg>
               </a>
-              <a href="#experience" class="btn btn-secondary">
-                Read Internship Details
+              <a href="https://github.com/israk101/veeam-m365-export-automation" target="_blank" rel="noopener" class="arrow-link" style="color: var(--ink-secondary);">
+                GitHub ↗
               </a>
             </div>
           </div>
 
-          <div class="featured-media">
-            <div class="preview-screen">
-              <img src="assets/images/veeam/dashboard.png" alt="Veeam M365 Restore Tester GUI" id="veeamPreviewImg">
-            </div>
-            <div class="preview-tabs">
-              <button class="preview-tab-btn active" data-img="assets/images/veeam/dashboard.png">Dashboard</button>
-              <button class="preview-tab-btn" data-img="assets/images/veeam/run.png">Execution</button>
-              <button class="preview-tab-btn" data-img="assets/images/veeam/reports.png">Reports & Audit</button>
-              <button class="preview-tab-btn" data-img="assets/images/veeam/settings.png">Settings</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- =======================================================================
-         HOMELAB & INFRASTRUCTURE SHOWCASE
-         ======================================================================= -->
-    <section id="homelab">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag">24/7 Self-Hosted Infrastructure</span>
-          <h2 class="section-title">Personal Homelab & Private Cloud</h2>
-          <p class="section-subtitle">
-            A dedicated Linux server environment built to learn systems administration, containerization, encrypted mesh networking, and self-hosted privacy services.
-          </p>
-        </div>
-
-        <div class="homelab-box">
-          <div class="homelab-left">
-            <h3>Headless Debian 12 (Bookworm) Host</h3>
-            <p>
-              Operating on a dedicated, low-power server node running 24/7. Managed entirely via headless SSH and automated Docker Compose stacks, connected across devices using an encrypted WireGuard-based Tailscale mesh network.
-            </p>
-
-            <div class="server-specs-list">
-              <div class="spec-item">
-                <div class="spec-key">Operating System</div>
-                <div class="spec-value">Debian 12 Bookworm (Headless)</div>
+          <div>
+            <div class="app-frame">
+              <div class="app-frame-bar">
+                <span class="dot dot-r"></span>
+                <span class="dot dot-y"></span>
+                <span class="dot dot-g"></span>
+                <span class="app-frame-title">VeeamM365RestoreTester.exe</span>
               </div>
-              <div class="spec-item">
-                <div class="spec-key">Container Runtime</div>
-                <div class="spec-value">Docker Engine + Portainer</div>
-              </div>
-              <div class="spec-item">
-                <div class="spec-key">Networking & VPN</div>
-                <div class="spec-value">Tailscale Mesh (Subnet Router)</div>
-              </div>
-              <div class="spec-item">
-                <div class="spec-key">Primary PC Workstation</div>
-                <div class="spec-value">Ryzen 5 5600X &bull; RTX 3070 &bull; 32GB</div>
+              <div class="app-frame-body">
+                <img src="assets/images/veeam/dashboard.png" alt="Veeam M365 Restore Tester — Dashboard" id="ssImg" style="transition: opacity 0.15s;">
               </div>
             </div>
-          </div>
-
-          <div class="docker-services-grid">
-            <div class="service-card">
-              <div class="service-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                </svg>
-              </div>
-              <div>
-                <div class="service-name">Pi-hole</div>
-                <div class="service-desc">Network-wide DNS sinkhole & ad-blocking</div>
-              </div>
-            </div>
-
-            <div class="service-card">
-              <div class="service-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                </svg>
-              </div>
-              <div>
-                <div class="service-name">Vaultwarden</div>
-                <div class="service-desc">Self-hosted Bitwarden-compatible password vault</div>
-              </div>
-            </div>
-
-            <div class="service-card">
-              <div class="service-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <polyline points="12 6 12 12 14 14"></polyline>
-                </svg>
-              </div>
-              <div>
-                <div class="service-name">Uptime Kuma</div>
-                <div class="service-desc">Uptime monitoring & automated heartbeat alerts</div>
-              </div>
-            </div>
-
-            <div class="service-card">
-              <div class="service-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                  <line x1="8" y1="21" x2="16" y2="21"></line>
-                  <line x1="12" y1="17" x2="12" y2="21"></line>
-                </svg>
-              </div>
-              <div>
-                <div class="service-name">Homepage Dashboard</div>
-                <div class="service-desc">Aggregated service status & system telemetry</div>
-              </div>
-            </div>
-
-            <div class="service-card">
-              <div class="service-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-                </svg>
-              </div>
-              <div>
-                <div class="service-name">Portainer</div>
-                <div class="service-desc">Web GUI for Docker container orchestration</div>
-              </div>
-            </div>
-
-            <div class="service-card">
-              <div class="service-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <line x1="2" y1="12" x2="22" y2="12"></line>
-                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-                </svg>
-              </div>
-              <div>
-                <div class="service-name">Tailscale VPN</div>
-                <div class="service-desc">Zero-config WireGuard mesh & secure remote access</div>
-              </div>
+            <div class="screenshot-tabs">
+              <button class="ss-tab active" data-img="assets/images/veeam/dashboard.png">Dashboard</button>
+              <button class="ss-tab" data-img="assets/images/veeam/run.png">Execution</button>
+              <button class="ss-tab" data-img="assets/images/veeam/reports.png">Reports</button>
+              <button class="ss-tab" data-img="assets/images/veeam/settings.png">Settings</button>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
 
-    <!-- =======================================================================
-         INTERACTIVE PROJECTS & DEMOS
-         ======================================================================= -->
-    <section id="projects">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag">Interactive Portfolio</span>
-          <h2 class="section-title">Projects, Experiments & Visual Algorithms</h2>
-          <p class="section-subtitle">
-            A collection of web applications, telemetry stations, and interactive mathematical simulations built throughout my coursework and independent research.
-          </p>
-        </div>
-
-        <div class="filter-container">
-          <button class="filter-btn active" data-filter="all">All Projects (8)</button>
-          <button class="filter-btn" data-filter="web">Web & Applications</button>
-          <button class="filter-btn" data-filter="math">Math & Simulations</button>
-          <button class="filter-btn" data-filter="systems">Systems & Tools</button>
-        </div>
-
-        <div class="projects-grid">
-          <!-- Card 1: Valorant Tracker -->
-          <div class="project-card" data-category="web">
-            <div>
-              <div class="project-top">
-                <div class="project-icon">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <polygon points="12 8 8 12 12 16 16 12 12 8"></polygon>
-                  </svg>
-                </div>
-                <span class="project-category">Web Application</span>
-              </div>
-              <h3 class="project-title">Valorant Tracker Dashboard</h3>
-              <p class="project-description">
-                Interactive gaming statistics tracker fetching real-time match data, KD metrics, weapon accuracy breakdown, and rendering dynamic charts using Chart.js.
-              </p>
+    <!-- ALL WORK INDEX -->
+    <div class="page-section">
+      <div class="wrap">
+        <p class="label" style="margin-bottom: 28px;">All work</p>
+        <div class="work-table">
+          <a href="projects/veeam-m365.html">
+            <div class="work-row-left">
+              <span class="work-title">Veeam M365 Restore Tester</span>
+              <span class="work-status status-complete">Completed</span>
             </div>
-            <div>
-              <div class="project-tech">
-                <span class="tech-pill">JavaScript</span>
-                <span class="tech-pill">Chart.js</span>
-                <span class="tech-pill">REST API</span>
-                <span class="tech-pill">CSS3</span>
-              </div>
-              <div class="project-links">
-                <a href="./valorant-tracker/index.html" class="btn btn-sm btn-primary">Launch Live Demo &rarr;</a>
-              </div>
+            <span class="work-year">2026</span>
+            <svg class="work-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 7h12m0 0L8 2m5 5-5 5"/></svg>
+          </a>
+          <a href="./valorant-tracker/index.html">
+            <div class="work-row-left">
+              <span class="work-title">Valorant Stats Tracker</span>
+              <span class="work-status status-prototype">Prototype</span>
             </div>
-          </div>
-
-          <!-- Card 2: Weather Station -->
-          <div class="project-card" data-category="web">
-            <div>
-              <div class="project-top">
-                <div class="project-icon">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path>
-                  </svg>
-                </div>
-                <span class="project-category">IoT & Telemetry</span>
-              </div>
-              <h3 class="project-title">Weather Station Dashboard</h3>
-              <p class="project-description">
-                Environmental weather station visualizer monitoring temperature, humidity, atmospheric pressure, and historical time-series telemetry data.
-              </p>
+            <span class="work-year">2025</span>
+            <svg class="work-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 7h12m0 0L8 2m5 5-5 5"/></svg>
+          </a>
+          <a href="./WeatherStation/index.html">
+            <div class="work-row-left">
+              <span class="work-title">IoT Weather Station</span>
+              <span class="work-status status-prototype">Prototype</span>
             </div>
-            <div>
-              <div class="project-tech">
-                <span class="tech-pill">IoT Data</span>
-                <span class="tech-pill">JSON</span>
-                <span class="tech-pill">Chart.js</span>
-                <span class="tech-pill">Modular JS</span>
-              </div>
-              <div class="project-links">
-                <a href="./WeatherStation/index.html" class="btn btn-sm btn-primary">Full Station &rarr;</a>
-                <a href="./WeatherStation-lite/index.html" class="btn btn-sm btn-outline">Lite Version</a>
-              </div>
+            <span class="work-year">2025</span>
+            <svg class="work-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 7h12m0 0L8 2m5 5-5 5"/></svg>
+          </a>
+          <a href="pyMonteCarlo.html">
+            <div class="work-row-left">
+              <span class="work-title">Pi Approximation (Monte Carlo &amp; Trapezoids)</span>
+              <span class="work-status status-coursework">Coursework</span>
             </div>
-          </div>
-
-          <!-- Card 3: Py Calculator -->
-          <div class="project-card" data-category="math">
-            <div>
-              <div class="project-top">
-                <div class="project-icon">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="4" y="2" width="16" height="20" rx="2"></rect>
-                    <line x1="8" y1="6" x2="16" y2="6"></line>
-                    <line x1="16" y1="14" x2="16" y2="18"></line>
-                    <path d="M16 10h.01"></path>
-                    <path d="M12 10h.01"></path>
-                    <path d="M8 10h.01"></path>
-                    <path d="M12 14h.01"></path>
-                    <path d="M8 14h.01"></path>
-                    <path d="M12 18h.01"></path>
-                    <path d="M8 18h.01"></path>
-                  </svg>
-                </div>
-                <span class="project-category">Numerical Methods</span>
-              </div>
-              <h3 class="project-title">Pi Approximation Visualizer</h3>
-              <p class="project-description">
-                Dual numerical simulation implementing Monte Carlo stochastic point sampling (&pi; &approx; 4 &times; M / N) and the Trapezoidal integration method on HTML5 Canvas.
-              </p>
+            <span class="work-year">2024</span>
+            <svg class="work-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 7h12m0 0L8 2m5 5-5 5"/></svg>
+          </a>
+          <a href="albero.html">
+            <div class="work-row-left">
+              <span class="work-title">Recursive Fractal Tree</span>
+              <span class="work-status status-coursework">Coursework</span>
             </div>
-            <div>
-              <div class="project-tech">
-                <span class="tech-pill">Monte Carlo</span>
-                <span class="tech-pill">Calculus</span>
-                <span class="tech-pill">Canvas API</span>
-                <span class="tech-pill">Simulation</span>
-              </div>
-              <div class="project-links">
-                <a href="pyMonteCarlo.html" class="btn btn-sm btn-primary">Open Calculator &rarr;</a>
-              </div>
+            <span class="work-year">2024</span>
+            <svg class="work-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 7h12m0 0L8 2m5 5-5 5"/></svg>
+          </a>
+          <a href="trinagles.html">
+            <div class="work-row-left">
+              <span class="work-title">Koch Snowflake Triangles</span>
+              <span class="work-status status-coursework">Coursework</span>
             </div>
-          </div>
-
-          <!-- Card 4: Recursive Tree -->
-          <div class="project-card" data-category="math">
-            <div>
-              <div class="project-top">
-                <div class="project-icon">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M12 22v-9"></path>
-                    <path d="M9 13l3-3 3 3"></path>
-                    <path d="M12 10V3"></path>
-                    <path d="M8 6l4-3 4 3"></path>
-                  </svg>
-                </div>
-                <span class="project-category">Fractals & Recursion</span>
-              </div>
-              <h3 class="project-title">Recursive Fractal Tree</h3>
-              <p class="project-description">
-                Interactive graphical algorithm demonstrating mathematical branch recursion, trigonometric transformations, and real-time canvas rendering with custom length and angle sliders.
-              </p>
+            <span class="work-year">2024</span>
+            <svg class="work-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 7h12m0 0L8 2m5 5-5 5"/></svg>
+          </a>
+          <a href="./functionDrwer/index.html">
+            <div class="work-row-left">
+              <span class="work-title">Function Drawer &amp; Perceptron</span>
+              <span class="work-status status-coursework">Coursework</span>
             </div>
-            <div>
-              <div class="project-tech">
-                <span class="tech-pill">Recursion</span>
-                <span class="tech-pill">Trigonometry</span>
-                <span class="tech-pill">HTML5 Canvas</span>
-              </div>
-              <div class="project-links">
-                <a href="albero.html" class="btn btn-sm btn-primary">Simulate Tree &rarr;</a>
-              </div>
+            <span class="work-year">2024</span>
+            <svg class="work-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 7h12m0 0L8 2m5 5-5 5"/></svg>
+          </a>
+          <a href="./cuborubic/index.html">
+            <div class="work-row-left">
+              <span class="work-title">3D Rubik's Cube</span>
+              <span class="work-status status-coursework">Coursework</span>
             </div>
-          </div>
-
-          <!-- Card 5: Koch Snowflake -->
-          <div class="project-card" data-category="math">
-            <div>
-              <div class="project-top">
-                <div class="project-icon">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <polygon points="12 2 22 19 2 19"></polygon>
-                  </svg>
-                </div>
-                <span class="project-category">Fractal Geometry</span>
-              </div>
-              <h3 class="project-title">Von Koch Snowflake Triangles</h3>
-              <p class="project-description">
-                Recursive geometric fractal generator constructing Koch snowflake contours step-by-step with adjustable recursion depth controls.
-              </p>
+            <span class="work-year">2024</span>
+            <svg class="work-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 7h12m0 0L8 2m5 5-5 5"/></svg>
+          </a>
+          <a href="./FETCH EXAMPLE/index.html">
+            <div class="work-row-left">
+              <span class="work-title">Fetch API Card Demo</span>
+              <span class="work-status status-coursework">Coursework</span>
             </div>
-            <div>
-              <div class="project-tech">
-                <span class="tech-pill">Fractals</span>
-                <span class="tech-pill">Recursion Depth</span>
-                <span class="tech-pill">Canvas 2D</span>
-              </div>
-              <div class="project-links">
-                <a href="trinagles.html" class="btn btn-sm btn-primary">View Fractal &rarr;</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Card 6: Perceptron Function Drawer -->
-          <div class="project-card" data-category="math">
-            <div>
-              <div class="project-top">
-                <div class="project-icon">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="18" y1="20" x2="18" y2="10"></line>
-                    <line x1="12" y1="20" x2="12" y2="4"></line>
-                    <line x1="6" y1="20" x2="6" y2="14"></line>
-                  </svg>
-                </div>
-                <span class="project-category">Machine Learning & Math</span>
-              </div>
-              <h3 class="project-title">Function Drawer & Perceptron</h3>
-              <p class="project-description">
-                Mathematical coordinate graphing tool with an interactive single-layer Perceptron neural model demonstrating linear boundary classification.
-              </p>
-            </div>
-            <div>
-              <div class="project-tech">
-                <span class="tech-pill">Perceptron</span>
-                <span class="tech-pill">Math Parser</span>
-                <span class="tech-pill">Cartesian Graph</span>
-              </div>
-              <div class="project-links">
-                <a href="./functionDrwer/index.html" class="btn btn-sm btn-primary">Open Plotter &rarr;</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Card 7: Fetch Example -->
-          <div class="project-card" data-category="web">
-            <div>
-              <div class="project-top">
-                <div class="project-icon">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-                  </svg>
-                </div>
-                <span class="project-category">API Integration</span>
-              </div>
-              <h3 class="project-title">Card Fetch Async Consumer</h3>
-              <p class="project-description">
-                Asynchronous JavaScript client demonstrating modern Fetch API patterns, error handling, promise chains, and responsive card component generation.
-              </p>
-            </div>
-            <div>
-              <div class="project-tech">
-                <span class="tech-pill">Fetch API</span>
-                <span class="tech-pill">Async / Await</span>
-                <span class="tech-pill">DOM Manipulation</span>
-              </div>
-              <div class="project-links">
-                <a href="./FETCH EXAMPLE/index.html" class="btn btn-sm btn-primary">Try Demo &rarr;</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Card 8: Rubik's Cube -->
-          <div class="project-card" data-category="web">
-            <div>
-              <div class="project-top">
-                <div class="project-icon">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-                  </svg>
-                </div>
-                <span class="project-category">3D Simulation</span>
-              </div>
-              <h3 class="project-title">3D Rubik's Cube Simulator</h3>
-              <p class="project-description">
-                Interactive geometric Rubik's cube project rendering 3D face rotations, perspective matrices, and user state interaction.
-              </p>
-            </div>
-            <div>
-              <div class="project-tech">
-                <span class="tech-pill">JavaScript</span>
-                <span class="tech-pill">CSS 3D Transforms</span>
-                <span class="tech-pill">Spatial Logic</span>
-              </div>
-              <div class="project-links">
-                <a href="./cuborubic/index.html" class="btn btn-sm btn-primary">Launch Simulator &rarr;</a>
-              </div>
-            </div>
-          </div>
+            <span class="work-year">2024</span>
+            <svg class="work-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 7h12m0 0L8 2m5 5-5 5"/></svg>
+          </a>
         </div>
       </div>
-    </section>
+    </div>
 
-    <!-- =======================================================================
-         EXPERIENCE & INTERNSHIP
-         ======================================================================= -->
-    <section id="experience">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag">Career Milestones</span>
-          <h2 class="section-title">Professional Experience & Internships</h2>
-          <p class="section-subtitle">
-            Hands-on enterprise systems engineering, network infrastructure, backup operations, and customer-facing business roles.
-          </p>
-        </div>
-
-        <div class="timeline">
-          <!-- Item 1: Logos Technologies -->
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-card">
-              <div class="timeline-header">
-                <div>
-                  <h3 class="timeline-role">IT Infrastructure & Systems Administration Intern</h3>
-                  <div class="timeline-company">Logos Technologies &bull; Technical Lab & Cloud Services</div>
-                </div>
-                <span class="timeline-period">Sept – Oct 2026</span>
-              </div>
-              <div class="timeline-body">
-                <p>
-                  Worked across physical server management, hypervisor virtualization, enterprise storage, Windows Server administration, and cloud identity management:
-                </p>
-                <ul>
-                  <li><strong>VMware ESXi & Physical Dell Servers:</strong> Deployed VMware ESXi 7.0.3 on physical Dell server hardware managed via iDRAC; connected shared datastores, provisioned test VMs, and managed virtual switches and network adapters.</li>
-                  <li><strong>QNAP NAS & iSCSI Block Storage:</strong> Configured RAID 1 storage pool (7.28 TB) on QNAP NAS; connected 2 TB block iSCSI LUN directly into ESXi as a VMFS datastore; configured SMB shares and Kerberos domain authentication.</li>
-                  <li><strong>Windows Server 2025 & Active Directory:</strong> Administered multi-domain controller topology (`DC01`, `DC02`, `DC03`) for `lablogos.local`; configured DNS zones, DHCP failover with split-scopes, and resolved domain-controller failure by transferring all 5 FSMO roles to `DC02`.</li>
-                  <li><strong>DFS Namespaces & Redundancy:</strong> Designed Distributed File System (`\\lablogos.local\Condivise`) for departmental shares (Admin, Production, Tech) with multi-server replication to prevent single-point-of-failure data downtime.</li>
-                  <li><strong>Microsoft Entra ID Hybrid Cloud:</strong> Synchronized on-premises AD identities to Microsoft 365 (`logosrd.it`), managed Password Hash Synchronization (PHS), resolved third-party SafeNet federation redirects, and migrated from Entra Connect to Microsoft Entra Cloud Sync.</li>
-                  <li><strong>Veeam Backup & Automation:</strong> Deployed Veeam Backup appliance; resolved web service 503 dependencies; engineered the standalone PowerShell 7 and PySide6 M365 restore verification tool (`veeam-m365-export-automation`).</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <!-- Item 2: Isha Boutique -->
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-card">
-              <div class="timeline-header">
-                <div>
-                  <h3 class="timeline-role">Retail Sales Assistant & Operations Support</h3>
-                  <div class="timeline-company">Isha Boutique &bull; Family Business (Via Cappuccina, Mestre)</div>
-                </div>
-                <span class="timeline-period">2024 – 2026</span>
-              </div>
-              <div class="timeline-body">
-                <p>
-                  Managed day-to-day retail customer service, point-of-sale cash operations, restocking, customer consultations, and general operational support in a high-traffic urban clothing store. Developed strong interpersonal communication, responsibility, and commercial customer service habits.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Item 3: Ristorantino Da Carla -->
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-card">
-              <div class="timeline-header">
-                <div>
-                  <h3 class="timeline-role">Dining Room Service & Bilingual Customer Liaison</h3>
-                  <div class="timeline-company">Ristorantino Da Carla &bull; Via Roma, Mestre</div>
-                </div>
-                <span class="timeline-period">2026</span>
-              </div>
-              <div class="timeline-body">
-                <p>
-                  Welcomed customers, managed orders, and provided fast-paced table service. Leveraged fluent English to bridge communication between international non-Italian-speaking tourists and kitchen staff, cutting order processing delays by half and ensuring smooth customer experiences.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- =======================================================================
-         SKILLS MATRIX
-         ======================================================================= -->
-    <section id="skills">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag">Technical Capabilities</span>
-          <h2 class="section-title">Skills & Tooling Matrix</h2>
-          <p class="section-subtitle">
-            Core technical competencies developed through academic coursework, enterprise internship lab work, and self-hosted infrastructure.
-          </p>
-        </div>
-
-        <div class="skills-grid">
-          <!-- Systems & Virtualization -->
-          <div class="skill-category-card">
-            <div class="skill-cat-header">
-              <div class="skill-cat-icon">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
-                  <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
-                  <line x1="6" y1="6" x2="6.01" y2="6"></line>
-                  <line x1="6" y1="18" x2="6.01" y2="18"></line>
-                </svg>
-              </div>
-              <h3 class="skill-cat-title">Systems & Virtualization</h3>
-            </div>
-            <div class="skill-pills">
-              <span class="skill-badge">Windows Server 2025</span>
-              <span class="skill-badge">Active Directory (AD DS)</span>
-              <span class="skill-badge">VMware ESXi 7.0.3</span>
-              <span class="skill-badge">Dell iDRAC</span>
-              <span class="skill-badge">Debian 12 & Ubuntu</span>
-              <span class="skill-badge">Docker & Portainer</span>
-              <span class="skill-badge">QNAP NAS (RAID, iSCSI, SMB)</span>
-              <span class="skill-badge">DFS Replication</span>
-              <span class="skill-badge">Windows LAPS</span>
-            </div>
-          </div>
-
-          <!-- Cloud, Identity & Backup -->
-          <div class="skill-category-card">
-            <div class="skill-cat-header">
-              <div class="skill-cat-icon">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path>
-                </svg>
-              </div>
-              <h3 class="skill-cat-title">Cloud, Identity & Backup</h3>
-            </div>
-            <div class="skill-pills">
-              <span class="skill-badge">Microsoft Entra ID (Azure AD)</span>
-              <span class="skill-badge">Microsoft Entra Cloud Sync</span>
-              <span class="skill-badge">Password Hash Sync (PHS)</span>
-              <span class="skill-badge">Microsoft 365 Admin</span>
-              <span class="skill-badge">Veeam Backup & Replication</span>
-              <span class="skill-badge">Veeam Backup for M365</span>
-              <span class="skill-badge">Veeam Explorers (Exch/SP/OD)</span>
-              <span class="skill-badge">Vaultwarden Vault</span>
-            </div>
-          </div>
-
-          <!-- Networking & Protocols -->
-          <div class="skill-category-card">
-            <div class="skill-cat-header">
-              <div class="skill-cat-icon">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <line x1="2" y1="12" x2="22" y2="12"></line>
-                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-                </svg>
-              </div>
-              <h3 class="skill-cat-title">Networking (Cisco CCNA)</h3>
-            </div>
-            <div class="skill-pills">
-              <span class="skill-badge">IPv4 Subnetting & CIDR</span>
-              <span class="skill-badge">L3 Switching & VLANs</span>
-              <span class="skill-badge">RIP & Dynamic Routing</span>
-              <span class="skill-badge">DHCP Server Failover</span>
-              <span class="skill-badge">DNS Architecture</span>
-              <span class="skill-badge">Tailscale (WireGuard Mesh)</span>
-              <span class="skill-badge">Pi-hole DNS Sinkhole</span>
-              <span class="skill-badge">iSCSI & SMB Protocols</span>
-            </div>
-          </div>
-
-          <!-- Programming & Automation -->
-          <div class="skill-category-card">
-            <div class="skill-cat-header">
-              <div class="skill-cat-icon">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="16 18 22 12 16 6"></polyline>
-                  <polyline points="8 6 2 12 8 18"></polyline>
-                </svg>
-              </div>
-              <h3 class="skill-cat-title">Programming & Scripting</h3>
-            </div>
-            <div class="skill-pills">
-              <span class="skill-badge">PowerShell 7.0+ Scripting</span>
-              <span class="skill-badge">Python & PySide6 (Qt)</span>
-              <span class="skill-badge">Java (OOP, Multi-threading)</span>
-              <span class="skill-badge">C / C++ (Embedded & IoT)</span>
-              <span class="skill-badge">JavaScript (ES6+)</span>
-              <span class="skill-badge">HTML5 & Semantic CSS3</span>
-              <span class="skill-badge">React.js Fundamentals</span>
-            </div>
-          </div>
-
-          <!-- Databases & Data Formats -->
-          <div class="skill-category-card">
-            <div class="skill-cat-header">
-              <div class="skill-cat-icon">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
-                  <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
-                  <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
-                </svg>
-              </div>
-              <h3 class="skill-cat-title">Databases & Data Formats</h3>
-            </div>
-            <div class="skill-pills">
-              <span class="skill-badge">Relational SQL Databases</span>
-              <span class="skill-badge">JSON Architecture & Parsing</span>
-              <span class="skill-badge">Chart.js Visualization</span>
-              <span class="skill-badge">CSV Telemetry Feeds</span>
-              <span class="skill-badge">Cryptographic Hashing (SHA-256)</span>
-            </div>
-          </div>
-
-          <!-- Tools & Engineering Practices -->
-          <div class="skill-category-card">
-            <div class="skill-cat-header">
-              <div class="skill-cat-icon">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
-                </svg>
-              </div>
-              <h3 class="skill-cat-title">Tools & Engineering Workflows</h3>
-            </div>
-            <div class="skill-pills">
-              <span class="skill-badge">Git & GitHub</span>
-              <span class="skill-badge">VS Code</span>
-              <span class="skill-badge">Linux Bash CLI</span>
-              <span class="skill-badge">PyInstaller Packaging</span>
-              <span class="skill-badge">Uptime Kuma Alerts</span>
-              <span class="skill-badge">WinSCP & Remote Admin</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- =======================================================================
-         LANGUAGES & EDUCATION
-         ======================================================================= -->
-    <section>
-      <div class="container dual-section-grid">
-        <div class="info-card">
-          <h3>
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent-secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
-              <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
-            </svg>
-            Education & Academic Path
-          </h3>
-          <div style="margin-bottom: 20px;">
-            <div style="font-size: 1.15rem; font-weight: 700; color: var(--text-primary); margin-bottom: 4px;">
-              ITIS Carlo Zuccante &bull; Mestre (VE)
-            </div>
-            <div style="font-size: 14px; color: var(--accent-secondary); font-weight: 600; margin-bottom: 8px;">
-              Corso di Informatica & Software Development
-            </div>
-            <div style="font-size: 13.5px; color: var(--text-muted); line-height: 1.6;">
-              Entering 5th Year (Final Year) &bull; Expected Diploma: <strong>2027</strong><br>
-              Specializing in object-oriented software development (Java), microcontroller programming (C/C++), computer networks (Cisco CCNA curriculum), relational database management (SQL), and enterprise systems engineering.
-            </div>
-          </div>
-        </div>
-
-        <div class="info-card">
-          <h3>
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent-secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"></circle>
-              <line x1="2" y1="12" x2="22" y2="12"></line>
-              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-            </svg>
-            Languages & Communication
-          </h3>
-          <div class="language-list">
-            <div class="lang-item">
-              <span class="lang-name">Italian</span>
-              <span class="lang-level">Madrelingua (Native)</span>
-            </div>
-            <div class="lang-item">
-              <span class="lang-name">Bengali</span>
-              <span class="lang-level">Madrelingua (Native)</span>
-            </div>
-            <div class="lang-item">
-              <span class="lang-name">English</span>
-              <span class="lang-level">Fluente (Full Professional)</span>
-            </div>
-            <div class="lang-item">
-              <span class="lang-name">Hindi</span>
-              <span class="lang-level">Conversational (Spoken)</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- =======================================================================
-         CV VIEWER / DOWNLOAD SECTION
-         ======================================================================= -->
-    <section id="cv-section" style="background: rgba(15, 23, 42, 0.4); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
-      <div class="container" style="text-align: center; max-width: 800px;">
-        <span class="section-tag">Curriculum Vitae</span>
-        <h2 class="section-title">Official Resume & Qualifications</h2>
-        <p class="section-subtitle" style="margin: 0 auto 32px auto;">
-          Looking for a complete summary of my education, technical competencies, and professional background? View the interactive PDF reader directly on this site or download a local copy.
+    <!-- HOMELAB -->
+    <div class="page-section">
+      <div class="wrap">
+        <p class="label" style="margin-bottom: 8px;">Self-hosted infrastructure</p>
+        <h2 style="font-size: clamp(1.5rem, 4vw, 2.25rem); font-weight: 800; letter-spacing: var(--tracking-tight); margin-bottom: 8px;">Homelab</h2>
+        <p style="color: var(--ink-secondary); margin-bottom: 28px; max-width: 520px;">
+          A headless Debian 12 server running 24/7, managed via SSH and Docker Compose,
+          connected through a Tailscale WireGuard mesh.
         </p>
-
-        <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-          <button class="btn btn-primary" data-action="view-cv">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
-              <circle cx="12" cy="12" r="3"></circle>
-            </svg>
-            Open Interactive CV Viewer
-          </button>
-          <a href="assets/cv/Israk_Sarker_CV.pdf" download="Israk_Sarker_CV.pdf" class="btn btn-secondary">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-              <polyline points="7 10 12 15 17 10"></polyline>
-              <line x1="12" y1="15" x2="12" y2="3"></line>
-            </svg>
-            Download PDF Directly
-          </a>
-          <a href="assets/cv/Israk_Sarker_CV.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-              <polyline points="15 3 21 3 21 9"></polyline>
-              <line x1="10" y1="14" x2="21" y2="3"></line>
-            </svg>
-            Open in New Tab
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- =======================================================================
-         CONTACT SECTION
-         ======================================================================= -->
-    <section class="contact-section" id="contact">
-      <div class="container">
-        <div class="contact-box">
-          <span class="section-tag">Get in Touch</span>
-          <h2 class="section-title">Let's Connect & Collaborate</h2>
-          <p class="section-subtitle" style="margin: 0 auto;">
-            Whether you have an inquiry regarding systems administration, cloud infrastructure, internship opportunities, or interesting software projects, feel free to reach out.
-          </p>
-
-          <div class="contact-links">
-            <a href="mailto:israk.sarker08@gmail.com" class="btn btn-primary">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                <polyline points="22,6 12,13 2,6"></polyline>
-              </svg>
-              israk.sarker08@gmail.com
-            </a>
-            <a href="https://linkedin.com/in/israk-sarker" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-              </svg>
-              LinkedIn Profile
-            </a>
-            <a href="https://github.com/israk101" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-              </svg>
-              GitHub / israk101
-            </a>
+        <div class="homelab-grid">
+          <div class="homelab-item">
+            <div class="homelab-item-name">Pi-hole</div>
+            <div class="homelab-item-desc">Network-wide DNS ad-blocking</div>
+          </div>
+          <div class="homelab-item">
+            <div class="homelab-item-name">Vaultwarden</div>
+            <div class="homelab-item-desc">Self-hosted password vault</div>
+          </div>
+          <div class="homelab-item">
+            <div class="homelab-item-name">Uptime Kuma</div>
+            <div class="homelab-item-desc">Service monitoring & alerts</div>
+          </div>
+          <div class="homelab-item">
+            <div class="homelab-item-name">Portainer</div>
+            <div class="homelab-item-desc">Docker container management</div>
+          </div>
+          <div class="homelab-item">
+            <div class="homelab-item-name">Tailscale</div>
+            <div class="homelab-item-desc">WireGuard mesh VPN</div>
+          </div>
+          <div class="homelab-item">
+            <div class="homelab-item-name">Homepage</div>
+            <div class="homelab-item-desc">Dashboard & system telemetry</div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+
   </main>
 
-  <!-- =========================================================================
-       FOOTER
-       ========================================================================= -->
-  <footer class="footer">
-    <div class="container">
-      <p>&copy; 2026 Israk Sarker. Designed with clean semantic HTML5, modern CSS3 & vanilla JS.</p>
-      <p style="margin-top: 6px; font-size: 12.5px;">Hosted with pride on GitHub Pages &bull; Mestre, Venezia, Italy</p>
+  <!-- CONTACT -->
+  <footer id="contact">
+    <div class="wrap footer-contact">
+      <h2 class="footer-big">Got a question?</h2>
+      <a href="mailto:israk.sarker08@gmail.com" class="footer-email">israk.sarker08@gmail.com</a>
+      <div class="footer-links">
+        <a href="https://linkedin.com/in/israk-sarker" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/israk101" target="_blank" rel="noopener">GitHub</a>
+        <a href="cv.html">CV</a>
+      </div>
+    </div>
+    <div class="wrap footer-bottom">
+      <p>© 2026 Israk Sarker · Mestre, Venezia, Italy</p>
     </div>
   </footer>
 
-  <!-- =========================================================================
-       CV MODAL VIEWER
-       ========================================================================= -->
-  <div class="modal-overlay" id="cvModalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <div class="cv-modal">
-      <div class="modal-header">
-        <div class="modal-title-group">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent-secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-            <polyline points="14 2 14 8 20 8"></polyline>
-            <line x1="16" y1="13" x2="8" y2="13"></line>
-            <line x1="16" y1="17" x2="8" y2="17"></line>
-            <polyline points="10 9 9 9 8 9"></polyline>
-          </svg>
-          <span class="modal-title" id="modalTitle">Curriculum Vitae — Israk Sarker</span>
-        </div>
-
-        <div class="modal-actions">
-          <a href="assets/cv/Israk_Sarker_CV.pdf" download="Israk_Sarker_CV.pdf" class="btn btn-sm btn-primary">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-              <polyline points="7 10 12 15 17 10"></polyline>
-              <line x1="12" y1="15" x2="12" y2="3"></line>
-            </svg>
-            Download PDF
-          </a>
-          <a href="assets/cv/Israk_Sarker_CV.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-              <polyline points="15 3 21 3 21 9"></polyline>
-              <line x1="10" y1="14" x2="21" y2="3"></line>
-            </svg>
-            Full Window
-          </a>
-          <button class="modal-close-btn" data-action="close-cv" aria-label="Close CV viewer">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="18" y1="6" x2="6" y2="18"></line>
-              <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
-          </button>
-        </div>
-      </div>
-
-      <div class="modal-body">
-        <object data="assets/cv/Israk_Sarker_CV.pdf#toolbar=1&navpanes=0" type="application/pdf" width="100%" height="100%">
-          <iframe src="assets/cv/Israk_Sarker_CV.pdf" width="100%" height="100%">
-            <p style="color: #fff; padding: 24px; text-align: center;">
-              Your browser does not support inline PDF viewing. 
-              <a href="assets/cv/Israk_Sarker_CV.pdf" download="Israk_Sarker_CV.pdf" style="color: var(--accent-secondary); text-decoration: underline;">
-                Click here to download Israk Sarker's CV directly.
-              </a>
-            </p>
-          </iframe>
-        </object>
-      </div>
-    </div>
-  </div>
-
-  <!-- Main JavaScript Bundle -->
   <script src="main.js"></script>
 </body>
-
 </html>
