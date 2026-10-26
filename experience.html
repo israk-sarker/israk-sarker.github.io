@@ -23,8 +23,8 @@
           <li><a href="index.html#contact">Contact</a></li>
         </ul>
       </nav>
-      <button class="nav-toggle" id="navToggle" aria-label="Menu">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-controls="navLinks" aria-expanded="false">
+        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
     </div>
   </header>
@@ -44,19 +44,19 @@
               <h2 class="tl-role">IT Infrastructure & Systems Administration Intern</h2>
               <div class="tl-company">Logos Technologies</div>
             </div>
-            <span class="tl-period">Sept — Oct 2026</span>
+            <span class="tl-period">September — October 2026</span>
           </div>
           <div class="tl-body">
             <p>
-              Hands-on work across the full stack of a business IT lab: physical Dell servers, hypervisor virtualization,
-              Windows Server domain infrastructure, enterprise storage, Microsoft 365 identity, and backup automation.
+              Hands-on work in an isolated IT lab across server virtualization, Windows Server, storage, identity,
+              file services, and backup automation.
             </p>
             <ul>
-              <li>Deployed VMware ESXi 7.0.3 on Dell server hardware managed via iDRAC. Connected QNAP NAS iSCSI block storage as a VMFS datastore.</li>
-              <li>Administered a multi-DC Active Directory topology (DC01, DC02, DC03) for <code>lablogos.local</code>. Configured DNS zones, DHCP failover scopes, and resolved a DC failure by transferring all 5 FSMO roles to DC02.</li>
-              <li>Designed DFS namespaces for departmental file shares across multiple servers.</li>
-              <li>Synchronized on-premises AD identities to Microsoft 365 via Entra Cloud Sync, resolved third-party SafeNet federation redirects, and migrated from Entra Connect to cloud-managed auth.</li>
-              <li>Built the <a href="projects/veeam-m365.html" style="color: var(--accent);">Veeam M365 Restore Tester</a> — a PowerShell 7 + PySide6 automation tool that performs non-destructive restore verification with SHA-256 integrity checks and generates audit reports.</li>
+              <li>Deployed VMware ESXi 7.0.3 on Dell server hardware managed via iDRAC and connected QNAP NAS iSCSI block storage as a VMFS datastore.</li>
+              <li>Configured Windows Server domain services, DNS, and DHCP failover. The final lab topology used DC02 and DC03; all five FSMO roles were verified on DC02 after recovery work.</li>
+              <li>Rebuilt the departmental DFS namespace and replication configuration on DC02/DC03. The final target list and failover test evidence were not recorded.</li>
+              <li>Replaced Entra Connect Sync with Microsoft Entra Cloud Sync. Separately changed the custom domain from federated to managed authentication while troubleshooting SafeNet sign-in redirects.</li>
+              <li>Built the <a href="projects/veeam-m365.html" style="color: var(--accent);">Veeam M365 Restore Tester</a>, a local-server PowerShell 7 and PySide6 application that exports sampled items to the VB365 host and records file-size and SHA-256 evidence.</li>
             </ul>
           </div>
         </div>
@@ -89,7 +89,7 @@
           <div class="tl-body">
             <p>
               Table service and order management. Used fluent English to bridge communication between
-              international tourists and the kitchen staff, cutting order miscommunications in half.
+              international tourists and the kitchen staff, reducing the time needed for those exchanges by at least half.
             </p>
           </div>
         </div>
@@ -112,7 +112,7 @@
             <span class="skill-tag">Docker</span>
             <span class="skill-tag">QNAP NAS</span>
             <span class="skill-tag">DFS</span>
-            <span class="skill-tag">LAPS</span>
+            <span class="skill-tag">LAPS pilot · not fully validated</span>
           </div>
         </div>
 
@@ -137,7 +137,7 @@
             <span class="skill-tag">Tailscale / WireGuard</span>
             <span class="skill-tag">iSCSI</span>
             <span class="skill-tag">SMB</span>
-            <span class="skill-tag">Cisco CCNA</span>
+            <span class="skill-tag">Cisco CCNA coursework</span>
           </div>
         </div>
 
@@ -171,7 +171,7 @@
 
     <!-- EDUCATION & LANGUAGES -->
     <div class="page-section">
-      <div class="wrap" style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px;">
+      <div class="wrap education-languages-grid">
 
         <div>
           <p class="label" style="margin-bottom: 16px;">Education</p>
@@ -190,7 +190,7 @@
               <span style="font-family: var(--font-mono); font-size: 12px; color: var(--ink-muted);">Native</span>
             </div>
             <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--border);">
-              <span style="font-weight: 600; font-size: 14px;">Bengali</span>
+              <span style="font-weight: 600; font-size: 14px;">Bangla</span>
               <span style="font-family: var(--font-mono); font-size: 12px; color: var(--ink-muted);">Native</span>
             </div>
             <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--border);">
@@ -199,7 +199,7 @@
             </div>
             <div style="display: flex; justify-content: space-between; padding: 10px 0;">
               <span style="font-weight: 600; font-size: 14px;">Hindi</span>
-              <span style="font-family: var(--font-mono); font-size: 12px; color: var(--ink-muted);">Conversational</span>
+              <span style="font-family: var(--font-mono); font-size: 12px; color: var(--ink-muted);">Spoken</span>
             </div>
           </div>
         </div>

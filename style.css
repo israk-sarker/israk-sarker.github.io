@@ -1,28 +1,28 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap');
-
 /* ==========================================================================
-   SWISS DESIGN SYSTEM — TOKENS
+   PORTFOLIO DESIGN TOKENS
    ========================================================================== */
 :root {
-  --bg-canvas: #0d0f14;
-  --bg-surface: #13161d;
-  --bg-elevated: #1a1d26;
-  --bg-hover: #1f2330;
+  --slate-deep: #2C3E50;
+  --slate: #34495E;
+  --slate-muted: #7F8C8D;
+  --slate-border: #BDC3C7;
+  --slate-paper: #ECF0F1;
 
-  --ink: #f1f3f7;
-  --ink-secondary: #8b95a8;
-  --ink-muted: #5a6478;
-  --ink-faint: #3a4050;
+  --bg-canvas: var(--slate-paper);
+  --bg-surface: var(--slate-paper);
+  --bg-elevated: var(--slate-border);
+  --bg-hover: var(--slate-border);
 
-  --border: rgba(255, 255, 255, 0.08);
-  --border-hover: rgba(255, 255, 255, 0.16);
+  --ink: var(--slate-deep);
+  --ink-secondary: var(--slate);
+  --ink-muted: var(--slate);
+  --ink-faint: var(--slate-muted);
 
-  --accent: #5b8cf7;
-  --accent-muted: rgba(91, 140, 247, 0.12);
+  --border: var(--slate-border);
+  --border-hover: var(--slate-muted);
 
-  --green: #34d399;
-  --yellow: #fbbf24;
-  --red: #f87171;
+  --accent: var(--slate);
+  --accent-muted: rgba(52, 73, 94, 0.12);
 
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
@@ -99,7 +99,7 @@ img { max-width: 100%; height: auto; display: block; }
   position: fixed;
   top: 0; left: 0; right: 0;
   height: var(--nav-h);
-  background: rgba(13, 15, 20, 0.92);
+  background: rgba(236, 240, 241, 0.96);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
@@ -148,6 +148,14 @@ img { max-width: 100%; height: auto; display: block; }
   color: var(--ink);
   cursor: pointer;
   padding: 6px;
+  border-radius: 4px;
+}
+
+.nav-toggle:focus-visible,
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--slate-muted);
+  outline-offset: 3px;
 }
 
 /* ==========================================================================
@@ -157,6 +165,26 @@ img { max-width: 100%; height: auto; display: block; }
   padding-top: calc(var(--nav-h) + 64px);
   padding-bottom: 64px;
   border-bottom: 1px solid var(--border);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 320px);
+  align-items: center;
+  gap: clamp(32px, 6vw, 72px);
+}
+
+.hero-copy { min-width: 0; }
+
+.profile-photo {
+  width: min(100%, 320px);
+  aspect-ratio: 1;
+  object-fit: cover;
+  object-position: center;
+  justify-self: end;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--bg-elevated);
 }
 
 .hero-statement {
@@ -206,13 +234,13 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .btn-fill {
-  background: var(--ink);
-  color: var(--bg-canvas);
+  background: var(--slate);
+  color: var(--slate-paper);
   border: 1px solid transparent;
 }
 
 .btn-fill:hover {
-  background: #dde0e6;
+  background: var(--slate-deep);
 }
 
 .btn-ghost {
@@ -298,18 +326,24 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .status-complete {
-  background: rgba(52, 211, 153, 0.12);
-  color: var(--green);
+  background: var(--slate-deep);
+  color: var(--slate-paper);
 }
 
 .status-prototype {
-  background: rgba(251, 191, 36, 0.12);
-  color: var(--yellow);
+  background: var(--slate-border);
+  color: var(--slate-deep);
 }
 
 .status-coursework {
-  background: rgba(139, 149, 168, 0.1);
-  color: var(--ink-secondary);
+  background: transparent;
+  color: var(--slate);
+  border: 1px solid var(--border);
+}
+
+.status-lab {
+  background: var(--slate);
+  color: var(--slate-paper);
 }
 
 .work-year {
@@ -353,10 +387,7 @@ img { max-width: 100%; height: auto; display: block; }
   background: var(--bg-elevated);
 }
 
-.dot { width: 8px; height: 8px; border-radius: 50%; }
-.dot-r { background: var(--red); opacity: 0.7; }
-.dot-y { background: var(--yellow); opacity: 0.7; }
-.dot-g { background: var(--green); opacity: 0.7; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--slate-muted); }
 
 .app-frame-title {
   margin: 0 auto;
@@ -432,6 +463,7 @@ img { max-width: 100%; height: auto; display: block; }
 /* Screenshot tabs */
 .screenshot-tabs {
   display: flex;
+  flex-wrap: wrap;
   gap: 6px;
   margin-top: 12px;
 }
@@ -450,6 +482,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .ss-tab.active,
+.ss-tab[aria-pressed="true"],
 .ss-tab:hover {
   color: var(--ink);
   background: var(--bg-hover);
@@ -469,6 +502,7 @@ img { max-width: 100%; height: auto; display: block; }
   padding: 20px;
   border: 1px solid var(--border);
   border-radius: 8px;
+  background: var(--bg-surface);
   transition: border-color 0.15s;
 }
 
@@ -619,6 +653,31 @@ img { max-width: 100%; height: auto; display: block; }
   margin-bottom: 20px;
 }
 
+.cv-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.cv-context {
+  margin: 0 0 16px;
+  color: var(--ink-secondary);
+  font-size: 13px;
+}
+
+.cv-context a {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.education-languages-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+}
+
 /* ==========================================================================
    CASE STUDY PAGE
    ========================================================================== */
@@ -691,6 +750,107 @@ img { max-width: 100%; height: auto; display: block; }
   margin: 40px 0;
 }
 
+.infra-diagram {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(180px, 0.55fr);
+  align-items: center;
+  gap: 20px;
+  margin: 24px 0 36px;
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--bg-surface);
+}
+
+.homelab-diagram { grid-template-columns: minmax(0, 1fr); }
+.homelab-services { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.homelab-link { margin-top: 24px; }
+
+.infra-onprem {
+  display: grid;
+  gap: 12px;
+}
+
+.infra-kicker {
+  margin: 0;
+  color: var(--ink-muted);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.infra-node {
+  padding: 16px;
+  border: 1px solid var(--border-hover);
+  border-radius: 8px;
+  background: var(--bg-canvas);
+  color: var(--ink);
+  font-size: 13px;
+}
+
+.infra-host { background: var(--bg-elevated); }
+
+.infra-vms {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.infra-vms span {
+  padding: 8px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg-canvas);
+  color: var(--ink-secondary);
+  font-size: 12px;
+}
+
+.infra-bridge {
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.infra-mobile-arrow { display: none; }
+
+.infra-cloud {
+  background: var(--slate);
+  color: var(--slate-paper);
+  font-weight: 600;
+  text-align: center;
+}
+
+.infra-diagram figcaption {
+  grid-column: 1 / -1;
+  margin: 0;
+  color: var(--ink-secondary);
+  font-size: 12px;
+}
+
+.case-list {
+  margin: 0 0 18px;
+  padding-left: 22px;
+  list-style: disc;
+  color: var(--ink-secondary);
+}
+
+.case-list li {
+  margin-bottom: 8px;
+  padding-left: 4px;
+  line-height: 1.65;
+}
+
+.case-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 40px 0 80px;
+}
+
 /* ==========================================================================
    CONTACT / FOOTER
    ========================================================================== */
@@ -734,7 +894,7 @@ img { max-width: 100%; height: auto; display: block; }
   padding: 20px 0;
   border-top: 1px solid var(--border);
   font-size: 12px;
-  color: var(--ink-faint);
+  color: var(--ink-secondary);
 }
 
 /* ==========================================================================
@@ -782,7 +942,7 @@ section {
 
 .button:hover {
   background: var(--bg-hover);
-  color: #fff;
+  color: var(--ink);
 }
 
 /* Legacy controls & inputs */
@@ -817,7 +977,7 @@ canvas {
   height: min(65vh, 600px);
   display: flex;
   margin: 0 auto;
-  background-color: #0b0b0b;
+  background-color: var(--slate-border);
   border: 1px solid var(--border);
   border-radius: 8px;
 }
@@ -853,22 +1013,42 @@ canvas {
     position: fixed;
     top: var(--nav-h);
     left: 0; right: 0;
-    background: rgba(13, 15, 20, 0.98);
+    background: rgba(236, 240, 241, 0.98);
     backdrop-filter: blur(12px);
     flex-direction: column;
     padding: 24px;
     gap: 20px;
     border-bottom: 1px solid var(--border);
     transform: translateY(-120%);
-    transition: transform 0.3s var(--ease);
+    visibility: hidden;
+    pointer-events: none;
+    transition: transform 0.3s var(--ease), visibility 0s linear 0.3s;
   }
 
-  .nav-links.open { transform: translateY(0); }
+  .nav-links.open {
+    transform: translateY(0);
+    visibility: visible;
+    pointer-events: auto;
+    transition: transform 0.3s var(--ease), visibility 0s;
+  }
   .nav-toggle { display: block; }
 
   .spotlight { grid-template-columns: 1fr; }
   .homelab-grid { grid-template-columns: 1fr; }
   .case-gallery { grid-template-columns: 1fr; }
+  .infra-diagram { grid-template-columns: 1fr; padding: 18px; }
+  .infra-vms { grid-template-columns: 1fr; }
+  .infra-desktop-arrow { display: none; }
+  .infra-mobile-arrow { display: inline; }
+  .infra-diagram figcaption { grid-column: 1; }
+  .page-section { padding: 48px 0; }
+  .hero-grid { grid-template-columns: 1fr; gap: 24px; }
+  .profile-photo { grid-row: 1; width: min(68vw, 260px); justify-self: center; }
+  .hero-copy { grid-row: 2; }
+  .education-languages-grid { grid-template-columns: 1fr; gap: 32px; }
+  .work-table a { gap: 10px; align-items: flex-start; }
+  .work-row-left { flex-wrap: wrap; gap: 6px 10px; }
+  .work-title { white-space: normal; overflow: visible; text-overflow: clip; }
 
   .hero-statement { font-size: clamp(2rem, 10vw, 3rem); }
   section { padding: 32px 16px; }

@@ -23,8 +23,8 @@
           <li><a href="index.html#contact">Contact</a></li>
         </ul>
       </nav>
-      <button class="nav-toggle" id="navToggle" aria-label="Menu">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-controls="navLinks" aria-expanded="false">
+        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
     </div>
   </header>
@@ -37,21 +37,41 @@
           Systems tools, web applications, and school experiments. Labeled honestly by status.
         </p>
 
-        <!-- Completed -->
-        <p class="label" style="margin-bottom: 16px;">Completed / Released</p>
+        <!-- Completed project and completed lab build -->
+        <p class="label" style="margin-bottom: 16px;">Released and completed lab work</p>
         <div class="work-table" style="margin-bottom: 48px;">
           <a href="projects/veeam-m365.html">
             <div class="work-row-left">
               <span class="work-title">Veeam M365 Restore Tester</span>
-              <span class="work-status status-complete">v1.2.4</span>
+              <span class="work-status status-complete">Released · v1.2.4</span>
             </div>
             <span class="work-year">2026</span>
             <svg class="work-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 7h12m0 0L8 2m5 5-5 5"/></svg>
           </a>
+          <a href="projects/infrastructure-lab.html">
+            <div class="work-row-left">
+              <span class="work-title">Virtualization &amp; Infrastructure Lab</span>
+              <span class="work-status status-lab">Lab completed</span>
+            </div>
+            <span class="work-year">2026</span>
+            <svg class="work-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 7h12m0 0L8 2m5 5-5 5"/></svg>
+          </a>
+        </div>
+
+        <p class="label" style="margin-bottom: 16px;">Personal infrastructure</p>
+        <div class="work-table" style="margin-bottom: 48px;">
+          <a href="projects/homelab.html">
+            <div class="work-row-left">
+              <span class="work-title">Self-Hosted Debian Homelab</span>
+              <span class="work-status status-lab">Personal lab</span>
+            </div>
+            <span class="work-year">2026</span>
+            <svg class="work-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 7h12m0 0L8 2m5 5-5 5"/></svg>
+          </a>
         </div>
 
         <!-- Prototypes -->
-        <p class="label" style="margin-bottom: 16px;">Prototypes / In Progress</p>
+        <p class="label" style="margin-bottom: 16px;">Prototypes</p>
         <div class="work-table" style="margin-bottom: 48px;">
           <a href="./valorant-tracker/index.html">
             <div class="work-row-left">
@@ -68,6 +88,14 @@
             </div>
             <span class="work-year">2025</span>
             <svg class="work-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 7h12m0 0L8 2m5 5-5 5"/></svg>
+          </a>
+          <a href="./WeatherStation-lite/index.html">
+            <div class="work-row-left">
+              <span class="work-title">Weather Station Lite</span>
+              <span class="work-status status-prototype">Prototype</span>
+            </div>
+            <span class="work-year">2025</span>
+            <svg class="work-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 7h12m0 0L8 2m5 5-5 5"/></svg>
           </a>
         </div>
 
@@ -121,6 +149,14 @@
             </div>
             <span class="work-year">2024</span>
             <svg class="work-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 7h12m0 0L8 2m5 5-5 5"/></svg>
+          </a>
+          <a href="./Colori/frontEnd/index.html">
+            <div class="work-row-left">
+              <span class="work-title">Color Temperature Quiz</span>
+              <span class="work-status status-coursework">Student experiment</span>
+            </div>
+            <span class="work-year">2024</span>
+            <svg class="work-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 7h12m0 0L8 2m5 5-5 5"/></svg>
           </a>
         </div>
       </div>

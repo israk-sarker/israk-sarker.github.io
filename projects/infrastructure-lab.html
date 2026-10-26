@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Virtualization and Infrastructure Lab — Israk Sarker</title>
+  <meta name="description" content="A documented systems infrastructure lab covering VMware, QNAP storage, Windows Server, Active Directory, DFS, and Microsoft Entra Cloud Sync.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap">
+      <a href="../index.html" class="nav-name">Israk Sarker</a>
+      <nav aria-label="Main navigation">
+        <ul class="nav-links" id="navLinks">
+          <li><a href="../projects.html" aria-current="page">Work</a></li>
+          <li><a href="../experience.html">Experience</a></li>
+          <li><a href="../cv.html">CV</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-controls="navLinks" aria-expanded="false">
+        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <div class="case-breadcrumb">
+        <a href="../projects.html" class="arrow-link" style="color: var(--ink-muted); flex-direction: row-reverse;">
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" style="transform: rotate(180deg);"><path d="M1 7h12m0 0L8 2m5 5-5 5"/></svg>
+          All work
+        </a>
+      </div>
+
+      <h1 class="case-title">Virtualization and Infrastructure Lab</h1>
+
+      <div class="case-meta">
+        <div class="case-meta-cell"><dt>Context</dt><dd>Isolated training lab</dd></div>
+        <div class="case-meta-cell"><dt>Period</dt><dd>September 2026</dd></div>
+        <div class="case-meta-cell"><dt>Focus</dt><dd>Systems administration</dd></div>
+        <div class="case-meta-cell"><dt>Environment</dt><dd>VMware ESXi · Windows Server · QNAP</dd></div>
+        <div class="case-meta-cell"><dt>Status</dt><dd>Lab build completed; limits documented</dd></div>
+      </div>
+
+      <div class="case-body">
+        <h3>Project overview</h3>
+        <p>
+          I built and troubleshot a small virtualized business-style environment to practice the dependencies
+          between storage, virtualization, network services, directory services, shared files, and cloud identity.
+          This was a laboratory build, not a production deployment.
+        </p>
+
+        <h3>Lab layout</h3>
+      </div>
+
+        <figure class="infra-diagram" aria-label="Diagram of the lab host, storage, Windows servers, client, and Microsoft Entra Cloud Sync">
+          <div class="infra-onprem">
+            <p class="infra-kicker">On-premises lab</p>
+            <div class="infra-node infra-host">
+              <strong>Dell server · VMware ESXi 7.0.3</strong>
+              <div class="infra-vms">
+                <span>DC02 · AD DS, DNS, DHCP</span>
+                <span>DC03 · AD DS, DNS, DHCP</span>
+                <span>Windows client</span>
+              </div>
+            </div>
+            <div class="infra-node">QNAP NAS · iSCSI datastore and lab storage</div>
+          </div>
+          <div class="infra-bridge">
+            <span class="infra-desktop-arrow">Microsoft Entra Cloud Sync →</span>
+            <span class="infra-mobile-arrow">Microsoft Entra Cloud Sync ↓</span>
+          </div>
+          <div class="infra-node infra-cloud">Microsoft Entra ID</div>
+          <figcaption>
+            Simplified final lab topology. The diagram omits internal hostnames, tenant identifiers, and IP addresses.
+          </figcaption>
+        </figure>
+
+      <div class="case-body">
+        <h3>Work completed</h3>
+        <ul class="case-list">
+          <li>Installed VMware ESXi 7.0.3 on Dell server hardware and connected QNAP iSCSI storage for virtual machines.</li>
+          <li>Configured Windows Server domain services, DNS, DHCP scopes, and DHCP failover.</li>
+          <li>Recovered directory operations after a domain-controller failure. All five FSMO roles were verified on DC02; the final domain-controller pair was DC02 and DC03.</li>
+          <li>Rebuilt departmental file shares and the DFS namespace/replication configuration on the final server pair.</li>
+          <li>Replaced Entra Connect Sync with Microsoft Entra Cloud Sync. Separately moved the custom domain from federated to managed authentication during SafeNet sign-in troubleshooting.</li>
+        </ul>
+
+        <h3>Recorded validation</h3>
+        <ul class="case-list">
+          <li>After directory resynchronization, the replication summary reported zero failures across five naming contexts in both directions.</li>
+          <li>The final FSMO role ownership was checked and found on DC02.</li>
+          <li>A lab client received the configured DHCP settings.</li>
+          <li>Microsoft Entra Cloud Sync was enabled for the intended user scope and synchronization was verified.</li>
+        </ul>
+
+        <h3>Limits and remaining validation</h3>
+        <p>
+          The final DFS target list and failover test evidence were not recorded. The Windows LAPS pilot was configured,
+          but password decryption, managed local-account sign-in, and rotation were not fully validated. A final backup
+          and restore from the newer repository disk was also not recorded. These are limits of the available lab
+          evidence, not claims of production readiness.
+        </p>
+        <p>
+          The environment relied on one ESXi host and one QNAP NAS, so those remained shared points of failure.
+          The lab records also do not establish an independent immutable backup copy.
+        </p>
+      </div>
+
+      <div class="case-actions">
+        <a href="../experience.html" class="btn btn-fill">See experience →</a>
+        <a href="../projects.html" class="btn btn-ghost">Back to all work</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap footer-bottom">
+      <p>© 2026 Israk Sarker · Mestre, Venezia, Italy</p>
+    </div>
+  </footer>
+  <script src="../main.js"></script>
+</body>
+</html>

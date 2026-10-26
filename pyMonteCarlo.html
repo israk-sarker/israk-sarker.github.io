@@ -15,8 +15,8 @@
             <div class="slidercontainer">
                 <input type="range" class="slider" min="1" max="1000" value="100" id="trappSlider">
             </div>
-            <canvas id="canvasTrapezi" width="800" height="400" style="background-color: #f0f0f0;"></canvas>
-            <p id="risultatoTrapezi" style="color: #0bc0e0;">Calcolo in corso...</p>
+            <canvas id="canvasTrapezi" width="800" height="400" style="background-color: #ECF0F1;"></canvas>
+            <p id="risultatoTrapezi" style="color: #34495E;">Calcolo in corso...</p>
         </section>
 
         <section style="max-width: 900px;">
@@ -24,8 +24,8 @@
             <div class="slidercontainer">
                 <input type="range" class="slider" min="1" max="70000" value="100" id="dotsSlider">
             </div>
-            <canvas id="canvasMonteCarlo" width="400" height="400" style="background-color: #f0f0f0; border: 1px solid #ccc;"></canvas>
-            <p id="risultatoMonteCarlo" style="color: #0bc0e0;">Calcolo in corso...</p>
+            <canvas id="canvasMonteCarlo" width="400" height="400" style="background-color: #ECF0F1; border: 1px solid #BDC3C7;"></canvas>
+            <p id="risultatoMonteCarlo" style="color: #34495E;">Calcolo in corso...</p>
         </section>
 
         <section style="max-width: 200px;">
@@ -71,7 +71,7 @@
                 ctxT.lineTo(x1,y1);
                 ctxT.lineTo(x2,y2);
                 ctxT.lineTo(x2,0);
-                ctxT.strokeStyle="red";
+                ctxT.strokeStyle="#34495E";
                 ctxT.lineWidth=0.5;
                 ctxT.stroke();
             }
@@ -96,12 +96,12 @@
 
             let nPunti = parseInt(dSlider.value);
 
-            ctxM.fillStyle = "#ffff00";
+            ctxM.fillStyle = "#BDC3C7";
             ctxM.fillRect(0,0,size,size);
 
             ctxM.beginPath();
             ctxM.arc(center,center,rM,0,Math.PI*2);
-            ctxM.fillStyle="#87ceeb";
+            ctxM.fillStyle="#ECF0F1";
             ctxM.fill();
             ctxM.stroke();
 
@@ -114,9 +114,9 @@
 
                 if(randX*randX + randY*randY <= 1){
                     puntiNelCerchio++;
-                    ctxM.fillStyle="blue";
+                    ctxM.fillStyle="#2C3E50";
                 } else {
-                    ctxM.fillStyle="red";
+                    ctxM.fillStyle="#7F8C8D";
                 }
 
                 let drawX = center + randX*rM;

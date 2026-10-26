@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Self-Hosted Debian Homelab — Israk Sarker</title>
+  <meta name="description" content="A personal headless Debian 12 home server running Docker services for DNS, password management, monitoring, remote access, and a dashboard.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap">
+      <a href="../index.html" class="nav-name">Israk Sarker</a>
+      <nav aria-label="Main navigation">
+        <ul class="nav-links" id="navLinks">
+          <li><a href="../projects.html" aria-current="page">Work</a></li>
+          <li><a href="../experience.html">Experience</a></li>
+          <li><a href="../cv.html">CV</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-controls="navLinks" aria-expanded="false">
+        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <div class="case-breadcrumb">
+        <a href="../projects.html" class="arrow-link" style="color: var(--ink-muted); flex-direction: row-reverse;">
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" style="transform: rotate(180deg);"><path d="M1 7h12m0 0L8 2m5 5-5 5"/></svg>
+          All work
+        </a>
+      </div>
+
+      <h1 class="case-title">Self-Hosted Debian Homelab</h1>
+
+      <div class="case-meta">
+        <div class="case-meta-cell"><dt>Context</dt><dd>Personal home server</dd></div>
+        <div class="case-meta-cell"><dt>Platform</dt><dd>Debian 12 Bookworm</dd></div>
+        <div class="case-meta-cell"><dt>Hardware</dt><dd>HP Pavilion laptop · 8th-generation Intel Core i3 · 4 GB RAM</dd></div>
+        <div class="case-meta-cell"><dt>Runtime</dt><dd>Docker · Portainer</dd></div>
+        <div class="case-meta-cell"><dt>Status</dt><dd>Personal lab</dd></div>
+      </div>
+
+      <div class="case-body">
+        <h3>Overview</h3>
+        <p>
+          I use a headless Debian 12 laptop as a small home server. The setup gives me practical experience
+          running containerized services on limited hardware and maintaining a self-hosted environment.
+        </p>
+
+        <h3>Service layout</h3>
+      </div>
+
+      <figure class="infra-diagram homelab-diagram" aria-label="Debian home server hosting Docker services">
+        <div class="infra-onprem">
+          <p class="infra-kicker">HP Pavilion · Debian 12</p>
+          <div class="infra-node infra-host">
+            <strong>Docker services</strong>
+            <div class="infra-vms homelab-services">
+              <span>Pi-hole · DNS filtering</span>
+              <span>Vaultwarden · password manager</span>
+              <span>Uptime Kuma · monitoring</span>
+              <span>Portainer · container management</span>
+              <span>Tailscale · remote access</span>
+              <span>Homepage · service dashboard</span>
+            </div>
+          </div>
+        </div>
+        <figcaption>
+          Service overview based on the supplied project notes. It does not make an uptime or public-availability claim.
+        </figcaption>
+      </figure>
+
+      <div class="case-body">
+        <h3>What I practice</h3>
+        <ul class="case-list">
+          <li>Operating a headless Debian server.</li>
+          <li>Running and organizing Docker services with Portainer.</li>
+          <li>Using Tailscale for private remote access.</li>
+          <li>Combining DNS filtering, password management, monitoring, and a service dashboard on one host.</li>
+        </ul>
+        <p>
+          This is a personal lab for learning and home use. The available notes do not document service uptime,
+          external availability, backups, or a production recovery plan.
+        </p>
+      </div>
+
+      <div class="case-actions">
+        <a href="../projects.html" class="btn btn-fill">Back to all work</a>
+        <a href="../index.html#contact" class="btn btn-ghost">Contact</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap footer-bottom">
+      <p>© 2026 Israk Sarker · Mestre, Venezia, Italy</p>
+    </div>
+  </footer>
+  <script src="../main.js"></script>
+</body>
+</html>

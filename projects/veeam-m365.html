@@ -23,8 +23,8 @@
           <li><a href="../index.html#contact">Contact</a></li>
         </ul>
       </nav>
-      <button class="nav-toggle" id="navToggle" aria-label="Menu">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-controls="navLinks" aria-expanded="false">
+        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
     </div>
   </header>
@@ -59,11 +59,11 @@
         </div>
         <div class="case-meta-cell">
           <dt>Stack</dt>
-          <dd>PowerShell 7, PySide6, Veeam SDK</dd>
+          <dd>PowerShell 7, PySide6, Veeam.Archiver.PowerShell</dd>
         </div>
         <div class="case-meta-cell">
           <dt>Status</dt>
-          <dd>Completed v1.2.4</dd>
+          <dd>Released v1.2.4 · lab validated</dd>
         </div>
         <div class="case-meta-cell">
           <dt>Repository</dt>
@@ -75,18 +75,17 @@
       <div class="case-body">
         <h3>The problem</h3>
         <p>
-          A backup job completing successfully doesn't prove that data can actually be restored when disaster strikes.
-          Organizations running Veeam Backup for Microsoft 365 need a repeatable way to verify that Exchange emails,
-          OneDrive files, and SharePoint documents can be extracted from restore points — not just that a backup
-          job reported "success."
+          A successful backup job is not the same as evidence that a selected item can be extracted from a restore
+          point. This project turns a recurring manual check into a repeatable sample-export workflow for three
+          Microsoft 365 workloads.
         </p>
 
         <h3>What I built</h3>
         <p>
-          A standalone automation tool that connects to a Veeam Backup for Microsoft 365 server, auto-discovers
-          organizations and jobs, selects random representative items from the latest restore points, extracts
-          them locally (non-destructive — nothing is restored to production), and verifies their integrity with
-          SHA-256 cryptographic hashes.
+          A PowerShell engine and PySide6 desktop application that discovers organizations and jobs on the local
+          Veeam Backup for Microsoft 365 host, runs selected jobs sequentially, and extracts one eligible sample
+          from each workload in the selected job's latest restore point. Exports stay on the VB365 server; the
+          workflow does not write data back to Microsoft 365.
         </p>
         <p>
           The tool covers three Microsoft 365 workloads:
@@ -108,24 +107,24 @@
 
         <h3>Architecture</h3>
         <p>
-          The core engine is a PowerShell 7 script (<code>Invoke-VB365OriginalRestoreTest.ps1</code>) that uses the
-          Veeam Archiver PowerShell SDK to interact with backup sessions. A PySide6 (Qt) desktop application
-          wraps this engine with a process queue, organization workspace isolation, and automated retention cleanup.
+          The core engine is a PowerShell 7 script (<code>Invoke-VB365OriginalRestoreTest.ps1</code>) using the
+          Veeam Archiver PowerShell module. The PySide6 application adds read-only organization/job discovery,
+          sequential execution, per-organization reports, isolated temporary workspaces, and configurable retention.
         </p>
 
         <h3>Audit & reporting</h3>
         <p>
-          Every test run produces structured evidence: JSON data, HTML reports, plain text summaries, and
-          PDF audit documents with timestamps, sample file details, SHA-256 checksums, and pass/fail verdicts.
-          These reports are designed to be delivered to a client as monthly compliance evidence.
+          Each completed run produces a required JSON summary and can also produce TXT, HTML, and PDF reports.
+          Evidence includes timestamps, sampled item details, file sizes, SHA-256 checksums, and workload results.
+          A checksum identifies the exported file; it does not prove that every protected object is recoverable.
         </p>
 
-        <h3>Limitations I identified</h3>
+        <h3>Scope and limitations</h3>
         <p>
-          During development, I discovered that SharePoint verification can fail even when the restore
-          operation succeeds — the test account may lack site-level permissions to independently verify the
-          restored content. The tool explicitly distinguishes between a failed restore and an item that couldn't
-          be verified, rather than silently marking everything as successful.
+          Version 1.2.4 is intentionally local-server only and validates a sample from each selected workload,
+          not every object in a repository. It was released after isolated-lab validation; the supplied records
+          do not show a customer production deployment. Local VB365 administration rights and protected disk
+          space are required because exported evidence may contain sensitive content.
         </p>
       </div>
 

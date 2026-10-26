@@ -1,102 +1,92 @@
+const historyKey = 'israk-color-quiz-history';
 let currentColor = { r: 0, g: 0, b: 0 };
 let historyVisible = false;
+let colorHistory = loadStoredHistory();
+
+function loadStoredHistory() {
+    try {
+        const saved = JSON.parse(localStorage.getItem(historyKey) || '[]');
+        return Array.isArray(saved) ? saved : [];
+    } catch {
+        return [];
+    }
+}
+
+function saveStoredHistory() {
+    try {
+        localStorage.setItem(historyKey, JSON.stringify(colorHistory));
+        return true;
+    } catch {
+        return false;
+    }
+}
 
 function generateRandomColor() {
-    currentColor.r = Math.floor(Math.random() * 256);
-    currentColor.g = Math.floor(Math.random() * 256);
-    currentColor.b = Math.floor(Math.random() * 256);
-
-    const box = document.getElementById('colorDisplay');
-    if (box) {
-        box.style.backgroundColor = `rgb(${currentColor.r}, ${currentColor.g}, ${currentColor.b})`;
-    }
-}
-
-// FETCH POST
-async function saveChoice(choice, event) {
-    // Rimuoviamo l'id manualmente per lasciare che sia json-server a generarlo, 
-    // evitando conflitti o problemi con il formato.
-    const dataToSave = {
-        r: currentColor.r.toString(),
-        g: currentColor.g.toString(),
-        b: currentColor.b.toString(),
-        y: choice
+    currentColor = {
+        r: Math.floor(Math.random() * 256),
+        g: Math.floor(Math.random() * 256),
+        b: Math.floor(Math.random() * 256)
     };
 
-    console.log("Tentativo di salvataggio:", dataToSave);
-
-    try {
-        const response = await fetch('http://localhost:3000/rgby', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(dataToSave)
-        });
-
-        if (response.ok) {
-            console.log("Salvataggio riuscito!");
-            // Opzionale: un piccolo feedback visuale
-            const btn = event.target;
-            const originalText = btn.textContent;
-            setTimeout(() => btn.textContent = originalText, 1000);
-
-            generateRandomColor(); // Genera un nuovo colore per il prossimo turno
-
-            // Se la cronologia è visibile, aggiornala subito
-            if (historyVisible) {
-                loadHistory();
-            }
-        } else {
-            const errorText = await response.text();
-            console.error("Errore del server:", response.status, errorText);
-            alert("Il server ha risposto con un errore: " + response.status);
-        }
-    } catch (error) {
-        console.error("Errore di connessione:", error);
-        alert("Impossibile connettersi al server. Assicurati che json-server sia attivo su porta 3000 e che non ci siano blocchi CORS.");
+    const display = document.getElementById('colorDisplay');
+    if (display) {
+        display.style.backgroundColor = 'rgb(' + currentColor.r + ', ' + currentColor.g + ', ' + currentColor.b + ')';
+        display.setAttribute('aria-label', 'Colore casuale RGB ' + currentColor.r + ', ' + currentColor.g + ', ' + currentColor.b);
     }
 }
 
-async function loadHistory() {
-    try {
-        const response = await fetch('http://localhost:3000/rgby');
-        if (!response.ok) throw new Error("Errore nel recupero dati");
+function saveChoice(choice) {
+    colorHistory.push({
+        id: Date.now() + '-' + Math.random().toString(16).slice(2, 8),
+        r: currentColor.r,
+        g: currentColor.g,
+        b: currentColor.b,
+        choice: choice
+    });
+    const stored = saveStoredHistory();
+    const feedback = document.getElementById('choiceFeedback');
+    if (feedback) {
+        feedback.textContent = stored
+            ? 'Risposta salvata: ' + choice + '.'
+            : 'Risposta registrata per questa sessione: ' + choice + '.';
+    }
 
-        const data = await response.json();
-        const list = document.getElementById('historyList');
-        if (!list) return;
+    generateRandomColor();
+    if (historyVisible) renderHistory();
+}
 
-        list.innerHTML = ""; // Pulisce la lista
+function renderHistory() {
+    const list = document.getElementById('historyList');
+    if (!list) return;
 
-        // Mostriamo gli ultimi inseriti in alto (invertendo l'array)
-        const sortedData = [...data].reverse();
+    list.replaceChildren();
+    colorHistory.slice().reverse().forEach(item => {
+        const entry = document.createElement('li');
+        entry.textContent = 'RGB(' + item.r + ', ' + item.g + ', ' + item.b + ') · Risposta: ' + item.choice;
+        list.appendChild(entry);
+    });
 
-        sortedData.forEach(item => {
-            const li = document.createElement('li');
-            li.textContent = `ID: ${item.id} - RGB(${item.r},${item.g},${item.b}) -> Scelta: ${item.y}`;
-            list.appendChild(li);
-        });
-    } catch (error) {
-        console.error("Errore nel recupero dati:", error);
+    if (colorHistory.length === 0) {
+        const empty = document.createElement('li');
+        empty.textContent = 'Non hai ancora registrato risposte.';
+        list.appendChild(empty);
     }
 }
 
-// Avvia il primo colore all'apertura
-generateRandomColor();
+document.addEventListener('DOMContentLoaded', () => {
+    generateRandomColor();
 
-function toggleHistory() {
+    document.querySelectorAll('[data-choice]').forEach(button => {
+        button.addEventListener('click', () => saveChoice(button.dataset.choice));
+    });
+
+    const historyButton = document.getElementById('toggleHistoryBtn');
     const historySection = document.getElementById('historySection');
-    const btn = document.getElementById('toggleHistoryBtn');
-
-    historyVisible = !historyVisible;
-
-    if (historyVisible) {
-        loadHistory();
-        historySection.classList.add('show');
-        btn.textContent = 'Nascondi Cronologia';
-    } else {
-        historySection.classList.remove('show');
-        btn.textContent = 'Mostra Cronologia';
-    }
-}
+    historyButton?.addEventListener('click', () => {
+        historyVisible = !historyVisible;
+        historySection.hidden = !historyVisible;
+        historyButton.setAttribute('aria-expanded', String(historyVisible));
+        historyButton.textContent = historyVisible ? 'Nascondi cronologia' : 'Mostra cronologia';
+        if (historyVisible) renderHistory();
+    });
+});

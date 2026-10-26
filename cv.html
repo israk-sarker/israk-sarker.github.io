@@ -23,8 +23,8 @@
           <li><a href="index.html#contact">Contact</a></li>
         </ul>
       </nav>
-      <button class="nav-toggle" id="navToggle" aria-label="Menu">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-controls="navLinks" aria-expanded="false">
+        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
     </div>
   </header>
@@ -34,13 +34,14 @@
       <div class="cv-top-bar">
         <div>
           <h1 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 4px;">Curriculum Vitae</h1>
-          <p style="font-size: 13px; color: var(--ink-muted);">Israk Sarker — Updated October 2026</p>
+          <p style="font-size: 13px; color: var(--ink-muted);">Italian-language public CV · home address and birth date omitted</p>
         </div>
-        <div style="display: flex; gap: 10px;">
+        <div class="cv-actions">
           <a href="assets/cv/Israk_Sarker_CV.pdf" download="Israk_Sarker_CV.pdf" class="btn btn-fill">Download PDF ↓</a>
           <a href="assets/cv/Israk_Sarker_CV.pdf" target="_blank" rel="noopener" class="btn btn-ghost">Open fullscreen ↗</a>
         </div>
       </div>
+      <p class="cv-context">For detailed lab and project experience, see the <a href="experience.html">Experience page</a>.</p>
 
       <div class="cv-viewer">
         <object data="assets/cv/Israk_Sarker_CV.pdf#toolbar=1&navpanes=0" type="application/pdf" width="100%" height="100%">

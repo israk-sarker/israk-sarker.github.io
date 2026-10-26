@@ -2,29 +2,31 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <title>Color Quiz RGBY</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Esperimento interattivo per classificare i colori come caldi o freddi.">
+    <title>Quiz sui colori — Israk Sarker</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <h1>Il colore è caldo o freddo?</h1>
-    
-    <div id="colorDisplay"></div>
-
-    <div class="buttons">
-        <button onclick="saveChoice('Caldo', event)">Caldo</button>
-        <button onclick="saveChoice('Freddo', event)">Freddo</button>
-        <button onclick="saveChoice('Non lo so', event)">Non lo so</button>
-    </div>
-
-    <hr>
-    <div style="text-align: center;">
-        <button id="toggleHistoryBtn" onclick="toggleHistory()">Mostra Cronologia</button>
-    </div>
-    <div id="historySection">
-        <ul id="historyList"></ul>
-    </div>
-
+    <main class="quiz-shell">
+        <a class="back-link" href="../../projects.html">← Torna al portfolio</a>
+        <h1>Il colore è caldo o freddo?</h1>
+        <p class="intro">Scegli la categoria del colore mostrato. La cronologia viene salvata solo in questo browser.</p>
+        <div id="colorDisplay" role="img" aria-label="Colore casuale da classificare"></div>
+        <div class="buttons" role="group" aria-label="Scegli una risposta">
+            <button type="button" data-choice="Caldo">Caldo</button>
+            <button type="button" data-choice="Freddo">Freddo</button>
+            <button type="button" data-choice="Non lo so">Non lo so</button>
+        </div>
+        <p id="choiceFeedback" class="feedback" role="status" aria-live="polite"></p>
+        <div class="history-controls">
+            <button id="toggleHistoryBtn" type="button" aria-expanded="false" aria-controls="historySection">Mostra cronologia</button>
+        </div>
+        <section id="historySection" aria-labelledby="historyTitle" hidden>
+            <h2 id="historyTitle">Risposte precedenti</h2>
+            <ul id="historyList"></ul>
+        </section>
+    </main>
     <script src="script.js"></script>
 </body>
 </html>

@@ -24,8 +24,8 @@
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
-      <button class="nav-toggle" id="navToggle" aria-label="Menu">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-controls="navLinks" aria-expanded="false">
+        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
     </div>
   </header>
@@ -34,20 +34,23 @@
 
     <!-- HERO -->
     <div class="hero">
-      <div class="wrap">
-        <h1 class="hero-statement">
-          I configure servers, automate backups, and build <span class="light">tools.</span>
-        </h1>
-        <p class="hero-bio">
-          I'm Israk Sarker, a 5th-year Computer Science student at ITIS Carlo Zuccante in Venice, Italy.
-          I work with datacenter infrastructure, VMware virtualization, Windows Server administration,
-          and PowerShell automation. I also self-host a Debian homelab and write code in Java, Python, and JavaScript.
-        </p>
-        <div class="hero-row">
-          <a href="cv.html" class="btn btn-fill">View CV →</a>
-          <a href="assets/cv/Israk_Sarker_CV.pdf" download="Israk_Sarker_CV.pdf" class="btn btn-ghost">Download PDF ↓</a>
-          <a href="https://github.com/israk101" target="_blank" rel="noopener" class="btn btn-ghost">GitHub ↗</a>
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <h1 class="hero-statement">
+            I configure systems, automate recovery checks, and build <span class="light">tools.</span>
+          </h1>
+          <p class="hero-bio">
+            I'm Israk Sarker, a fifth-year Computer Science student at ITIS Carlo Zuccante in Mestre, Italy.
+            My recent lab work covers VMware virtualization, Windows Server, network services, storage,
+            Microsoft Entra identity, and PowerShell automation.
+          </p>
+          <div class="hero-row">
+            <a href="cv.html" class="btn btn-fill">View CV →</a>
+            <a href="assets/cv/Israk_Sarker_CV.pdf" download="Israk_Sarker_CV.pdf" class="btn btn-ghost">Download PDF ↓</a>
+            <a href="https://github.com/israk101" target="_blank" rel="noopener" class="btn btn-ghost">GitHub ↗</a>
+          </div>
         </div>
+        <img class="profile-photo" src="assets/images/profile.jpg" alt="Portrait of Israk Sarker" width="320" height="320" fetchpriority="high">
       </div>
     </div>
 
@@ -66,14 +69,14 @@
               <dt>Role</dt>
               <dd>Systems & Automation Engineering</dd>
               <dt>Stack</dt>
-              <dd>PowerShell 7, PySide6, Veeam SDK</dd>
+              <dd>PowerShell 7, PySide6, Veeam.Archiver.PowerShell</dd>
               <dt>Status</dt>
-              <dd>Completed v1.2.4</dd>
+              <dd>Released v1.2.4 · lab validated</dd>
             </dl>
             <p class="spotlight-desc">
-              A backup job completing doesn't mean data can actually be restored. This tool automatically tests
-              restore points across Exchange, OneDrive, and SharePoint by extracting items locally and verifying
-              them with SHA-256 hashes. It generates audit-ready PDF, HTML, and JSON reports.
+              A successful backup job is only part of recovery assurance. This lab-validated tool extracts one
+              eligible sample from each selected job's latest restore point to the local Veeam server, then records
+              file size and SHA-256 evidence in structured reports. It does not write data back to Microsoft 365.
             </p>
             <div class="spotlight-actions">
               <a href="projects/veeam-m365.html" class="arrow-link">
@@ -95,14 +98,14 @@
                 <span class="app-frame-title">VeeamM365RestoreTester.exe</span>
               </div>
               <div class="app-frame-body">
-                <img src="assets/images/veeam/dashboard.png" alt="Veeam M365 Restore Tester — Dashboard" id="ssImg" style="transition: opacity 0.15s;">
+                <img src="assets/images/veeam/dashboard.png" alt="Veeam M365 Restore Tester dashboard" id="ssImg">
               </div>
             </div>
-            <div class="screenshot-tabs">
-              <button class="ss-tab active" data-img="assets/images/veeam/dashboard.png">Dashboard</button>
-              <button class="ss-tab" data-img="assets/images/veeam/run.png">Execution</button>
-              <button class="ss-tab" data-img="assets/images/veeam/reports.png">Reports</button>
-              <button class="ss-tab" data-img="assets/images/veeam/settings.png">Settings</button>
+            <div class="screenshot-tabs" role="group" aria-label="Choose a Veeam application screenshot">
+              <button type="button" class="ss-tab active" aria-pressed="true" aria-controls="ssImg" data-img="assets/images/veeam/dashboard.png" data-alt="Veeam M365 Restore Tester dashboard">Dashboard</button>
+              <button type="button" class="ss-tab" aria-pressed="false" aria-controls="ssImg" data-img="assets/images/veeam/run.png" data-alt="Veeam M365 Restore Tester execution screen">Execution</button>
+              <button type="button" class="ss-tab" aria-pressed="false" aria-controls="ssImg" data-img="assets/images/veeam/reports.png" data-alt="Veeam M365 Restore Tester reports screen">Reports</button>
+              <button type="button" class="ss-tab" aria-pressed="false" aria-controls="ssImg" data-img="assets/images/veeam/settings.png" data-alt="Veeam M365 Restore Tester settings screen">Settings</button>
             </div>
           </div>
         </div>
@@ -117,10 +120,26 @@
           <a href="projects/veeam-m365.html">
             <div class="work-row-left">
               <span class="work-title">Veeam M365 Restore Tester</span>
-              <span class="work-status status-complete">Completed</span>
+              <span class="work-status status-complete">Released · v1.2.4</span>
             </div>
             <span class="work-year">2026</span>
             <svg class="work-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 7h12m0 0L8 2m5 5-5 5"/></svg>
+          </a>
+          <a href="projects/infrastructure-lab.html">
+            <div class="work-row-left">
+              <span class="work-title">Virtualization &amp; Infrastructure Lab</span>
+              <span class="work-status status-lab">Lab completed</span>
+            </div>
+            <span class="work-year">2026</span>
+            <svg class="work-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 7h12m0 0L8 2m5 5-5 5"/></svg>
+          </a>
+          <a href="projects/homelab.html">
+            <div class="work-row-left">
+              <span class="work-title">Self-Hosted Debian Homelab</span>
+              <span class="work-status status-lab">Personal lab</span>
+            </div>
+            <span class="work-year">2026</span>
+            <svg class="work-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 7h12m0 0L8 2m5 5-5 5"/></svg>
           </a>
           <a href="./valorant-tracker/index.html">
             <div class="work-row-left">
@@ -137,6 +156,14 @@
             </div>
             <span class="work-year">2025</span>
             <svg class="work-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 7h12m0 0L8 2m5 5-5 5"/></svg>
+          </a>
+          <a href="./WeatherStation-lite/index.html">
+            <div class="work-row-left">
+              <span class="work-title">Weather Station Lite</span>
+              <span class="work-status status-prototype">Prototype</span>
+            </div>
+            <span class="work-year">2025</span>
+            <svg class="work-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 7h12m0 0L8 2m5 5-5 5"/></svg>
           </a>
           <a href="pyMonteCarlo.html">
             <div class="work-row-left">
@@ -186,6 +213,14 @@
             <span class="work-year">2024</span>
             <svg class="work-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 7h12m0 0L8 2m5 5-5 5"/></svg>
           </a>
+          <a href="./Colori/frontEnd/index.html">
+            <div class="work-row-left">
+              <span class="work-title">Color Temperature Quiz</span>
+              <span class="work-status status-coursework">Student experiment</span>
+            </div>
+            <span class="work-year">2024</span>
+            <svg class="work-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 7h12m0 0L8 2m5 5-5 5"/></svg>
+          </a>
         </div>
       </div>
     </div>
@@ -196,8 +231,7 @@
         <p class="label" style="margin-bottom: 8px;">Self-hosted infrastructure</p>
         <h2 style="font-size: clamp(1.5rem, 4vw, 2.25rem); font-weight: 800; letter-spacing: var(--tracking-tight); margin-bottom: 8px;">Homelab</h2>
         <p style="color: var(--ink-secondary); margin-bottom: 28px; max-width: 520px;">
-          A headless Debian 12 server running 24/7, managed via SSH and Docker Compose,
-          connected through a Tailscale WireGuard mesh.
+          A headless Debian 12 server with containerized services for DNS, password management, monitoring, remote access, and a service dashboard.
         </p>
         <div class="homelab-grid">
           <div class="homelab-item">
@@ -210,7 +244,7 @@
           </div>
           <div class="homelab-item">
             <div class="homelab-item-name">Uptime Kuma</div>
-            <div class="homelab-item-desc">Service monitoring & alerts</div>
+            <div class="homelab-item-desc">Service monitoring</div>
           </div>
           <div class="homelab-item">
             <div class="homelab-item-name">Portainer</div>
@@ -218,13 +252,17 @@
           </div>
           <div class="homelab-item">
             <div class="homelab-item-name">Tailscale</div>
-            <div class="homelab-item-desc">WireGuard mesh VPN</div>
+            <div class="homelab-item-desc">Private remote access</div>
           </div>
           <div class="homelab-item">
             <div class="homelab-item-name">Homepage</div>
-            <div class="homelab-item-desc">Dashboard & system telemetry</div>
+            <div class="homelab-item-desc">Service dashboard</div>
           </div>
         </div>
+        <a href="projects/homelab.html" class="arrow-link homelab-link">
+          Read homelab overview
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 7h12m0 0L8 2m5 5-5 5"/></svg>
+        </a>
       </div>
     </div>
 
