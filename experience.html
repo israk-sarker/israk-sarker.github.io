@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Experience — Israk Sarker</title>
+  <meta name="description" content="Professional experience and internship details — Israk Sarker.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="nav">
+    <div class="wrap">
+      <a href="index.html" class="nav-name">Israk Sarker</a>
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="projects.html">Work</a></li>
+          <li><a href="experience.html" aria-current="page">Experience</a></li>
+          <li><a href="cv.html">CV</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <div class="page-section" style="padding-top: calc(var(--nav-h) + 48px);">
+      <div class="wrap">
+        <h1 style="font-size: clamp(2.5rem, 7vw, 4rem); font-weight: 800; letter-spacing: var(--tracking-display); margin-bottom: 12px;">Experience</h1>
+        <p style="color: var(--ink-secondary); max-width: 520px; margin-bottom: 48px;">
+          Internship, work history, technical skills, education, and languages.
+        </p>
+
+        <!-- Logos Technologies -->
+        <div class="timeline-entry">
+          <div class="tl-header">
+            <div>
+              <h2 class="tl-role">IT Infrastructure & Systems Administration Intern</h2>
+              <div class="tl-company">Logos Technologies</div>
+            </div>
+            <span class="tl-period">Sept — Oct 2026</span>
+          </div>
+          <div class="tl-body">
+            <p>
+              Hands-on work across the full stack of a business IT lab: physical Dell servers, hypervisor virtualization,
+              Windows Server domain infrastructure, enterprise storage, Microsoft 365 identity, and backup automation.
+            </p>
+            <ul>
+              <li>Deployed VMware ESXi 7.0.3 on Dell server hardware managed via iDRAC. Connected QNAP NAS iSCSI block storage as a VMFS datastore.</li>
+              <li>Administered a multi-DC Active Directory topology (DC01, DC02, DC03) for <code>lablogos.local</code>. Configured DNS zones, DHCP failover scopes, and resolved a DC failure by transferring all 5 FSMO roles to DC02.</li>
+              <li>Designed DFS namespaces for departmental file shares across multiple servers.</li>
+              <li>Synchronized on-premises AD identities to Microsoft 365 via Entra Cloud Sync, resolved third-party SafeNet federation redirects, and migrated from Entra Connect to cloud-managed auth.</li>
+              <li>Built the <a href="projects/veeam-m365.html" style="color: var(--accent);">Veeam M365 Restore Tester</a> — a PowerShell 7 + PySide6 automation tool that performs non-destructive restore verification with SHA-256 integrity checks and generates audit reports.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Isha Boutique -->
+        <div class="timeline-entry">
+          <div class="tl-header">
+            <div>
+              <h2 class="tl-role">Retail Sales Assistant</h2>
+              <div class="tl-company">Isha Boutique · Family Business, Mestre</div>
+            </div>
+            <span class="tl-period">2024 — 2026</span>
+          </div>
+          <div class="tl-body">
+            <p>
+              Customer service, point-of-sale cash operations, restocking, and general retail operations in a clothing store.
+            </p>
+          </div>
+        </div>
+
+        <!-- Ristorantino Da Carla -->
+        <div class="timeline-entry">
+          <div class="tl-header">
+            <div>
+              <h2 class="tl-role">Dining Room Service & Bilingual Liaison</h2>
+              <div class="tl-company">Ristorantino Da Carla · Mestre</div>
+            </div>
+            <span class="tl-period">2026</span>
+          </div>
+          <div class="tl-body">
+            <p>
+              Table service and order management. Used fluent English to bridge communication between
+              international tourists and the kitchen staff, cutting order miscommunications in half.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SKILLS -->
+    <div class="page-section">
+      <div class="wrap">
+        <p class="label" style="margin-bottom: 28px;">Technical Skills</p>
+
+        <div class="skill-group">
+          <div class="skill-group-title">Systems & Virtualization</div>
+          <div class="skill-list">
+            <span class="skill-tag">Windows Server 2025</span>
+            <span class="skill-tag">Active Directory</span>
+            <span class="skill-tag">VMware ESXi 7</span>
+            <span class="skill-tag">Dell iDRAC</span>
+            <span class="skill-tag">Debian 12</span>
+            <span class="skill-tag">Docker</span>
+            <span class="skill-tag">QNAP NAS</span>
+            <span class="skill-tag">DFS</span>
+            <span class="skill-tag">LAPS</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-title">Cloud, Identity & Backup</div>
+          <div class="skill-list">
+            <span class="skill-tag">Microsoft Entra ID</span>
+            <span class="skill-tag">Entra Cloud Sync</span>
+            <span class="skill-tag">Microsoft 365</span>
+            <span class="skill-tag">Veeam B&R</span>
+            <span class="skill-tag">Veeam for M365</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-title">Networking</div>
+          <div class="skill-list">
+            <span class="skill-tag">IPv4 Subnetting</span>
+            <span class="skill-tag">VLANs</span>
+            <span class="skill-tag">DHCP Failover</span>
+            <span class="skill-tag">DNS</span>
+            <span class="skill-tag">Tailscale / WireGuard</span>
+            <span class="skill-tag">iSCSI</span>
+            <span class="skill-tag">SMB</span>
+            <span class="skill-tag">Cisco CCNA</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-title">Programming & Scripting</div>
+          <div class="skill-list">
+            <span class="skill-tag">PowerShell 7</span>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Java</span>
+            <span class="skill-tag">C / C++</span>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">HTML / CSS</span>
+            <span class="skill-tag">React.js</span>
+            <span class="skill-tag">PySide6 / Qt</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-title">Tools</div>
+          <div class="skill-list">
+            <span class="skill-tag">Git / GitHub</span>
+            <span class="skill-tag">VS Code</span>
+            <span class="skill-tag">Bash</span>
+            <span class="skill-tag">Portainer</span>
+            <span class="skill-tag">Uptime Kuma</span>
+            <span class="skill-tag">Pi-hole</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EDUCATION & LANGUAGES -->
+    <div class="page-section">
+      <div class="wrap" style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px;">
+
+        <div>
+          <p class="label" style="margin-bottom: 16px;">Education</p>
+          <h3 style="font-size: 18px; margin-bottom: 4px;">ITIS Carlo Zuccante · Mestre (VE)</h3>
+          <p style="color: var(--accent); font-size: 14px; font-weight: 500; margin-bottom: 8px;">Computer Science — 5th Year (Diploma 2027)</p>
+          <p style="color: var(--ink-muted); font-size: 13px; line-height: 1.6;">
+            OOP software development (Java), microcontroller programming (C/C++), Cisco CCNA networking, relational databases (SQL), and enterprise systems.
+          </p>
+        </div>
+
+        <div>
+          <p class="label" style="margin-bottom: 16px;">Languages</p>
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--border);">
+              <span style="font-weight: 600; font-size: 14px;">Italian</span>
+              <span style="font-family: var(--font-mono); font-size: 12px; color: var(--ink-muted);">Native</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--border);">
+              <span style="font-weight: 600; font-size: 14px;">Bengali</span>
+              <span style="font-family: var(--font-mono); font-size: 12px; color: var(--ink-muted);">Native</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--border);">
+              <span style="font-weight: 600; font-size: 14px;">English</span>
+              <span style="font-family: var(--font-mono); font-size: 12px; color: var(--ink-muted);">Fluent</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; padding: 10px 0;">
+              <span style="font-weight: 600; font-size: 14px;">Hindi</span>
+              <span style="font-family: var(--font-mono); font-size: 12px; color: var(--ink-muted);">Conversational</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap footer-bottom">
+      <p>© 2026 Israk Sarker · Mestre, Venezia, Italy</p>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
