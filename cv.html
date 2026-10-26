@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV — Israk Sarker</title>
+  <meta name="description" content="Curriculum vitae of Israk Sarker. View and download.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="nav">
+    <div class="wrap">
+      <a href="index.html" class="nav-name">Israk Sarker</a>
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="projects.html">Work</a></li>
+          <li><a href="experience.html">Experience</a></li>
+          <li><a href="cv.html" aria-current="page">CV</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap" style="padding-top: calc(var(--nav-h) + 40px); padding-bottom: 48px;">
+      <div class="cv-top-bar">
+        <div>
+          <h1 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 4px;">Curriculum Vitae</h1>
+          <p style="font-size: 13px; color: var(--ink-muted);">Israk Sarker — Updated October 2026</p>
+        </div>
+        <div style="display: flex; gap: 10px;">
+          <a href="assets/cv/Israk_Sarker_CV.pdf" download="Israk_Sarker_CV.pdf" class="btn btn-fill">Download PDF ↓</a>
+          <a href="assets/cv/Israk_Sarker_CV.pdf" target="_blank" rel="noopener" class="btn btn-ghost">Open fullscreen ↗</a>
+        </div>
+      </div>
+
+      <div class="cv-viewer">
+        <object data="assets/cv/Israk_Sarker_CV.pdf#toolbar=1&navpanes=0" type="application/pdf" width="100%" height="100%">
+          <iframe src="assets/cv/Israk_Sarker_CV.pdf" width="100%" height="100%">
+            <p style="padding: 40px; text-align: center; color: var(--ink-secondary);">
+              Your browser doesn't support inline PDF viewing.
+              <a href="assets/cv/Israk_Sarker_CV.pdf" download style="color: var(--accent);">Download the CV here.</a>
+            </p>
+          </iframe>
+        </object>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap footer-bottom">
+      <p>© 2026 Israk Sarker · Mestre, Venezia, Italy</p>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
